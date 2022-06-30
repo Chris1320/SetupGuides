@@ -3,8 +3,10 @@ local catppuccin_flavour = "mocha"
 local languages = {  -- [add|remove] languages you [don't] want to use.
     "c",             -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
     "c_sharp",
+    "html",
     "java",
     "lua",
+    "markdown",
     "python",
     "rust"
 }
