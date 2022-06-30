@@ -10,12 +10,13 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ### Integrated Development Environments (IDEs) & Text Editors
 
-- [Neovim](/SetupGuides/guides/text-editors/neovim.md)
+- [Neovim](guides/text-editors/neovim.md)
 
 ### Shells
 
-- [Zsh](/SetupGuides/guides/shells/zsh.md)
+- [Zsh](guides/shells/zsh.md)
 
 ### Terminals
 
-- [Kali Linux WSL](/SetupGuides/guides/terminals/kali-linux-wsl.md)
+- [Kali Linux WSL](guides/terminals/kali-linux-wsl.md)
+- [Termux (Android)](guides/terminals/termux.md)
