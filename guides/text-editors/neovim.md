@@ -24,7 +24,7 @@ This guide will install Neovim and the following plugins:
     - Check if Neovim v0.7.2+ is available in your package manager. `$ apt show neovim`
     - If version 0.7.2 above is available, install it. `$ apt install neovim`
     - Otherwise, download it from [their GitHub repository](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb) and install it. `$ dpkg -i nvim-linux64.deb`[^1]
-2. Clone and install packer. `$ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
+2. Clone and install packer. `$ git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
 3. Copy the contents of [neovim-lua/](../../resources/neovim-lua) to your `~/.config/nvim/`. The directory must look like this:
 
     ```
@@ -38,13 +38,16 @@ This guide will install Neovim and the following plugins:
     ```
 
 4. Install gcc. `$ sudo apt install gcc`[^2]
-4. Run `nvim`, and an error will occur. This is because the plugins are not yet installed.
-5. Type `:PackerSync` to update, install, and compile the plugins.
+5. Run `nvim`. Packer will now update, install, and compile the plugins.
 6. After installation, quit Neovim by entering `:q`.
-7. To check if everything is installed correctly, open `nvim` and enter `:checkhealth` and `:PackerStatus`.
+7. Open `~/.config/nvim/plugins.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `local installed = true`)
+8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^3]
+9. Enter `:PackerStatus` to verify all plugins are installed.
+10. To check if everything is installed correctly, enter `:checkhealth`.
 
 [^1]: To download and install using wget and dpkg: `wget -O ./nvim-linux64.deb https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && sudo dpkg -i ./nvim-linux64.deb`
 [^2]: On Termux, install clang instead. `$ apt install clang` (explanation in [this GitHub issue comment](https://github.com/termux/termux-packages/issues/407#issuecomment-241251913))
+[^3]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
 
 -----
 

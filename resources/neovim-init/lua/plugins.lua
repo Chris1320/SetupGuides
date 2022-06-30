@@ -1,4 +1,5 @@
 ----- Quick-change variables
+local installed = false  -- set this to true after running `:PluginSync` in neovim.
 local catppuccin_flavour = "mocha"
 -- local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
 local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
@@ -12,9 +13,6 @@ local languages = {  -- [add|remove] languages you [don't] want to use.
     "python",
     -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
 }
-
--- This file is generated only after running `:PackerSync`.
-local signalpath = "~/.config/nvim/plugins/packer_compiled.lua"
 ----- Quick-change variables
 
 local function fileExists(filepath)
@@ -43,7 +41,7 @@ Packer.startup(
         use(                                            -- Git signs
             {
                 "lewis6991/gitsigns.nvim",
-                tag = "release"
+                -- tag = "release"
             }
         )
         use("feline-nvim/feline.nvim")                  -- Customizable statusline
@@ -134,6 +132,12 @@ local function setupGitsigns()
     gitsigns.setup(
         {
             current_line_blame = true,
+            current_line_blame_opts = {
+              virt_text = true,
+              virt_text_pos = 'eol',
+              delay = 1000,
+              ignore_whitespace = false
+            },
             current_line_blame_formatter = git_blame_format,
         }
     )
@@ -214,10 +218,7 @@ local function setupTreesitter()
     )
 end
 
-if not fileExists(signalpath) then
-    vim.cmd(":PackerSync")
-
-else
+if installed then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
@@ -229,5 +230,8 @@ else
     setupNvimTree()
     setupLspConfig()
     setupTreesitter()
-    vim.cmd("TSUpdate")
+
+else
+    vim.cmd(":PackerSync")
+
 end
