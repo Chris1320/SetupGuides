@@ -55,7 +55,12 @@ Packer.startup(
         use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
         use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
 
-        use("nvim-treesitter/nvim-treesitter")         -- Treesitter
+        use(                                            -- Treesitter
+            {
+                "nvim-treesitter/nvim-treesitter",
+                run = ':TSUpdate'
+            }
+        )
         use("nvie/vim-flake8")                          -- Python syntax checker
         use("rust-lang/rust.vim")                       -- Rust syntax checker
 
