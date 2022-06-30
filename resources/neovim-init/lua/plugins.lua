@@ -1,5 +1,7 @@
 ----- Quick-change variables
 local catppuccin_flavour = "mocha"
+-- local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
+local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
 local languages = {  -- [add|remove] languages you [don't] want to use.
     "c",             -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
     "c_sharp",
@@ -10,7 +12,20 @@ local languages = {  -- [add|remove] languages you [don't] want to use.
     "python",
     -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
 }
+
+-- This file is generated only after running `:PackerSync`.
+local signalpath = "~/.config/nvim/plugins/packer_compiled.lua"
 ----- Quick-change variables
+
+local function fileExists(filepath)
+    local ok, err, code = os.rename(filepath, filepath)
+    if not ok then
+        if code == 13 then
+            return true
+        end
+    end
+    return false
+end
 
 Packer = require("packer")
 
@@ -57,14 +72,10 @@ Packer.startup(
         use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
         use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
 
-        use(                                            -- Treesitter
-            {
-                "nvim-treesitter/nvim-treesitter",
-                run = ':TSUpdate'
-            }
-        )
-        use("nvie/vim-flake8")                          -- Python syntax checker
-        use("rust-lang/rust.vim")                       -- Rust syntax checker
+        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
+
+        -- use("nvie/vim-flake8")                          -- Python syntax checker
+        -- use("rust-lang/rust.vim")                       -- Rust syntax checker
 
     end
 )
@@ -122,7 +133,8 @@ local function setupGitsigns()
     local gitsigns = require("gitsigns")
     gitsigns.setup(
         {
-            current_line_blame = true
+            current_line_blame = true,
+            current_line_blame_formatter = git_blame_format,
         }
     )
 end
@@ -202,14 +214,20 @@ local function setupTreesitter()
     )
 end
 
--- run setup functions
-setupCatppuccin()
-setupFeline()
-setupGitsigns()
-setupIndentBlankline()
--- setupAutoPairs()
-setupWhichKey()
-setupTelescope()
-setupNvimTree()
-setupLspConfig()
-setupTreesitter()
+if not fileExists(signalpath) then
+    vim.cmd(":PackerSync")
+
+else
+    -- run setup functions
+    setupCatppuccin()
+    setupFeline()
+    setupGitsigns()
+    setupIndentBlankline()
+    -- setupAutoPairs()
+    setupWhichKey()
+    setupTelescope()
+    setupNvimTree()
+    setupLspConfig()
+    setupTreesitter()
+    vim.cmd("TSUpdate")
+end
