@@ -2,5 +2,5 @@
 
 ## Recommended Customizations
 
-- [zsh](/guides/shells/zsh.md)
-- [neovim](/guides/text-editors/neovim.md)
+- [zsh](/SetupGuides/guides/shells/zsh.md)
+- [neovim](/SetupGuides/guides/text-editors/neovim.md)
