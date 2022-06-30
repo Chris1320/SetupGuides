@@ -39,7 +39,7 @@ This customization guide will do the following changes:
 9. Reload the terminal. `$ source ~/.zshrc`
 10. Follow the on-screen instructions to set up Powerlevel10k.
 
-[^1]: If you encounter an error `chsh: <zsh-path>: non-standard shell`, add the path to `/etc/shells`. `$ echo "$(which zsh)" >> /etc/shells`
+[^1]: If you encounter an error `chsh: <zsh-path>: non-standard shell`, add the path to `/etc/shells`. `$ echo "$(which zsh)" >> /etc/shells`. In Termux, you might have to use `$ chsh -s zsh` instead.
 
 -----
 
