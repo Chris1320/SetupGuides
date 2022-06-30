@@ -8,7 +8,7 @@ local languages = {  -- [add|remove] languages you [don't] want to use.
     "lua",
     "markdown",
     "python",
-    "rust"
+    -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
 }
 ----- Quick-change variables
 
