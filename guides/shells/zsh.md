@@ -21,7 +21,7 @@ This customization guide will do the following changes:
 2. Change the shell to zsh. `$ chsh -s $(which zsh)`[^1]
 3. Reload your terminal.
 4. Download Oh-My-Zsh. `$ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-5. Install powerlevel10k. `$ git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k`
+5. Install powerlevel10k. `$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k`
 6. Find and edit the following lines in `~/.zshrc`:
 
     | Option          | New Value                                |
