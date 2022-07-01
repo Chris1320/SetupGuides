@@ -67,12 +67,12 @@ vim.opt.listchars:append("eol:" .. eol_char)
 -- Start packer
 require("plugins")
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
 
 -- shortcuts
 vim.keymap.set('n', "<leader>tt", ":Telescope<cr>")

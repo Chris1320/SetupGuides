@@ -5,13 +5,19 @@ local catppuccin_flavour = "mocha"
 local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
 local languages = {  -- [add|remove] languages you [don't] want to use.
     "c",             -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+    "css",
     "c_sharp",
     "html",
     "java",
+    "json",
+    "jsonc",
     "lua",
     "markdown",
+    "markdown_inline",
     "python",
     -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
+    "toml",
+    "yaml"
 }
 ----- Quick-change variables
 
@@ -70,7 +76,12 @@ Packer.startup(
         use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
         use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
 
-        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
+        use(                                            -- Treesitter
+            {
+                "nvim-treesitter/nvim-treesitter",
+                run = ":TSUpdate"  -- Update parsers at startup.
+            }
+        )
 
         -- use("nvie/vim-flake8")                          -- Python syntax checker
         -- use("rust-lang/rust.vim")                       -- Rust syntax checker
