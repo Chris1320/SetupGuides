@@ -35,16 +35,19 @@ This guide will install Neovim and the following plugins:
     1 directory, 2 files
     ```
 
-4. Install clang to compile treesitter parsers. `$ sudo apt install clang`
+4. Install dependencies. `$ sudo apt install clang curl npm python3 python3-pip python3-venv`
 5. Run `nvim`. Packer will now update, install, and compile the plugins.
 6. After installation, quit Neovim by entering `:q`.
-7. Open `~/.config/nvim/plugins.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `local installed = true`)
+7. Open `~/.config/nvim/vars.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `installed = true`)
 8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^2]
 9. Enter `:PackerStatus` to verify all plugins are installed.
 10. To check if everything is installed correctly, enter `:checkhealth`.
+11. (*Optional*) Install LSP servers by running `:LSPInstall <server>` inside Neovim.[^3] (Run `:LSPInstallInfo` for more information.)
+12. (*Optional*) Setup GitHub Copilot. `:Copilot setup`
 
 [^1]: To download and install using wget and dpkg: `wget -O ./nvim-linux64.deb https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && sudo dpkg -i ./nvim-linux64.deb`
 [^2]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
+[^3]: Manual configuration is necessary for each LSP server.
 
 -----
 

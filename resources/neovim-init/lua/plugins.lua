@@ -6,6 +6,27 @@ Packer.startup(
     function(use)
         use("wbthomason/packer.nvim")
 
+        -- Linting and syntax checkers
+        use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
+        use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
+
+        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
+        use(                                            -- diagnostics, quickfixes, etc.
+            {
+                "folke/trouble.nvim",
+                requires = "kyazdani42/nvim-web-devicons"
+            }
+        )
+        use("github/copilot.vim")                       -- GitHub Copilot
+
+        -- Fuzzy Search
+        use(                                            -- Fuzzy finder
+            {
+                "nvim-telescope/telescope.nvim",
+                requires = {{"nvim-lua/plenary.nvim"}}
+            }
+        )
+
         -- Visual plugins
         use(                                            -- Catppuccin theme
             {
@@ -24,13 +45,26 @@ Packer.startup(
         use("jiangmiao/auto-pairs")                     -- Bracket auto-pairing
         use("folke/which-key.nvim")                     -- Displays possible key bindings
 
-        -- Fuzzy Search
-        use(                                            -- Fuzzy finder
+        -- Autocompletion
+        use(                                            -- The main autocompletion tool
             {
-                "nvim-telescope/telescope.nvim",
-                requires = {{"nvim-lua/plenary.nvim"}}
+                "ms-jpq/coq_nvim",
+                branch = "coq"
             }
         )
+        use(                                            -- coq autocompletion snippets
+            {
+                "ms-jpq/coq.artifacts",
+                branch = "artifacts"
+            }
+        )
+        use(                                            -- coq 3rd-party sources
+            {
+                "ms-jpq/coq.thirdparty",
+                branch = "3p"
+            }
+        )
+
 
         -- File explorer
         use(
@@ -41,16 +75,6 @@ Packer.startup(
             }
         )
 
-        -- Linting and syntax checkers
-        use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
-        use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
-
-        use(                                            -- Treesitter
-            {
-                "nvim-treesitter/nvim-treesitter",
-                run = ":TSUpdate"  -- Update parsers at startup.
-            }
-        )
     end
 )
 
@@ -90,7 +114,7 @@ local function setupCatppuccin()
             }
         }
     )
-    vim.g.catppuccin_flavour = vars.catppuccin_flavour  -- Set catppuccin variation
+    vim.g.catppuccin_flavour = vars["catppuccin_flavour"]  -- Set catppuccin variation
     vim.cmd("colorscheme catppuccin")                   -- Set theme
 end
 
@@ -114,7 +138,7 @@ local function setupGitsigns()
               delay = 1000,
               ignore_whitespace = false
             },
-            current_line_blame_formatter = vars.git_blame_format,
+            current_line_blame_formatter = vars["git_blame_format"],
         }
     )
 end
@@ -141,9 +165,24 @@ local function setupWhichKey()
     which_key.setup()
 end
 
+local function setupTrouble()
+    local trouble = require("trouble")
+    trouble.setup()
+end
+
 local function setupTelescope()
     local telescope = require("telescope")
-    telescope.setup()
+    local trouble = require("trouble")
+    telescope.setup(
+        {
+            defaults = {
+                mappings = {
+                    i = {["<C-t>"] = trouble.open_with_trouble},
+                    n = {["<C-t>"] = trouble.open_with_trouble}
+                }
+            }
+        }
+    )
 end
 
 local function setupNvimTree()
@@ -156,14 +195,7 @@ local function setupLspConfig()
     local lsp_installer = require("nvim-lsp-installer")
 
     -- Setup lspconfig
-    lsp.clangd.setup()  -- enable clangd because we're going to install clang anyway.
-    if vars.lsp_enable_csharp then
-        lsp.omnisharp.setup(
-            {
-                use_mono=vars.lsp_use_mono
-            }
-        )
-    end
+    lsp.clangd.setup({})  -- enable clangd because we're going to install clang anyway.
 
     -- Setup nvim-lsp-installer
     lsp_installer.on_server_ready(
@@ -183,16 +215,13 @@ local function setupLspConfig()
             )
         end
     )
-
-    lsp_installer.clangd.setup()
-    lsp_installer.csharp_ls.setup()
 end
 
 local function setupTreesitter()
     local treesitter = require("nvim-treesitter.configs")
     treesitter.setup(
         {
-            ensure_installed = vars.languages,  -- Install parsers for languages defined in <languages>.
+            ensure_installed = vars["languages"],  -- Install parsers for languages defined in <languages>.
             highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
@@ -203,7 +232,26 @@ local function setupTreesitter()
     )
 end
 
-if vars.installed then
+local function setupCoq()
+    local coq = require("coq")
+    local coq3p = require("coq_3p")
+    coq3p(
+        {
+            {  -- Requires bc `$ sudo apt install bc`
+                src = "bc",
+                short_name = "MATH",
+                precision = 4
+            },
+            {
+                src = "copilot",
+                short_name = "COP",
+                accept_key = "<C-f>"
+            }
+        }
+    )
+end
+
+if vars["installed"] then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
@@ -211,13 +259,14 @@ if vars.installed then
     setupIndentBlankline()
     -- setupAutoPairs()
     setupWhichKey()
+    setupTrouble()
     setupTelescope()
     setupNvimTree()
     setupLspConfig()
     setupTreesitter()
+    setupCoq()
 
 else
-    vim.cmd(":TSUpdate")
     vim.cmd(":PackerSync")
 
 end
