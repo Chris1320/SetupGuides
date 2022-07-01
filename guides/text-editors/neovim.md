@@ -19,6 +19,7 @@ This guide will install Neovim and the following plugins:
     - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
     - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
     - [which-key.nvim](https://github.com/folke/which-key.nvim): Show available key bindings.
+    - [twilight.nvim](https://github.com/folke/twilight.nvim): Dim inactive parts of your code.
 - Code Completion
     - [coq_nvim](https://github.com/ms-jpq/coq_nvim/): Code completion.
     - [coq.artifacts](https://github.com/ms-jpq/coq.artifacts): COQ snippets.
@@ -36,9 +37,9 @@ This guide will install Neovim and the following plugins:
 | `,`           |                                        | Leader key                                 |
 | `<leader>tt`  | `:Telescope`                           | Toggle Telescope                           |
 | `<leader>tb`  | `:Telescope buffers`                   | Toggle Telescope Buffer Searcher           |
-| `<leader>tf`  | `:Telescope find_files`                | Toggle Telescope File Searcher             |
+| `<leader>tF`  | `:Telescope find_files`                | Toggle Telescope File Searcher             |
 | `<leader>ts`  | `:Telescope treesitter`                | Toggle Telescope treesitter explorer       |
-| `<leader>tff` | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer     |
+| `<leader>tf`  | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer     |
 | `<leader>ewd` | `:TroubleToggle workspace_diagnostics` | Toggle Trouble workspace diagnostics panel |
 | `<leader>edd` | `:TroubleToggle document_diagnostics`  | Toggle Trouble document diagnostics panel  |
 | `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel             |
@@ -46,6 +47,7 @@ This guide will install Neovim and the following plugins:
 | `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel         |
 | `<leader>ff`  | `:NvimTreeToggle`                      | Toggle Nvim-tree file explorer.            |
 | `<leader>cc`  | `:COQnow`                              | Enable code completion.                    |
+| `<leader>z`   | `:Twilight`                            | Toggle Twilight.                           |
 
 **Tested on the following platforms**:
 
@@ -73,19 +75,22 @@ This guide will install Neovim and the following plugins:
     1 directory, 2 files
     ```
 
-4. Install dependencies. `$ sudo apt install clang curl npm python3 python3-pip python3-venv`
+4. Install dependencies. `$ sudo apt install clang curl python3 python3-pip python3-venv`[^2]
 5. Run `nvim`. Packer will now update, install, and compile the plugins.
 6. After installation, quit Neovim by entering `:q`.
 7. Open `~/.config/nvim/vars.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `installed = true`)
-8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^2]
-9. Enter `:PackerStatus` to verify all plugins are installed.
-10. To check if everything is installed correctly, enter `:checkhealth`.
-11. (*Optional*) Install LSP servers by running `:LSPInstall <server>` inside Neovim.[^3] (Run `:LSPInstallInfo` for more information.)
-12. (*Optional*) Setup GitHub Copilot. `:Copilot setup`
+8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^3]
+9. Run `:COQdeps` to install dependencies for COQ.
+10. Enter `:PackerStatus` to verify all plugins are installed.
+11. To check if everything is installed correctly, enter `:checkhealth`.
+12. (*Optional*) Install LSP servers by running `:LspInstall <server>` inside Neovim.[^4] (Run `:LspInstallInfo` for more information.)
+13. (*Optional*) Setup GitHub Copilot. `:Copilot setup`[^5]
 
 [^1]: To download and install using wget and dpkg: `wget -O ./nvim-linux64.deb https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && sudo dpkg -i ./nvim-linux64.deb`
-[^2]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
-[^3]: Manual configuration is necessary for each LSP server.
+[^2]: You can also install optional additional packages used by Telescope: `$ sudo apt install fd ripgrep`
+[^3]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
+[^4]: Manual configuration is necessary for each LSP server.
+[^5]: A GitHub account with Copilot subscription is required.
 
 -----
 

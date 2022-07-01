@@ -34,7 +34,8 @@ vim.opt.magic = true                                        -- enable regex.
 
 -- Indentation-related configuration
 vim.cmd("filetype plugin indent on")                        -- allow auto-indentation depending on file type.
-vim.opt.autoindent = true                                   -- indent a new line the same amount as the line just typed.
+vim.opt.autoindent = true                                   -- Enable auto indent.
+vim.opt.indentexpr = "nvim_treesitter#indentexpr()"         -- Use treesitter for indentation.
 vim.opt.expandtab = vars["use_spaces"]                      -- converts tabs to white space.
 vim.opt.shiftwidth = 4                                      -- width for autoindents.
 vim.opt.tabstop = 4                                         -- number of columns occupied by a tab.
@@ -69,9 +70,9 @@ require("plugins")
 -- Telescope shortcuts
 vim.keymap.set('n', "<leader>tt", ":Telescope<cr>")
 vim.keymap.set('n', "<leader>tb", ":Telescope buffers<cr>")
-vim.keymap.set('n', "<leader>tf", ":Telescope find_files<cr>")
+vim.keymap.set('n', "<leader>tF", ":Telescope find_files<cr>")
 vim.keymap.set('n', "<leader>ts", ":Telescope treesitter<cr>")
-vim.keymap.set('n', "<leader>tff", ":Telescope current_buffer_fuzzy_find<cr>")
+vim.keymap.set('n', "<leader>tf", ":Telescope current_buffer_fuzzy_find<cr>")
 
 -- Trouble shortcuts
 vim.keymap.set('n', "<leader>ewd", ":TroubleToggle workspace_diagnostics<cr>")
@@ -83,4 +84,8 @@ vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>")
 -- nvim-tree shortcuts
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
 
+-- coq shortcuts
 vim.keymap.set('n', "<leader>cc", ":COQnow<cr>")
+
+-- twilight shortcuts
+vim.keymap.set('n', "<leader>z", ":Twilight<cr>")

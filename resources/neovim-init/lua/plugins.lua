@@ -44,6 +44,7 @@ Packer.startup(
         use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
         use("jiangmiao/auto-pairs")                     -- Bracket auto-pairing
         use("folke/which-key.nvim")                     -- Displays possible key bindings
+        use("folke/twilight.nvim")                      -- Dim inactive portions of the code
 
         -- Autocompletion
         use(                                            -- The main autocompletion tool
@@ -102,7 +103,6 @@ local function setupCatppuccin()
                     show_root = true,
                     transparent_panel = true
                 },
-                -- feline = true,
                 gitsigns = true,
                 indent_blankline = {
                     enabled = true,
@@ -110,7 +110,11 @@ local function setupCatppuccin()
                 },
                 telescope = true,
                 treesitter = true,
-                which_key = true
+                which_key = true,
+                native_lsp = {
+                    enabled = true
+                },
+                coc_nvim = true
             }
         }
     )
@@ -163,6 +167,21 @@ end
 local function setupWhichKey()
     local which_key = require("which-key")
     which_key.setup()
+end
+
+local function setupTwilight()
+    local twilight = require("twilight")
+    twilight.setup(
+        {
+            treesitter = true,
+            expand = {  -- See https://github.com/folke/twilight.nvim#%EF%B8%8F-configuration for more information.
+                "function",
+                "method",
+                "table",
+                "if_statement"
+            }
+        }
+    )
 end
 
 local function setupTrouble()
@@ -259,6 +278,7 @@ if vars["installed"] then
     setupIndentBlankline()
     -- setupAutoPairs()
     setupWhichKey()
+    setupTwilight()
     setupTrouble()
     setupTelescope()
     setupNvimTree()
