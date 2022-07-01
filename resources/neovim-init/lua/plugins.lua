@@ -1,35 +1,31 @@
------ Quick-change variables
-local installed = false  -- set this to true after running `:PluginSync` in neovim.
-local catppuccin_flavour = "mocha"
--- local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
-local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
-local languages = {  -- [add|remove] languages you [don't] want to use.
-    "c",             -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-    "c_sharp",
-    "html",
-    "java",
-    "lua",
-    "markdown",
-    "python",
-    -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
-}
------ Quick-change variables
-
-local function fileExists(filepath)
-    local ok, err, code = os.rename(filepath, filepath)
-    if not ok then
-        if code == 13 then
-            return true
-        end
-    end
-    return false
-end
+local vars = require("vars")
 
 Packer = require("packer")
 
 Packer.startup(
-    function()
+    function(use)
         use("wbthomason/packer.nvim")
+
+        -- Linting and syntax checkers
+        use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
+        use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
+
+        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
+        use(                                            -- diagnostics, quickfixes, etc.
+            {
+                "folke/trouble.nvim",
+                requires = "kyazdani42/nvim-web-devicons"
+            }
+        )
+        use("github/copilot.vim")                       -- GitHub Copilot
+
+        -- Fuzzy Search
+        use(                                            -- Fuzzy finder
+            {
+                "nvim-telescope/telescope.nvim",
+                requires = {{"nvim-lua/plenary.nvim"}}
+            }
+        )
 
         -- Visual plugins
         use(                                            -- Catppuccin theme
@@ -49,13 +45,26 @@ Packer.startup(
         use("jiangmiao/auto-pairs")                     -- Bracket auto-pairing
         use("folke/which-key.nvim")                     -- Displays possible key bindings
 
-        -- Fuzzy Search
-        use(                                            -- Fuzzy finder
+        -- Autocompletion
+        use(                                            -- The main autocompletion tool
             {
-                "nvim-telescope/telescope.nvim",
-                requires = {{"nvim-lua/plenary.nvim"}}
+                "ms-jpq/coq_nvim",
+                branch = "coq"
             }
         )
+        use(                                            -- coq autocompletion snippets
+            {
+                "ms-jpq/coq.artifacts",
+                branch = "artifacts"
+            }
+        )
+        use(                                            -- coq 3rd-party sources
+            {
+                "ms-jpq/coq.thirdparty",
+                branch = "3p"
+            }
+        )
+
 
         -- File explorer
         use(
@@ -65,15 +74,6 @@ Packer.startup(
                 -- tag = "nightly"  -- optional
             }
         )
-
-        -- Linting and syntax checkers
-        use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
-        use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
-
-        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
-
-        -- use("nvie/vim-flake8")                          -- Python syntax checker
-        -- use("rust-lang/rust.vim")                       -- Rust syntax checker
 
     end
 )
@@ -114,8 +114,8 @@ local function setupCatppuccin()
             }
         }
     )
-    vim.g.catppuccin_flavour = catppuccin_flavour  -- Set catppuccin variation
-    vim.cmd("colorscheme catppuccin")              -- Set theme
+    vim.g.catppuccin_flavour = vars["catppuccin_flavour"]  -- Set catppuccin variation
+    vim.cmd("colorscheme catppuccin")                   -- Set theme
 end
 
 local function setupFeline()
@@ -138,7 +138,7 @@ local function setupGitsigns()
               delay = 1000,
               ignore_whitespace = false
             },
-            current_line_blame_formatter = git_blame_format,
+            current_line_blame_formatter = vars["git_blame_format"],
         }
     )
 end
@@ -160,19 +160,29 @@ local function setupIndentBlankline()
     )
 end
 
--- local function setupAutoPairs()
---     local auto_pairs = require("auto_pairs")
---     auto_pairs.setup()
--- end
-
 local function setupWhichKey()
     local which_key = require("which-key")
     which_key.setup()
 end
 
+local function setupTrouble()
+    local trouble = require("trouble")
+    trouble.setup()
+end
+
 local function setupTelescope()
     local telescope = require("telescope")
-    telescope.setup()
+    local trouble = require("trouble")
+    telescope.setup(
+        {
+            defaults = {
+                mappings = {
+                    i = {["<C-t>"] = trouble.open_with_trouble},
+                    n = {["<C-t>"] = trouble.open_with_trouble}
+                }
+            }
+        }
+    )
 end
 
 local function setupNvimTree()
@@ -184,6 +194,10 @@ local function setupLspConfig()
     local lsp = require("lspconfig")
     local lsp_installer = require("nvim-lsp-installer")
 
+    -- Setup lspconfig
+    lsp.clangd.setup({})  -- enable clangd because we're going to install clang anyway.
+
+    -- Setup nvim-lsp-installer
     lsp_installer.on_server_ready(
         function(server)
             server:setup(
@@ -207,18 +221,37 @@ local function setupTreesitter()
     local treesitter = require("nvim-treesitter.configs")
     treesitter.setup(
         {
-            ensure_installed = languages,
-            highlight = {
+            ensure_installed = vars["languages"],  -- Install parsers for languages defined in <languages>.
+            highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
-            indent = {
+            indent = {                     -- Use treesitter for indentation.
                 enable = true
             }
         }
     )
 end
 
-if installed then
+local function setupCoq()
+    local coq = require("coq")
+    local coq3p = require("coq_3p")
+    coq3p(
+        {
+            {  -- Requires bc `$ sudo apt install bc`
+                src = "bc",
+                short_name = "MATH",
+                precision = 4
+            },
+            {
+                src = "copilot",
+                short_name = "COP",
+                accept_key = "<C-f>"
+            }
+        }
+    )
+end
+
+if vars["installed"] then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
@@ -226,10 +259,12 @@ if installed then
     setupIndentBlankline()
     -- setupAutoPairs()
     setupWhichKey()
+    setupTrouble()
     setupTelescope()
     setupNvimTree()
     setupLspConfig()
     setupTreesitter()
+    setupCoq()
 
 else
     vim.cmd(":PackerSync")

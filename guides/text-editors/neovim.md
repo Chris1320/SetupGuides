@@ -2,14 +2,50 @@
 
 This guide will install Neovim and the following plugins:
 
-- [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
-- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
-- [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
-- [catppuccin](https://github.com/catppuccin/nvim): Catppuccin theme
-- [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua): File explorer tree
-- [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons): Icons for/dependency of nvim-tree
-- [vim-flake8](https://github.com/nvie/vim-flake8): Python syntax checker
-- [rust](https://github.com/rust-lang/rust.vim): Rust syntax checker
+- Plugin Manager
+    - [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
+- Linting and Syntax Checking
+    - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol (LSP) configuration helper.
+    - [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer): Make installation of LSP servers easier.
+    - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Better syntax highlighting.
+    - [trouble.nvim](https://github.com/folke/trouble.nvim): Error and status line manager.
+    - [copilot.vim](https://github.com/github/copilot.vim): GitHub Copilot for Vim.
+- Fuzzy Search
+    - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): Fuzzy Finder.
+- Theming and Visual Plugins
+    - [catppuccin](https://github.com/catppuccin/nvim): A Neovim theme.
+    - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): Git Integration for buffers.
+    - [feline.nvim](https://github.com/feline-nvim/feline.nvim): A customizable statusline.
+    - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
+    - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
+    - [which-key.nvim](https://github.com/folke/which-key.nvim): Show available key bindings.
+- Code Completion
+    - [coq_nvim](https://github.com/ms-jpq/coq_nvim/): Code completion.
+    - [coq.artifacts](https://github.com/ms-jpq/coq.artifacts): COQ snippets.
+    - [coq.thirdparty](https://github.com/ms-jpq/coq.thirdparty): COQ 3rd-party integration.
+- File Explorer
+    - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua): File explorer tree
+- Dependencies
+    - [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons): Provides filetype icons.
+    - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim): A Lua library.
+
+**Custom Key Bindings**:
+
+| Key           | Resulting Command                      | Action                                     |
+|---------------|----------------------------------------|--------------------------------------------|
+| `,`           |                                        | Leader key                                 |
+| `<leader>tt`  | `:Telescope`                           | Toggle Telescope                           |
+| `<leader>tb`  | `:Telescope buffers`                   | Toggle Telescope Buffer Searcher           |
+| `<leader>tf`  | `:Telescope find_files`                | Toggle Telescope File Searcher             |
+| `<leader>ts`  | `:Telescope treesitter`                | Toggle Telescope treesitter explorer       |
+| `<leader>tff` | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer     |
+| `<leader>ewd` | `:TroubleToggle workspace_diagnostics` | Toggle Trouble workspace diagnostics panel |
+| `<leader>edd` | `:TroubleToggle document_diagnostics`  | Toggle Trouble document diagnostics panel  |
+| `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel             |
+| `<leader>elr` | `:TroubleToggle lsp_references`        | Toggle Trouble LSP References panel        |
+| `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel         |
+| `<leader>ff`  | `:NvimTreeToggle`                      | Toggle Nvim-tree file explorer.            |
+| `<leader>cc`  | `:COQnow`                              | Enable code completion.                    |
 
 **Tested on the following platforms**:
 
@@ -25,7 +61,7 @@ This guide will install Neovim and the following plugins:
     - If version 0.7.2 above is available, install it. `$ apt install neovim`
     - Otherwise, download it from [their GitHub repository](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb) and install it. `$ dpkg -i nvim-linux64.deb`[^1]
 2. Clone and install packer. `$ git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
-3. Copy the contents of [neovim-lua/](../../resources/neovim-lua) to your `~/.config/nvim/`. The directory must look like this:
+3. Copy the contents of [neovim-init/](https://github.com/Chris1320/SetupGuides/tree/main/resources/neovim-init) to your `~/.config/nvim/`. The directory must look like this:
 
     ```
     $ tree ~/.config/nvim/
@@ -37,17 +73,19 @@ This guide will install Neovim and the following plugins:
     1 directory, 2 files
     ```
 
-4. Install gcc. `$ sudo apt install gcc`[^2]
+4. Install dependencies. `$ sudo apt install clang curl npm python3 python3-pip python3-venv`
 5. Run `nvim`. Packer will now update, install, and compile the plugins.
 6. After installation, quit Neovim by entering `:q`.
-7. Open `~/.config/nvim/plugins.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `local installed = true`)
-8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^3]
+7. Open `~/.config/nvim/vars.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `installed = true`)
+8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^2]
 9. Enter `:PackerStatus` to verify all plugins are installed.
 10. To check if everything is installed correctly, enter `:checkhealth`.
+11. (*Optional*) Install LSP servers by running `:LSPInstall <server>` inside Neovim.[^3] (Run `:LSPInstallInfo` for more information.)
+12. (*Optional*) Setup GitHub Copilot. `:Copilot setup`
 
 [^1]: To download and install using wget and dpkg: `wget -O ./nvim-linux64.deb https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && sudo dpkg -i ./nvim-linux64.deb`
-[^2]: On Termux, install clang instead. `$ apt install clang` (explanation in [this GitHub issue comment](https://github.com/termux/termux-packages/issues/407#issuecomment-241251913))
-[^3]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
+[^2]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
+[^3]: Manual configuration is necessary for each LSP server.
 
 -----
 
