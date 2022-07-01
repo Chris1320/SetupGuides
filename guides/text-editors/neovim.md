@@ -42,6 +42,7 @@ This guide will install Neovim and the following plugins:
 6. After installation, quit Neovim by entering `:q`.
 7. Open `~/.config/nvim/plugins.lua` and change the value of `installed` from `false` to `true`. (The resulting line must be `local installed = true`)
 8. Open `nvim`. nvim-treesitter will now install treesitter parsers. Run `:TSInstallInfo` to check if all languages you want to installed are now installed.[^3]
+
 9. Enter `:PackerStatus` to verify all plugins are installed.
 10. To check if everything is installed correctly, enter `:checkhealth`.
 

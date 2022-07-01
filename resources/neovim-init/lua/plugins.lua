@@ -1,10 +1,10 @@
 ----- Quick-change variables
-local installed = false  -- set this to true after running `:PluginSync` in neovim.
-local catppuccin_flavour = "mocha"
--- local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
+local installed = false             -- set this to true after running `:PluginSync` in neovim.
+local catppuccin_flavour = "mocha"  -- Available flavors: `latte`, `frappe`, `macchiato`, `mocha`
+local lsp_use_mono = true           -- Use mono instead of dotnet
 local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
-local languages = {  -- [add|remove] languages you [don't] want to use.
-    "c",             -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+local languages = {                 -- [add|remove] languages you [don't] want to use.
+    "c",                            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
     "css",
     "c_sharp",
     "html",
@@ -171,10 +171,12 @@ local function setupIndentBlankline()
     )
 end
 
--- local function setupAutoPairs()
---     local auto_pairs = require("auto_pairs")
---     auto_pairs.setup()
--- end
+--[[
+local function setupAutoPairs()
+    local auto_pairs = require("auto_pairs")
+    auto_pairs.setup()
+end
+--]]
 
 local function setupWhichKey()
     local which_key = require("which-key")
@@ -194,6 +196,12 @@ end
 local function setupLspConfig()
     local lsp = require("lspconfig")
     local lsp_installer = require("nvim-lsp-installer")
+
+    lsp.omnisharp.setup(
+        {
+            use_mono=lsp_use_mono
+        }
+    )
 
     lsp_installer.on_server_ready(
         function(server)
@@ -218,11 +226,11 @@ local function setupTreesitter()
     local treesitter = require("nvim-treesitter.configs")
     treesitter.setup(
         {
-            ensure_installed = languages,
-            highlight = {
+            ensure_installed = languages,  -- Install parsers for languages defined in <languages>.
+            highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
-            indent = {
+            indent = {                     -- Use treesitter for indentation.
                 enable = true
             }
         }
@@ -243,6 +251,7 @@ if installed then
     setupTreesitter()
 
 else
+    vim.cmd(":TSUpdate")
     vim.cmd(":PackerSync")
 
 end
