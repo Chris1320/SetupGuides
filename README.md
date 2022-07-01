@@ -12,6 +12,10 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 - [Neovim](guides/text-editors/neovim.md)
 
+### Programming Environments
+
+- [Python](guides/programming-envs/python.md)
+
 ### Shells
 
 - [Zsh](guides/shells/zsh.md)
