@@ -1,40 +1,9 @@
------ Quick-change variables
-local installed = false             -- set this to true after running `:PluginSync` in neovim.
-local catppuccin_flavour = "mocha"  -- Available flavors: `latte`, `frappe`, `macchiato`, `mocha`
-local lsp_use_mono = true           -- Use mono instead of dotnet
-local git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>"
-local languages = {                 -- [add|remove] languages you [don't] want to use.
-    "c",                            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-    "css",
-    "c_sharp",
-    "html",
-    "java",
-    "json",
-    "jsonc",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "python",
-    -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
-    "toml",
-    "yaml"
-}
------ Quick-change variables
-
-local function fileExists(filepath)
-    local ok, err, code = os.rename(filepath, filepath)
-    if not ok then
-        if code == 13 then
-            return true
-        end
-    end
-    return false
-end
+local vars = require("vars")
 
 Packer = require("packer")
 
 Packer.startup(
-    function()
+    function(use)
         use("wbthomason/packer.nvim")
 
         -- Visual plugins
@@ -82,10 +51,6 @@ Packer.startup(
                 run = ":TSUpdate"  -- Update parsers at startup.
             }
         )
-
-        -- use("nvie/vim-flake8")                          -- Python syntax checker
-        -- use("rust-lang/rust.vim")                       -- Rust syntax checker
-
     end
 )
 
@@ -125,8 +90,8 @@ local function setupCatppuccin()
             }
         }
     )
-    vim.g.catppuccin_flavour = catppuccin_flavour  -- Set catppuccin variation
-    vim.cmd("colorscheme catppuccin")              -- Set theme
+    vim.g.catppuccin_flavour = vars.catppuccin_flavour  -- Set catppuccin variation
+    vim.cmd("colorscheme catppuccin")                   -- Set theme
 end
 
 local function setupFeline()
@@ -149,7 +114,7 @@ local function setupGitsigns()
               delay = 1000,
               ignore_whitespace = false
             },
-            current_line_blame_formatter = git_blame_format,
+            current_line_blame_formatter = vars.git_blame_format,
         }
     )
 end
@@ -171,13 +136,6 @@ local function setupIndentBlankline()
     )
 end
 
---[[
-local function setupAutoPairs()
-    local auto_pairs = require("auto_pairs")
-    auto_pairs.setup()
-end
---]]
-
 local function setupWhichKey()
     local which_key = require("which-key")
     which_key.setup()
@@ -197,12 +155,17 @@ local function setupLspConfig()
     local lsp = require("lspconfig")
     local lsp_installer = require("nvim-lsp-installer")
 
-    lsp.omnisharp.setup(
-        {
-            use_mono=lsp_use_mono
-        }
-    )
+    -- Setup lspconfig
+    lsp.clangd.setup()  -- enable clangd because we're going to install clang anyway.
+    if vars.lsp_enable_csharp then
+        lsp.omnisharp.setup(
+            {
+                use_mono=vars.lsp_use_mono
+            }
+        )
+    end
 
+    -- Setup nvim-lsp-installer
     lsp_installer.on_server_ready(
         function(server)
             server:setup(
@@ -220,13 +183,16 @@ local function setupLspConfig()
             )
         end
     )
+
+    lsp_installer.clangd.setup()
+    lsp_installer.csharp_ls.setup()
 end
 
 local function setupTreesitter()
     local treesitter = require("nvim-treesitter.configs")
     treesitter.setup(
         {
-            ensure_installed = languages,  -- Install parsers for languages defined in <languages>.
+            ensure_installed = vars.languages,  -- Install parsers for languages defined in <languages>.
             highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
@@ -237,7 +203,7 @@ local function setupTreesitter()
     )
 end
 
-if installed then
+if vars.installed then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
