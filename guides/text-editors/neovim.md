@@ -2,12 +2,50 @@
 
 This guide will install Neovim and the following plugins:
 
-- [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
-- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
-- [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
-- [catppuccin](https://github.com/catppuccin/nvim): Catppuccin theme
-- [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua): File explorer tree
-- [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons): Icons for/dependency of nvim-tree
+- Plugin Manager
+    - [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
+- Linting and Syntax Checking
+    - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol (LSP) configuration helper.
+    - [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer): Make installation of LSP servers easier.
+    - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Better syntax highlighting.
+    - [trouble.nvim](https://github.com/folke/trouble.nvim): Error and status line manager.
+    - [copilot.vim](https://github.com/github/copilot.vim): GitHub Copilot for Vim.
+- Fuzzy Search
+    - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): Fuzzy Finder.
+- Theming and Visual Plugins
+    - [catppuccin](https://github.com/catppuccin/nvim): A Neovim theme.
+    - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): Git Integration for buffers.
+    - [feline.nvim](https://github.com/feline-nvim/feline.nvim): A customizable statusline.
+    - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
+    - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
+    - [which-key.nvim](https://github.com/folke/which-key.nvim): Show available key bindings.
+- Code Completion
+    - [coq_nvim](https://github.com/ms-jpq/coq_nvim/): Code completion.
+    - [coq.artifacts](https://github.com/ms-jpq/coq.artifacts): COQ snippets.
+    - [coq.thirdparty](https://github.com/ms-jpq/coq.thirdparty): COQ 3rd-party integration.
+- File Explorer
+    - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua): File explorer tree
+- Dependencies
+    - [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons): Provides filetype icons.
+    - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim): A Lua library.
+
+**Custom Key Bindings**:
+
+| Key           | Resulting Command                      | Action                                     |
+|---------------|----------------------------------------|--------------------------------------------|
+| `,`           |                                        | Leader key                                 |
+| `<leader>tt`  | `:Telescope`                           | Toggle Telescope                           |
+| `<leader>tb`  | `:Telescope buffers`                   | Toggle Telescope Buffer Searcher           |
+| `<leader>tf`  | `:Telescope find_files`                | Toggle Telescope File Searcher             |
+| `<leader>ts`  | `:Telescope treesitter`                | Toggle Telescope treesitter explorer       |
+| `<leader>tff` | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer     |
+| `<leader>ewd` | `:TroubleToggle workspace_diagnostics` | Toggle Trouble workspace diagnostics panel |
+| `<leader>edd` | `:TroubleToggle document_diagnostics`  | Toggle Trouble document diagnostics panel  |
+| `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel             |
+| `<leader>elr` | `:TroubleToggle lsp_references`        | Toggle Trouble LSP References panel        |
+| `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel         |
+| `<leader>ff`  | `:NvimTreeToggle`                      | Toggle Nvim-tree file explorer.            |
+| `<leader>cc`  | `:COQnow`                              | Enable code completion.                    |
 
 **Tested on the following platforms**:
 
@@ -23,7 +61,7 @@ This guide will install Neovim and the following plugins:
     - If version 0.7.2 above is available, install it. `$ apt install neovim`
     - Otherwise, download it from [their GitHub repository](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb) and install it. `$ dpkg -i nvim-linux64.deb`[^1]
 2. Clone and install packer. `$ git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
-3. Copy the contents of [neovim-lua/](../../resources/neovim-lua) to your `~/.config/nvim/`. The directory must look like this:
+3. Copy the contents of [neovim-init/](https://github.com/Chris1320/SetupGuides/tree/main/resources/neovim-init) to your `~/.config/nvim/`. The directory must look like this:
 
     ```
     $ tree ~/.config/nvim/

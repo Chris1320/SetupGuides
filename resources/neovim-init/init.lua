@@ -83,4 +83,4 @@ vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>")
 -- nvim-tree shortcuts
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
 
-vim.keymap.set('n', "<leader>cc", ":COQnow")
+vim.keymap.set('n', "<leader>cc", ":COQnow<cr>")
