@@ -17,6 +17,7 @@ vim.cmd("filetype plugin on")                               -- enable loading pl
 vim.opt.number = true                                       -- enable line numbers.
 vim.opt.showmatch = true                                    -- show matching brackets.
 vim.opt.cursorline = true                                   -- enable cursor line.
+vim.opt.wrap = false                                        -- Disable line wrapping.
 vim.opt.wildmode = {"longest", "list"}                      -- get bash-like tab completions.
 vim.opt.mouse = 'a'                                         -- enable usage of mouse in all modes.
 vim.opt.clipboard = "unnamedplus"                           -- enable usage of system clipboard.
