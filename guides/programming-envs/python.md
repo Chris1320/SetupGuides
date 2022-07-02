@@ -19,4 +19,21 @@ To install commonly-used modules, run the following commands in a terminal.[^1]
 `$ sudo pip3 install --upgrade pip wheel build setuptools twine`
 `$ sudo pip3 install --upgrade flake8 requests tqdm yt-dlp pytest`
 
-[^1]: In termux, there's no need to use `sudo`.
+- Package Management & Building
+    - `pip`: Python package manager.
+    - `wheel`: Install Python wheels.
+    - `build`: PEP 517 build front-end.
+    - `setuptools`: Python package manager.
+    - `twine`: For publishing Python packages to PyPI.
+- Linting
+    - `flake8`: Python source code checker.
+- Networking
+    - `requests`: Python HTTP library.
+- UI & Graphics
+    - `tqdm`: A progress meter.
+- Unit Testing
+    - `pytest`: Test Python packages.
+- Others
+    - `youtube-dl`: YouTube video downloader.
+
+[^1]: In Termux, there's no need to use `sudo`. You also need to `export CARGO_BUILD_TARGET=<arch>` to install cryptography successfully.
