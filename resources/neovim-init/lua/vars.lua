@@ -26,20 +26,26 @@ return {
     git_blame_format = "<author>, on <author_time:%Y-%m-%d> • <summary>",
 
     -- Treesitter
-    languages = {                 -- [add|remove] languages you [don't] want to use.
-        "c",                            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+    languages = {                          -- [add|remove] languages you [don't] want to use.
+        "bash",                            -- Reference: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+        "c",
+        "cpp",
         "css",
         "c_sharp",
+        "dockerfile",
         "html",
         "java",
+        "javascript",
         "json",
         "jsonc",
         "lua",
+        "make",
         "markdown",
         "markdown_inline",
         "python",
-        -- "rust"  -- This fails to compile in Termux so it will not be automatically installed.
+        "rust",
         "toml",
+        "typescript",
         "yaml"
     }
 }

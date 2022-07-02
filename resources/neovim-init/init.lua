@@ -50,13 +50,6 @@ vim.opt.list = vars["enable_list"]                          -- enable display of
 vim.opt.listchars:append("space:" .. vars["space_char"])    -- optional, if you want to display spaces and EOLs.
 vim.opt.listchars:append("eol:" .. vars["eol_char"])
 
--- vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
--- vim.cmd([[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]])
--- vim.cmd([[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]])
--- vim.cmd([[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]])
--- vim.cmd([[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]])
--- vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]])
-
 -- Start packer
 require("plugins")
 
@@ -86,7 +79,7 @@ vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>")
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
 
 -- coq shortcuts
-vim.keymap.set('n', "<leader>cc", ":COQnow<cr>")
+vim.keymap.set('n', "<leader>cc", ":COQnow --shut-up<cr>")
 
 -- twilight shortcuts
 vim.keymap.set('n', "<leader>z", ":Twilight<cr>")
