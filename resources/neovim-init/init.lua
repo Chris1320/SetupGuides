@@ -86,7 +86,7 @@ vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>")
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
 
 -- coq shortcuts
-vim.keymap.set('n', "<leader>cc", ":COQnow<cr>")
+vim.keymap.set('n', "<leader>cc", ":COQnow --shut-up<cr>")
 
 -- twilight shortcuts
 vim.keymap.set('n', "<leader>z", ":Twilight<cr>")
