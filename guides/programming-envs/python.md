@@ -16,8 +16,10 @@ This guide will help you install Python 3 in your system and install commonly-us
 
 To install commonly-used modules, run the following commands in a terminal.[^1]
 
-`$ sudo pip3 install --upgrade pip wheel build setuptools twine`
-`$ sudo pip3 install --upgrade flake8 requests tqdm yt-dlp pytest`
+```
+$ pip3 install --upgrade pip wheel build setuptools twine
+$ pip3 install --upgrade flake8 requests tqdm yt-dlp pytest
+```
 
 - Package Management & Building
     - `pip`: Python package manager.
