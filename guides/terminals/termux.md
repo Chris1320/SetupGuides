@@ -15,7 +15,7 @@ Linux software without root. This guide will help at setting up and configuring 
 - [zsh](../shells/zsh.md)
 - [neovim](../text-editors/neovim.md)
 
-## Enabling SSH Remote Connections
+## Enabling SSH Remote Connection
 
 Termux supports remote connections via the Secure SHell (SSH) protocol. Follow the instructions below to install and configure SSH.
 
