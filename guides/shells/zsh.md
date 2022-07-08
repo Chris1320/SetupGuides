@@ -37,7 +37,7 @@ This customization guide will do the following changes:
     ```zsh
     export LANG=en_US.UTF-8  # Set language environment variable.
     export LESS="--no-init --quit-if-one-screen -R"  # Causes `less` to just write to stdout if the text can be viewed without scrolling.
-    export GPG_TTY=$(tty)  # Fix GPG "gpg failed to sign data" error.
+    export GPG_TTY=$TTY  # Fix GPG "gpg failed to sign data" error.
     ```
 10. (*Optional*) Install Powerlevel10k's [recommended font](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k).
 11. Reload the terminal. `$ source ~/.zshrc`
