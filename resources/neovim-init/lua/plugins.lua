@@ -245,7 +245,7 @@ local function setupTreesitter()
                 enable = true
             },
             indent = {                     -- Use treesitter for indentation.
-                enable = true
+                enable = false             -- Disable indentation because it's currently broken.
             }
         }
     )
