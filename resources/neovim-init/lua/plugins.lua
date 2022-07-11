@@ -83,20 +83,22 @@ local function setupCatppuccin()
     local catppuccin = require("catppuccin")
     catppuccin.setup(
         {
-            -- styles = {
-            --     comments = "italic",
-            --     conditionals = "italic",
-            --     loops = "NONE",
-            --     functions = "NONE",
-            --     keywords = "NONE",
-            --     strings = "NONE",
-            --     variables = "NONE",
-            --     numbers = "NONE",
-            --     booleans = "NONE",
-            --     properties = "NONE",
-            --     types = "NONE",
-            --     operators = "NONE",
-            -- },
+            --[[
+            styles = {
+                comments = "italic",
+                conditionals = "italic",
+                loops = "NONE",
+                functions = "NONE",
+                keywords = "NONE",
+                strings = "NONE",
+                variables = "NONE",
+                numbers = "NONE",
+                booleans = "NONE",
+                properties = "NONE",
+                types = "NONE",
+                operators = "NONE",
+            },
+            --]]
             integrations = {
                 nvimtree = {
                     enabled = true,
@@ -113,8 +115,7 @@ local function setupCatppuccin()
                 which_key = true,
                 native_lsp = {
                     enabled = true
-                },
-                coc_nvim = true
+                }
             }
         }
     )
@@ -150,17 +151,19 @@ end
 local function setupIndentBlankline()
     local indent_blankline = require("indent_blankline")
     indent_blankline.setup(
-        -- {
-        --     space_char_blankline = " ",
-        --     char_highlight_list = {
-        --         "IndentBlanklineIndent1",
-        --         "IndentBlanklineIndent2",
-        --         "IndentBlanklineIndent3",
-        --         "IndentBlanklineIndent4",
-        --         "IndentBlanklineIndent5",
-        --         "IndentBlanklineIndent6",
-        --     }
-        -- }
+        --[[
+        {
+            space_char_blankline = " ",
+            char_highlight_list = {
+                "IndentBlanklineIndent1",
+                "IndentBlanklineIndent2",
+                "IndentBlanklineIndent3",
+                "IndentBlanklineIndent4",
+                "IndentBlanklineIndent5",
+                "IndentBlanklineIndent6",
+            }
+        }
+        --]]
     )
 end
 
@@ -222,14 +225,16 @@ local function setupLspConfig()
             server:setup(
                 {
                     automatic_installation = true,
-                    -- ui = {
-                    --     icons = {
-                    --         -- you can change these icons to whatever you want.
-                    --         server_installed = "✓",
-                    --         server_pending = "➜",
-                    --         server_uninstalled = "✗"
-                    --     }
-                    -- }
+                    --[[
+                    ui = {
+                        icons = {
+                            -- you can change these icons to whatever you want.
+                            server_installed = "✓",
+                            server_pending = "➜",
+                            server_uninstalled = "✗"
+                        }
+                    }
+                    --]]
                 }
             )
         end
