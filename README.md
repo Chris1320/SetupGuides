@@ -18,6 +18,7 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ### Shells
 
+- [Powershell](guides/shells/powershell.md)
 - [Zsh](guides/shells/zsh.md)
 
 ### Terminals

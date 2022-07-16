@@ -36,6 +36,7 @@ vim.opt.magic = true                                        -- enable regex.
 -- Indentation-related configuration
 vim.cmd("filetype plugin indent on")                        -- allow auto-indentation depending on file type.
 vim.opt.autoindent = true                                   -- Enable auto indent.
+vim.opt.smartindent = true                                  -- Enable smart indent.
 vim.opt.indentexpr = "nvim_treesitter#indentexpr()"         -- Use treesitter for indentation.
 vim.opt.expandtab = vars["use_spaces"]                      -- converts tabs to white space.
 vim.opt.shiftwidth = 4                                      -- width for autoindents.

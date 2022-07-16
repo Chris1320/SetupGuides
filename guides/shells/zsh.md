@@ -12,6 +12,8 @@ This customization guide will do the following changes:
 - Change your terminal shell to [zsh](https://www.zsh.org/).
 - Install [oh-my-zsh](https://ohmyz.sh/), a zsh configuration manager.
 - Install [powerlevel10k](https://github.com/romkatv/powerlevel10k), a custom theme for zsh.
+- Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), a plugin that will auto suggest commands based on your zsh history.
+- Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), a plugin that will provide syntax highlighting in your zsh shell.
 
 ## Installation & Customization
 
@@ -22,22 +24,24 @@ This customization guide will do the following changes:
 3. Reload your terminal.
 4. Download Oh-My-Zsh. `$ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 5. Install powerlevel10k. `$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k`
-6. Find and edit the following lines in `~/.zshrc`:
+6. Install zsh-autosuggestions. `$ git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions`
+7. Install zsh-syntax-highlighting. `$ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting`
+8. Find and edit the following lines in `~/.zshrc`:
 
-    | Option          | New Value                                |
-    |-----------------|------------------------------------------|
-    | `ZSH_THEME`     | `powerlevel10k/powerlevel10k`            |
-    | `plugins`       | `(command-not-found gh git python sudo)` |
+    | Option          | New Value                                                                            |
+    |-----------------|--------------------------------------------------------------------------------------|
+    | `ZSH_THEME`     | `powerlevel10k/powerlevel10k`                                                        |
+    | `plugins`       | `(command-not-found gh git python sudo zsh-autosuggestions zsh-syntax-highlighting)` |
 
-7. Edit `.zshrc` and add the following lines at the end of the file:
+9. Edit `.zshrc` and add the following lines at the end of the file:
     ```zsh
     export LANG=en_US.UTF-8  # Set language environment variable.
     export LESS="--no-init --quit-if-one-screen -R"  # Causes `less` to just write to stdout if the text can be viewed without scrolling.
-    export GPG_TTY=$(tty)  # Fix GPG "gpg failed to sign data" error.
+    export GPG_TTY=$TTY  # Fix GPG "gpg failed to sign data" error.
     ```
-8. (*Optional*) Install Powerlevel10k's [recommended font](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k).
-9. Reload the terminal. `$ source ~/.zshrc`
-10. Follow the on-screen instructions to set up Powerlevel10k.
+10. (*Optional*) Install Powerlevel10k's [recommended font](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k).
+11. Reload the terminal. `$ source ~/.zshrc`
+12. Follow the on-screen instructions to set up Powerlevel10k.
 
 [^1]: If you encounter an error `chsh: <zsh-path>: non-standard shell`, add the path to `/etc/shells`. `$ echo "$(which zsh)" >> /etc/shells`. In Termux, you might have to use `$ chsh -s zsh` instead.
 
