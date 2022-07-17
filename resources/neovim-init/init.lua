@@ -36,7 +36,7 @@ vim.opt.magic = true                                        -- enable regex.
 -- Indentation-related configuration
 vim.cmd("filetype plugin indent on")                        -- allow auto-indentation depending on file type.
 vim.opt.autoindent = true                                   -- Enable auto indent.
-vim.opt.smartindent = true                                  -- Enable smart indent.
+-- vim.opt.smartindent = true                               -- Enable smart indent.
 vim.opt.indentexpr = "nvim_treesitter#indentexpr()"         -- Use treesitter for indentation.
 vim.opt.expandtab = vars["use_spaces"]                      -- converts tabs to white space.
 vim.opt.shiftwidth = 4                                      -- width for autoindents.
@@ -81,6 +81,9 @@ vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
 
 -- coq shortcuts
 vim.keymap.set('n', "<leader>cc", ":COQnow --shut-up<cr>")
+
+-- Gitsigns shortcuts
+vim.keymap.set('n', "<leader>gdt", ":Gitsigns diffthis<cr>")
 
 -- twilight shortcuts
 vim.keymap.set('n', "<leader>z", ":Twilight<cr>")
