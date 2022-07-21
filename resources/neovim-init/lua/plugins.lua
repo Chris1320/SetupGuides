@@ -125,9 +125,10 @@ end
 
 local function setupFeline()
     local feline = require("feline")
+    local catppuccin_integration = require("catppuccin.groups.integrations.feline")
     feline.setup(
         {
-            components = require('catppuccin.core.integrations.feline')
+            components = catppuccin_integration.get()
         }
     )
 end

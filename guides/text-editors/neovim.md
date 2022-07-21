@@ -88,7 +88,7 @@ This guide will install Neovim and the following plugins:
 13. (*Optional*) Setup GitHub Copilot. `:Copilot setup`[^5]
 
 [^1]: To download and install using wget and dpkg: `wget -O ./nvim-linux64.deb https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && sudo dpkg -i ./nvim-linux64.deb`
-[^2]: You can also install optional additional packages used by Telescope and COQ: `$ sudo apt install --upgrade fd ripgrep bc`
+[^2]: You can also install optional additional packages used by Telescope and COQ: `$ sudo apt install --upgrade fd-find ripgrep bc` (`fd-find` is `fd` on Termux systems.)
 [^3]: You can install a language by running `:TSInstall <language>` or editing the `languages` variable in `~/.config/nvim/lua/plugins.lua`. Read [the documentation](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages) for more information.
 [^4]: Manual configuration is necessary for each LSP server.
 [^5]: A GitHub account with Copilot subscription is required.
