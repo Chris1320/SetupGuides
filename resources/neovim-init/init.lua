@@ -1,6 +1,6 @@
 -- This is an init.lua file for Neovim.
 -- You can get this script from:
--- https://github.com/Chris1320/SetupGuides/blob/main/resources/init.lua
+-- https://github.com/Chris1320/SetupGuides/tree/main/resources/neovim-init
 
 -- Reminders:
 -- vim.g    -- global variables (`let` command in vim)
@@ -106,7 +106,10 @@ vim.keymap.set('n', "<leader>elr", ":TroubleToggle lsp_references<cr>")
 vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>")
 
 -- nvim-tree shortcuts
-vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<cr>")
+vim.keymap.set('n', "<leader>fo", ":NvimTreeOpen<cr>")
+vim.keymap.set('n', "<leader>fc", ":NvimTreeClose<cr>")
+vim.keymap.set('n', "<leader>ff", ":NvimTreeFocus<cr>")
+vim.keymap.set('n', "<leader>ft", ":NvimTreeToggle<cr>")
 
 -- coq shortcuts
 vim.keymap.set('n', "<leader>cc", ":COQnow --shut-up<cr>")
