@@ -5,25 +5,27 @@ This guide will install Neovim and the following plugins:
 - Plugin Manager
     - [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
 - Linting and Syntax Checking
+    - [copilot.vim](https://github.com/github/copilot.vim): GitHub Copilot for Vim.
     - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol (LSP) configuration helper.
     - [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer): Make installation of LSP servers easier.
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Better syntax highlighting.
     - [trouble.nvim](https://github.com/folke/trouble.nvim): Error and status line manager.
-    - [copilot.vim](https://github.com/github/copilot.vim): GitHub Copilot for Vim.
 - Fuzzy Search
     - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim): Fuzzy Finder.
 - Theming and Visual Plugins
+    - [barbar.nvim](https://github.com/romgrk/barbar.nvim): Better tabs for Neovim.
     - [catppuccin](https://github.com/catppuccin/nvim): A Neovim theme.
-    - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): Git Integration for buffers.
     - [feline.nvim](https://github.com/feline-nvim/feline.nvim): A customizable statusline.
+    - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): Git Integration for buffers.
     - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation guides
-    - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
-    - [which-key.nvim](https://github.com/folke/which-key.nvim): Show available key bindings.
     - [twilight.nvim](https://github.com/folke/twilight.nvim): Dim inactive parts of your code.
+    - [which-key.nvim](https://github.com/folke/which-key.nvim): Show available key bindings.
 - Code Completion
+    - [auto-pairs](https://github.com/jiangmiao/auto-pairs): Bracket auto-pairing
     - [coq_nvim](https://github.com/ms-jpq/coq_nvim/): Code completion.
     - [coq.artifacts](https://github.com/ms-jpq/coq.artifacts): COQ snippets.
     - [coq.thirdparty](https://github.com/ms-jpq/coq.thirdparty): COQ 3rd-party integration.
+    - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag): Auto-close/rename HTML tags.
 - File Explorer
     - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua): File explorer tree
 - Dependencies
@@ -32,22 +34,54 @@ This guide will install Neovim and the following plugins:
 
 **Custom Key Bindings**:
 
-| Key           | Resulting Command                      | Action                                     |
-|---------------|----------------------------------------|--------------------------------------------|
-| `,`           |                                        | Leader key                                 |
-| `<leader>tt`  | `:Telescope`                           | Toggle Telescope                           |
-| `<leader>tb`  | `:Telescope buffers`                   | Toggle Telescope Buffer Searcher           |
-| `<leader>tF`  | `:Telescope find_files`                | Toggle Telescope File Searcher             |
-| `<leader>ts`  | `:Telescope treesitter`                | Toggle Telescope treesitter explorer       |
-| `<leader>tf`  | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer     |
-| `<leader>ewd` | `:TroubleToggle workspace_diagnostics` | Toggle Trouble workspace diagnostics panel |
-| `<leader>edd` | `:TroubleToggle document_diagnostics`  | Toggle Trouble document diagnostics panel  |
-| `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel             |
-| `<leader>elr` | `:TroubleToggle lsp_references`        | Toggle Trouble LSP References panel        |
-| `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel         |
-| `<leader>ff`  | `:NvimTreeToggle`                      | Toggle Nvim-tree file explorer.            |
-| `<leader>cc`  | `:COQnow`                              | Enable code completion.                    |
-| `<leader>z`   | `:Twilight`                            | Toggle Twilight.                           |
+| Key           | Resulting Command                      | Action                                       | Plugin    |
+|---------------|----------------------------------------|----------------------------------------------|-----------|
+| `,`           |                                        | Leader key                                   |           |
+|               |                                        |                                              |           |
+| `<A-,>`       | `:BufferPrevious`                      | Go to previous buffer                        | Barbar    |
+| `<A-.>`       | `:BufferNext`                          | Go to next buffer                            | Barbar    |
+| `<A-1>`       | `:BufferGoto 1`                        | Go to the first buffer                       | Barbar    |
+| `<A-2>`       | `:BufferGoto 2`                        | Go to the second buffer                      | Barbar    |
+| `<A-3>`       | `:BufferGoto 3`                        | Go to the third buffer                       | Barbar    |
+| `<A-4>`       | `:BufferGoto 4`                        | Go to the fourth buffer                      | Barbar    |
+| `<A-5>`       | `:BufferGoto 5`                        | Go to the fifth buffer                       | Barbar    |
+| `<A-6>`       | `:BufferGoto 6`                        | Go to the sixth buffer                       | Barbar    |
+| `<A-7>`       | `:BufferGoto 7`                        | Go to the seventh buffer                     | Barbar    |
+| `<A-8>`       | `:BufferGoto 8`                        | Go to the eighth buffer                      | Barbar    |
+| `<A-9>`       | `:BufferGoto 9`                        | Go to the ninth buffer                       | Barbar    |
+| `<A-0>`       | `:BufferLast`                          | Go to the last buffer                        | Barbar    |
+| `<A-<>`       | `:BufferMovePrevious`                  | Move current buffer to [i-1]                 | Barbar    |
+| `<A->>`       | `:BufferMoveNext`                      | Move current buffer to [i+1]                 | Barbar    |
+| `<leader>bp`  | `:BufferPin`                           | Pin the current buffer                       | Barbar    |
+| `<leader>bon` | `:BufferOrderByBufferNumber`           | Order buffers by buffer number               | Barbar    |
+| `<leader>bod` | `:BufferOrderByDirectory`              | Order buffers by directory                   | Barbar    |
+| `<leader>bol` | `:BufferOrderByLanguage`               | Order buffers by language                    | Barbar    |
+| `<leader>bow` | `:BufferOrderByWindowNumber`           | Order buffers by windows number              | Barbar    |
+| `<leader>be`  | `:BarbarEnable`                        | Enable Barbar                                | Barbar    |
+| `<leader>bd`  | `:BarbarDisable`                       | Disable Barbar                               | Barbar    |
+|               |                                        |                                              |           |
+| `<leader>tt`  | `:Telescope`                           | Toggle Telescope                             | Telescope |
+| `<leader>tb`  | `:Telescope buffers`                   | Toggle Telescope Buffer Searcher             | Telescope |
+| `<leader>tF`  | `:Telescope find_files`                | Toggle Telescope File Searcher               | Telescope |
+| `<leader>ts`  | `:Telescope treesitter`                | Toggle Telescope treesitter explorer         | Telescope |
+| `<leader>tf`  | `:Telescope current_buffer_fuzzy_find` | Toggle fuzzy finder for current buffer       | Telescope |
+|               |                                        |                                              |           |
+| `<leader>ewd` | `:TroubleToggle workspace_diagnostics` | Toggle Trouble workspace diagnostics panel   | Trouble   |
+| `<leader>edd` | `:TroubleToggle document_diagnostics`  | Toggle Trouble document diagnostics panel    | Trouble   |
+| `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel               | Trouble   |
+| `<leader>elr` | `:TroubleToggle lsp_references`        | Toggle Trouble LSP References panel          | Trouble   |
+| `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel           | Trouble   |
+|               |                                        |                                              |           |
+| `<leader>fo`  | `:NvimTreeOpen`                        | Open Nvim-tree                               | Nvim-tree |
+| `<leader>fc`  | `:NvimTreeClose`                       | Close Nvim-tree                              | Nvim-tree |
+| `<leader>ff`  | `:NvimTreeFocus`                       | (Open and) Focus the cursor to Nvim-tree     | Nvim-tree |
+| `<leader>ft`  | `:NvimTreeToggle`                      | Toggle Nvim-tree file explorer               | Nvim-tree |
+|               |                                        |                                              |           |
+| `<leader>cc`  | `:COQnow --shut-up`                    | Enable code completion.                      | COQ       |
+|               |                                        |                                              |           |
+| `<leader>gdt` | `:Gitsigns diffthis`                   | Show `git diff` result of the current buffer | Gitsigns  |
+|               |                                        |                                              |           |
+| `<leader>z`   | `:Twilight`                            | Toggle Twilight.                             | Twilight  |
 
 **Tested on the following platforms**:
 

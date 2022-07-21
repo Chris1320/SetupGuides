@@ -4,20 +4,20 @@ Packer = require("packer")
 
 Packer.startup(
     function(use)
-        use("wbthomason/packer.nvim")
+        -- Package Managers
+        use("wbthomason/packer.nvim")                   -- The package manager that we are using
 
         -- Linting and syntax checkers
         use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
-        use("williamboman/nvim-lsp-installer")          -- Easy install LSP servers.
-
-        use("nvim-treesitter/nvim-treesitter")          -- Treesitter
+        use("williamboman/nvim-lsp-installer")          -- Easy-install LSP servers
+        use("nvim-treesitter/nvim-treesitter")          -- Treesitter integration for Neovim
         use(                                            -- diagnostics, quickfixes, etc.
             {
                 "folke/trouble.nvim",
                 requires = "kyazdani42/nvim-web-devicons"
             }
         )
-        use("github/copilot.vim")                       -- GitHub Copilot
+        use("github/copilot.vim")                       -- GitHub Copilot integration
 
         -- Fuzzy Search
         use(                                            -- Fuzzy finder
@@ -34,15 +34,15 @@ Packer.startup(
                 as = "catppuccin"
             }
         )
-        use(                                            -- Git signs
+        use("lewis6991/gitsigns.nvim")                  -- Git Integration
+        use("feline-nvim/feline.nvim")                  -- Customizable statusline
+        use(                                            -- Tabline plugin
             {
-                "lewis6991/gitsigns.nvim",
-                -- tag = "release"
+                "romgrk/barbar.nvim",
+                requires = {{"kyazdani42/nvim-web-devicons"}}
             }
         )
-        use("feline-nvim/feline.nvim")                  -- Customizable statusline
         use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
-        use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
         use("folke/which-key.nvim")                     -- Displays possible key bindings
         use("folke/twilight.nvim")                      -- Dim inactive portions of the code
 
@@ -65,14 +65,14 @@ Packer.startup(
                 branch = "3p"
             }
         )
-
+        use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
+        use("windwp/nvim-ts-autotag")                   -- Auto-close/rename HTML tags
 
         -- File explorer
         use(
             {
                 "kyazdani42/nvim-tree.lua",
                 requires = {{"kyazdani42/nvim-web-devicons"}},
-                -- tag = "nightly"  -- optional
             }
         )
 
@@ -100,22 +100,26 @@ local function setupCatppuccin()
             },
             --]]
             integrations = {
-                nvimtree = {
-                    enabled = true,
-                    show_root = true,
-                    transparent_panel = true
-                },
+                barbar = true,
+                bufferline = true,
                 gitsigns = true,
                 indent_blankline = {
                     enabled = true,
                     colored_indent_levels = false
                 },
-                telescope = true,
-                treesitter = true,
-                which_key = true,
+                lsp_trouble = true,
+                markdown = true,
                 native_lsp = {
                     enabled = true
-                }
+                },
+                nvimtree = {
+                    enabled = true,
+                    show_root = true,
+                    transparent_panel = true
+                },
+                telescope = true,
+                treesitter = true,
+                which_key = true
             }
         }
     )
@@ -129,6 +133,21 @@ local function setupFeline()
     feline.setup(
         {
             components = catppuccin_integration.get()
+        }
+    )
+end
+
+local function setupBarbar()
+    local barbar = require("bufferline")
+    barbar.setup(
+        {
+            animation = true,
+            auto_hide = true,
+            tabpage = true,
+            closable = true,
+            clickable = true,
+            icons = true,
+            icon_custom_colors = true
         }
     )
 end
@@ -266,7 +285,6 @@ local function setupLspConfig()
         coq.lsp_ensure_capabilities()
     )
 
-    --[[
     lsp.bashls.setup(
         coq.lsp_ensure_capabilities(
             {
@@ -357,7 +375,6 @@ local function setupLspConfig()
     lsp.tsserver.setup(
         coq.lsp_ensure_capabilities()
     )
-    --]]
 end
 
 local function setupTreesitter()
@@ -365,6 +382,9 @@ local function setupTreesitter()
     treesitter.setup(
         {
             ensure_installed = vars["languages"],  -- Install parsers for languages defined in <languages>.
+            autotag = {
+                enable = true
+            },
             highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
@@ -398,6 +418,7 @@ if vars["installed"] then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
+    setupBarbar()
     setupGitsigns()
     setupIndentBlankline()
     setupAutoPairs()
