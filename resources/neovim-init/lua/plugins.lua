@@ -42,7 +42,7 @@ Packer.startup(
         )
         use("feline-nvim/feline.nvim")                  -- Customizable statusline
         use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
-        use("jiangmiao/auto-pairs")                     -- Bracket auto-pairing
+        use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
         use("folke/which-key.nvim")                     -- Displays possible key bindings
         use("folke/twilight.nvim")                      -- Dim inactive portions of the code
 
@@ -168,6 +168,27 @@ local function setupIndentBlankline()
     )
 end
 
+local function setupAutoPairs()
+    local autopairs = require("nvim-autopairs")
+    autopairs.setup(
+        {
+            check_ts = true,
+            disable_filetype = {
+                "TelescopePrompt", "vim"
+            },
+            enable_check_bracket_line = true,
+            ts_config = {
+                lua = {
+                    "string"
+                },
+                javascript = {
+                    "template_string"
+                }
+            }
+        }
+    )
+end
+
 local function setupWhichKey()
     local which_key = require("which-key")
     which_key.setup()
@@ -221,31 +242,122 @@ end
 
 local function setupLspConfig()
     local lsp = require("lspconfig")
+    local coq = require("coq")
     local lsp_installer = require("nvim-lsp-installer")
 
-    -- Setup lspconfig
-    lsp.clangd.setup({})  -- enable clangd because we're going to install clang anyway.
-
     -- Setup nvim-lsp-installer
-    lsp_installer.on_server_ready(
-        function(server)
-            server:setup(
-                {
-                    automatic_installation = true,
-                    --[[
-                    ui = {
-                        icons = {
-                            -- you can change these icons to whatever you want.
-                            server_installed = "✓",
-                            server_pending = "➜",
-                            server_uninstalled = "✗"
+    lsp_installer.setup(
+        {
+            automatic_installation = true,
+            ui = {
+                check_outdated_servers_on_open = true,
+                icons = {
+                    -- you can change these icons to whatever you want.
+                    server_installed = "✓",
+                    server_pending = "➜",
+                    server_uninstalled = "✗"
+                }
+            }
+        }
+    )
+
+    -- Setup lspconfig
+    lsp.clangd.setup(  -- enable clangd because we're going to install clang anyway.
+        coq.lsp_ensure_capabilities()
+    )
+
+    --[[
+    lsp.bashls.setup(
+        coq.lsp_ensure_capabilities(
+            {
+                bashIde = {
+                    highlightParsingErrors = true
+                }
+            }
+        )
+    )
+
+    lsp.cmake.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.cssls.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.html.setup(
+        coq.lsp_ensure_capabilities(
+            {
+                html = {
+                    format = {
+                        templating = true
+                    },
+                    mirrorCursorOnMatchingTag = true
+                }
+            }
+        )
+    )
+
+    lsp.jdtls.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.jsonls.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.lemminx.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.ltex.setup(
+        coq.lsp_ensure_capabilities(
+            {
+                ltex = {
+                    completionEnabled = true,
+                    languageToolHttpServerUri = "",
+                    languageToolOrg = {
+                        apiKey = "",
+                        username = ""
+                    }
+                }
+            }
+        )
+    )
+
+    lsp.omnisharp.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.pyright.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.rust_analyzer.setup(
+        coq.lsp_ensure_capabilities()
+    )
+
+    lsp.sumneko_lua.setup(
+        coq.lsp_ensure_capabilities(
+            {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {"vim"}
+                        },
+                        telemetry = {
+                            enable = false
                         }
                     }
-                    --]]
                 }
-            )
-        end
+            }
+        )
     )
+
+    lsp.tsserver.setup(
+        coq.lsp_ensure_capabilities()
+    )
+    --]]
 end
 
 local function setupTreesitter()
@@ -288,7 +400,7 @@ if vars["installed"] then
     setupFeline()
     setupGitsigns()
     setupIndentBlankline()
-    -- setupAutoPairs()
+    setupAutoPairs()
     setupWhichKey()
     setupTwilight()
     setupTrouble()
