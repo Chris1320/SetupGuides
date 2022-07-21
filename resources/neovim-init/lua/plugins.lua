@@ -43,6 +43,7 @@ Packer.startup(
         use("feline-nvim/feline.nvim")                  -- Customizable statusline
         use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
         use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
+        use("windwp/nvim-ts-autotag")                   -- Auto-close/rename HTML tags
         use("folke/which-key.nvim")                     -- Displays possible key bindings
         use("folke/twilight.nvim")                      -- Dim inactive portions of the code
 
@@ -363,6 +364,9 @@ local function setupTreesitter()
     treesitter.setup(
         {
             ensure_installed = vars["languages"],  -- Install parsers for languages defined in <languages>.
+            autotag = {
+                enable = true
+            },
             highlight = {                  -- Use treesitter's syntax highlighting.
                 enable = true
             },
