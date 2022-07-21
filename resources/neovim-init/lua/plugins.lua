@@ -41,6 +41,12 @@ Packer.startup(
             }
         )
         use("feline-nvim/feline.nvim")                  -- Customizable statusline
+        use(                                            -- Tabline plugin
+            {
+                "romgrk/barbar.nvim",
+                requires = {{"kyazdani42/nvim-web-devicons"}}
+            }
+        )
         use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
         use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
         use("windwp/nvim-ts-autotag")                   -- Auto-close/rename HTML tags
@@ -101,6 +107,7 @@ local function setupCatppuccin()
             },
             --]]
             integrations = {
+                barbar = true,
                 nvimtree = {
                     enabled = true,
                     show_root = true,
@@ -130,6 +137,21 @@ local function setupFeline()
     feline.setup(
         {
             components = catppuccin_integration.get()
+        }
+    )
+end
+
+local function setupBarbar()
+    local barbar = require("bufferline")
+    barbar.setup(
+        {
+            animation = true,
+            auto_hide = true,
+            tabpage = true,
+            closable = true,
+            clickable = true,
+            icons = true,
+            icon_custom_colors = true
         }
     )
 end
@@ -400,6 +422,7 @@ if vars["installed"] then
     -- run setup functions
     setupCatppuccin()
     setupFeline()
+    setupBarbar()
     setupGitsigns()
     setupIndentBlankline()
     setupAutoPairs()

@@ -62,6 +62,35 @@ require("plugins")
 -- ]])
 
 -- shortcuts
+local cmd_opts = {noremap=true, silent=true}
+
+-- Barbar shortcuts
+vim.keymap.set('n', "<A-,>", ":BufferPrevious<cr>", cmd_opts)      -- Navigate buffers
+vim.keymap.set('n', "<A-.>", ":BufferNext<cr>", cmd_opts)
+
+vim.keymap.set('n', "<A-1>", ":BufferGoto 1<cr>", cmd_opts)
+vim.keymap.set('n', "<A-2>", ":BufferGoto 2<cr>", cmd_opts)
+vim.keymap.set('n', "<A-3>", ":BufferGoto 3<cr>", cmd_opts)
+vim.keymap.set('n', "<A-4>", ":BufferGoto 4<cr>", cmd_opts)
+vim.keymap.set('n', "<A-5>", ":BufferGoto 5<cr>", cmd_opts)
+vim.keymap.set('n', "<A-6>", ":BufferGoto 6<cr>", cmd_opts)
+vim.keymap.set('n', "<A-7>", ":BufferGoto 7<cr>", cmd_opts)
+vim.keymap.set('n', "<A-8>", ":BufferGoto 8<cr>", cmd_opts)
+vim.keymap.set('n', "<A-9>", ":BufferGoto 9<cr>", cmd_opts)
+vim.keymap.set('n', "<A-0>", ":BufferLast<cr>", cmd_opts)
+
+vim.keymap.set('n', "<A-<>", ":BufferMovePrevious<cr>", cmd_opts)  -- Re-order buffers
+vim.keymap.set('n', "<A->>", ":BufferMoveNext<cr>", cmd_opts)
+
+vim.keymap.set('n', "<leader>bp", ":BufferPin<cr>")                -- More barbar shortcuts
+vim.keymap.set('n', "<leader>bon", ":BufferOrderByBufferNumber<cr>")
+vim.keymap.set('n', "<leader>bod", ":BufferOrderByDirectory<cr>")
+vim.keymap.set('n', "<leader>bol", ":BufferOrderByLanguage<cr>")
+vim.keymap.set('n', "<leader>bow", ":BufferOrderByWindowNumber<cr>")
+
+vim.keymap.set('n', "<leader>be", ":BarbarEnable")                 -- Enable/disable barbar
+vim.keymap.set('n', "<leader>bd", ":BarbarDisable")
+
 -- Telescope shortcuts
 vim.keymap.set('n', "<leader>tt", ":Telescope<cr>")
 vim.keymap.set('n', "<leader>tb", ":Telescope buffers<cr>")
