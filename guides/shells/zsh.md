@@ -33,7 +33,7 @@ This customization guide will do the following changes:
     | `ZSH_THEME`     | `powerlevel10k/powerlevel10k`                                                        |
     | `plugins`       | `(command-not-found gh git python sudo zsh-autosuggestions zsh-syntax-highlighting)` |
 
-9. Edit `.zshrc` and add the following lines at the end of the file:
+9. Edit `.zshrc` and add the following lines at the end of the file:[^2]
     ```zsh
     export LANG=en_US.UTF-8  # Set language environment variable.
     export LESS="--no-init --quit-if-one-screen -R"  # Causes `less` to just write to stdout if the text can be viewed without scrolling.
@@ -44,6 +44,7 @@ This customization guide will do the following changes:
 12. Follow the on-screen instructions to set up Powerlevel10k.
 
 [^1]: If you encounter an error `chsh: <zsh-path>: non-standard shell`, add the path to `/etc/shells`. `$ echo "$(which zsh)" >> /etc/shells`. In Termux, you might have to use `$ chsh -s zsh` instead.
+[^2]: It is also recommended that you export the `EDITOR` and `VIEWER` environment variables.
 
 -----
 
