@@ -64,6 +64,9 @@ require("plugins")
 -- shortcuts
 local cmd_opts = {noremap=true, silent=true}
 
+-- Set Neovim shortcuts
+vim.keymap.set('n', "<leader>/", ":nohlsearch<cr>", cmd_opts)
+
 -- Barbar shortcuts
 vim.keymap.set('n', "<A-,>", ":BufferPrevious<cr>", cmd_opts)      -- Navigate buffers
 vim.keymap.set('n', "<A-.>", ":BufferNext<cr>", cmd_opts)
