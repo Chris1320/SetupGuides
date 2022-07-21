@@ -38,6 +38,8 @@ This guide will install Neovim and the following plugins:
 |---------------|----------------------------------------|----------------------------------------------|-----------|
 | `,`           |                                        | Leader key                                   |           |
 |               |                                        |                                              |           |
+| `<leader>/`   | `:nohlsearch`                          | Clear last search highlight                  |           |
+|               |                                        |                                              |           |
 | `<A-,>`       | `:BufferPrevious`                      | Go to previous buffer                        | Barbar    |
 | `<A-.>`       | `:BufferNext`                          | Go to next buffer                            | Barbar    |
 | `<A-1>`       | `:BufferGoto 1`                        | Go to the first buffer                       | Barbar    |
