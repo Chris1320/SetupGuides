@@ -266,7 +266,6 @@ local function setupLspConfig()
         coq.lsp_ensure_capabilities()
     )
 
-    --[[
     lsp.bashls.setup(
         coq.lsp_ensure_capabilities(
             {
@@ -357,7 +356,6 @@ local function setupLspConfig()
     lsp.tsserver.setup(
         coq.lsp_ensure_capabilities()
     )
-    --]]
 end
 
 local function setupTreesitter()
