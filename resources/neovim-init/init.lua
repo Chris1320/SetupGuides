@@ -47,9 +47,16 @@ vim.opt.foldmethod = "expr"                                 -- use treesitter to
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"             -- the expression to use for folding.
 
 vim.opt.foldlevel = 99                                      -- fold level.
-vim.opt.list = vars["enable_list"]                          -- enable display of unprintable characters.
-vim.opt.listchars:append("space:" .. vars["space_char"])    -- optional, if you want to display spaces and EOLs.
-vim.opt.listchars:append("eol:" .. vars["eol_char"])
+vim.opt.list = true                                         -- enable display of unprintable characters.
+if vars["show_eols"] then                                   -- Enable if you want to display spaces, trailing spaces, and EOLs.
+    vim.opt.listchars:append("eol:" .. vars["eol_char"])
+end
+if vars["show_spaces"] then
+    vim.opt.listchars:append("space:" .. vars["space_char"])
+end
+if vars["show_trails"] then
+    vim.opt.listchars:append("trail:" .. vars["trail_char"])
+end
 
 -- Start packer
 require("plugins")
