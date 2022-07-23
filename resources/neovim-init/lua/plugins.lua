@@ -5,22 +5,23 @@ Packer = require("packer")
 Packer.startup(
     function(use)
         -- Package Managers
-        use("wbthomason/packer.nvim")                   -- The package manager that we are using
+        use("wbthomason/packer.nvim")                        -- The package manager that we are using
 
         -- Linting and syntax checkers
-        use("neovim/nvim-lspconfig")                    -- Quickstart configs for Neovim LSP
-        use("williamboman/nvim-lsp-installer")          -- Easy-install LSP servers
-        use("nvim-treesitter/nvim-treesitter")          -- Treesitter integration for Neovim
-        use(                                            -- diagnostics, quickfixes, etc.
+        use("neovim/nvim-lspconfig")                         -- Quickstart configs for Neovim LSP
+        use("williamboman/nvim-lsp-installer")               -- Easy-install LSP servers
+        use("nvim-treesitter/nvim-treesitter")               -- Treesitter integration for Neovim
+        use(                                                 -- diagnostics, quickfixes, etc.
             {
                 "folke/trouble.nvim",
                 requires = "kyazdani42/nvim-web-devicons"
             }
         )
-        use("github/copilot.vim")                       -- GitHub Copilot integration
+        use("github/copilot.vim")                            -- GitHub Copilot integration
+        use("https://git.sr.ht/~whynothugo/lsp_lines.nvim")  -- Show LSP diagnostics to a line.
 
         -- Fuzzy Search
-        use(                                            -- Fuzzy finder
+        use(                                                 -- Fuzzy finder
             {
                 "nvim-telescope/telescope.nvim",
                 requires = {{"nvim-lua/plenary.nvim"}}
@@ -28,45 +29,45 @@ Packer.startup(
         )
 
         -- Visual plugins
-        use(                                            -- Catppuccin theme
+        use(                                                 -- Catppuccin theme
             {
                 "catppuccin/nvim",
                 as = "catppuccin"
             }
         )
-        use("lewis6991/gitsigns.nvim")                  -- Git Integration
-        use("feline-nvim/feline.nvim")                  -- Customizable statusline
-        use(                                            -- Tabline plugin
+        use("lewis6991/gitsigns.nvim")                       -- Git Integration
+        use("feline-nvim/feline.nvim")                       -- Customizable statusline
+        use(                                                 -- Tabline plugin
             {
                 "romgrk/barbar.nvim",
                 requires = {{"kyazdani42/nvim-web-devicons"}}
             }
         )
-        use("lukas-reineke/indent-blankline.nvim")      -- Indentation guides
-        use("folke/which-key.nvim")                     -- Displays possible key bindings
-        use("folke/twilight.nvim")                      -- Dim inactive portions of the code
+        use("lukas-reineke/indent-blankline.nvim")           -- Indentation guides
+        use("folke/which-key.nvim")                          -- Displays possible key bindings
+        use("folke/twilight.nvim")                           -- Dim inactive portions of the code
 
         -- Autocompletion
-        use(                                            -- The main autocompletion tool
+        use(                                                 -- The main autocompletion tool
             {
                 "ms-jpq/coq_nvim",
                 branch = "coq"
             }
         )
-        use(                                            -- coq autocompletion snippets
+        use(                                                 -- coq autocompletion snippets
             {
                 "ms-jpq/coq.artifacts",
                 branch = "artifacts"
             }
         )
-        use(                                            -- coq 3rd-party sources
+        use(                                                 -- coq 3rd-party sources
             {
                 "ms-jpq/coq.thirdparty",
                 branch = "3p"
             }
         )
-        use("windwp/nvim-autopairs")                    -- Bracket auto-pairing
-        use("windwp/nvim-ts-autotag")                   -- Auto-close/rename HTML tags
+        use("windwp/nvim-autopairs")                         -- Bracket auto-pairing
+        use("windwp/nvim-ts-autotag")                        -- Auto-close/rename HTML tags
 
         -- File explorer
         use(
@@ -231,6 +232,17 @@ end
 local function setupTrouble()
     local trouble = require("trouble")
     trouble.setup()
+end
+
+local function setupLspLines()
+    local lsp_lines = require("lsp_lines")
+    lsp_lines.setup()
+    vim.diagnostic.config(
+        {
+            virtual_text = false,
+            virtual_lines = true
+        }
+    )
 end
 
 local function setupTelescope()
@@ -425,6 +437,7 @@ if vars["installed"] then
     setupWhichKey()
     setupTwilight()
     setupTrouble()
+    setupLspLines()
     setupTelescope()
     setupNvimTree()
     setupLspConfig()
