@@ -6,6 +6,7 @@ This guide will install Neovim and the following plugins:
     - [packer](https://github.com/wbthomason/packer.nvim): Plugin Manager for Neovim.
 - Linting and Syntax Checking
     - [copilot.vim](https://github.com/github/copilot.vim): GitHub Copilot for Vim.
+    - [lsp_lines.nvim](https://git.sr.ht/%7Ewhynothugo/lsp_lines.nvim): Show LSP diagnostics in a separate line.
     - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Language Server Protocol (LSP) configuration helper.
     - [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer): Make installation of LSP servers easier.
     - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): Better syntax highlighting.
@@ -73,6 +74,8 @@ This guide will install Neovim and the following plugins:
 | `<leader>eqf` | `:TroubleToggle quickfix`              | Toggle Trouble quick fix panel               | Trouble   |
 | `<leader>elr` | `:TroubleToggle lsp_references`        | Toggle Trouble LSP References panel          | Trouble   |
 | `<leader>elc` | `:TroubleToggle loclist`               | Toggle Trouble Location List panel           | Trouble   |
+|               |                                        |                                              |           |
+| `<leader>l`   |                                        | Toggle LSP Lines and LSP virtual text        | LSP Lines |
 |               |                                        |                                              |           |
 | `<leader>fo`  | `:NvimTreeOpen`                        | Open Nvim-tree                               | Nvim-tree |
 | `<leader>fc`  | `:NvimTreeClose`                       | Close Nvim-tree                              | Nvim-tree |
