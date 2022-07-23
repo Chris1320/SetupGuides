@@ -97,15 +97,15 @@ vim.keymap.set('n', "<leader>bd", ":BarbarDisable", {desc="Disable Barbar"})
 vim.keymap.set('n', "<leader>tt", ":Telescope<cr>", {desc="Open Telescope"})
 vim.keymap.set('n', "<leader>tb", ":Telescope buffers<cr>", {desc="See open buffers"})
 vim.keymap.set('n', "<leader>tF", ":Telescope find_files<cr>", {desc="Search files"})
-vim.keymap.set('n', "<leader>ts", ":Telescope treesitter<cr>", {desc=""})
-vim.keymap.set('n', "<leader>tf", ":Telescope current_buffer_fuzzy_find<cr>", {desc=""})
+vim.keymap.set('n', "<leader>ts", ":Telescope treesitter<cr>", {desc="See treesitter symbols"})
+vim.keymap.set('n', "<leader>tf", ":Telescope current_buffer_fuzzy_find<cr>", {desc="Search current buffer"})
 
 -- Trouble shortcuts
-vim.keymap.set('n', "<leader>ewd", ":TroubleToggle workspace_diagnostics<cr>", {desc=""})
-vim.keymap.set('n', "<leader>edd", ":TroubleToggle document_diagnostics<cr>", {desc=""})
-vim.keymap.set('n', "<leader>eqf", ":TroubleToggle quickfix<cr>", {desc=""})
-vim.keymap.set('n', "<leader>elr", ":TroubleToggle lsp_references<cr>", {desc=""})
-vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>", {desc=""})
+vim.keymap.set('n', "<leader>ewd", ":TroubleToggle workspace_diagnostics<cr>", {desc="See workspace diagnostics"})
+vim.keymap.set('n', "<leader>edd", ":TroubleToggle document_diagnostics<cr>", {desc="See document diagnostics"})
+vim.keymap.set('n', "<leader>eqf", ":TroubleToggle quickfix<cr>", {desc="See quick fixes"})
+vim.keymap.set('n', "<leader>elr", ":TroubleToggle lsp_references<cr>", {desc="See LSP references"})
+vim.keymap.set('n', "<leader>elc", ":TroubleToggle loclist<cr>", {desc="See loclists"})
 
 -- LSP Lines shortcuts
 local function toggleLspLines()
