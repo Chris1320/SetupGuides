@@ -12,7 +12,6 @@
 
 ## Customization
 
-Recommended customizations:
-
-- [zsh](../shells/zsh.md)
-- [neovim](../text-editors/neovim.md)
+- Install [zsh](../shells/zsh.md).
+- Install [neovim](../text-editors/neovim.md).
+- Install [Firefox](../browser/firefox.md).
