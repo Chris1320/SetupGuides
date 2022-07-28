@@ -14,11 +14,16 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ### Desktop Environments
 
+- [Cinnamon](guides/desktop/cinnamon.md)
 - [Windows 11](guides/desktop/windows11.md)
 
 ### Integrated Development Environments (IDEs) & Text Editors
 
 - [Neovim](guides/text-editors/neovim.md)
+
+### Operating Systems
+
+- [Linux Mint](guides/operating-systems/linux-mint.md)
 
 ### Programming Environments
 
