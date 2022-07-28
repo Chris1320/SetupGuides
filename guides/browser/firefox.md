@@ -34,7 +34,16 @@ This installation guide has been tested on the following environments:
 3. **uBlock Origin**
 
     1. Install [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) ad blocking extension.[^1]
-    2. Use the [uBlock Origin backup file](https://github.com/) to use my preset or create/use your own.
+    2. Open uBlock Origin's dashboard and go to `Filter lists` tab.
+    3. Add the following filter lists by checking `Custom > Import` and adding the following lines:
+
+        ```text
+        https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt
+        https://raw.githubusercontent.com/llacb47/miscfilters/master/antipaywall.txt
+        https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt
+        ```
+
+    4. Enable more filter lists if you like.
 
 4. **Firefox Multi-Account Containers**
 
@@ -47,13 +56,13 @@ This installation guide has been tested on the following environments:
 8. **Cookie AutoDelete**
 
     1. Install [Cookie AutoDelete](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/).[^1]
-    2. Use the provided [Cookie AutoDelete core settings](https://github.com/) file by importing it in `Cooke AutoDelete > Settings > Import Core Settings...`.
+    2. Customize Cookie AutoDelete to whitelist/greylist websites.
 
 9. Install [Return YouTube Dislike](https://addons.mozilla.org/en-US/firefox/addon/return-youtube-dislikes/).[^1]
 10. **Enhancer for YouTube™**
 
     1. Get [Enhancer for YouTube](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/) for Firefox.[^1]
-    2. Import the provided [settings file](https://github.com/).
+    2. Import the provided [settings file](https://github.com/Chris1320/SetupGuides/blob/main/resources/firefox/enhancer-for-youtube/config.json) or edit the settings to how you like it.
 
 11. Install [SponsorBlock for YouTube](https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/)[^1] and customize it to your liking.
 12. Install [BetterTTV](https://addons.mozilla.org/en-US/firefox/addon/betterttv/) and customize it if you want.
