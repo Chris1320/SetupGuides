@@ -20,17 +20,6 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 - [Neovim](guides/text-editors/neovim.md)
 
-### Operating Systems
-
-#### Linux
-
-- [Arch Linux](guides/operating-systems/linux/arch.md)
-- [Linux Mint](guides/operating-systems/linux/mint.md)
-
-#### Windows
-
-- [Windows 11](guides/operating-systems/windows11.md)
-
 ### Programming Environments
 
 - [Python](guides/programming-envs/python.md)
