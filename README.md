@@ -8,9 +8,28 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ## Guides
 
+### Browsers
+
+- [Firefox](guides/browser/firefox.md)
+
+### Desktop Environments
+
+- [Windows 11](guides/desktop/windows11.md)
+
 ### Integrated Development Environments (IDEs) & Text Editors
 
 - [Neovim](guides/text-editors/neovim.md)
+
+### Operating Systems
+
+#### Linux
+
+- [Arch Linux](guides/operating-systems/linux/arch.md)
+- [Linux Mint](guides/operating-systems/linux/mint.md)
+
+#### Windows
+
+- [Windows 11](guides/operating-systems/windows11.md)
 
 ### Programming Environments
 
@@ -23,5 +42,5 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ### Terminals
 
-- [Kali Linux WSL](guides/terminals/kali-linux-wsl.md)
+- [Kali Linux (WSL)](guides/terminals/kali-linux-wsl.md)
 - [Termux (Android)](guides/terminals/termux.md)

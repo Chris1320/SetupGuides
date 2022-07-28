@@ -38,7 +38,7 @@ This installation guide has been tested on the following environments:
 
 4. **Firefox Multi-Account Containers**
 
-    1. Install [Firefox Multi-Account Containers][https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/] extension.[^1]
+    1. Install [Firefox Multi-Account Containers](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/) extension.[^1]
     2. Restart Firefox and customize the containers to your liking.
 
 5. Install [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/).[^1]
