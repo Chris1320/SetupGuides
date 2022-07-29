@@ -4,7 +4,7 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 - [Kali GNU/Linux Rolling Release](https://www.kali.org/) ([Windows Subsystem for Linux](https://apps.microsoft.com/store/detail/kali-linux/9PKR34TNCV07))
 - [Linux Mint 20.3 Una](https://linuxmint.com/)
-- [Termux](https://termux.com/) (Android Terminal Emulator)
+- [Termux 0.118.0](https://termux.com/) (Android Terminal Emulator)
 - [Windows 11 21H2](https://www.microsoft.com/en-us/windows/windows-11)
 
 ## Guides
