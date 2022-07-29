@@ -1,5 +1,7 @@
 # Firefox Nightly
 
+<img src="../../assets/browser/firefox/firefox-1.png" alt="Firefox Preview"/>
+
 This guide helps you install the following extensions:
 
 - Tracking, Privacy, and Security
