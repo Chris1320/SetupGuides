@@ -1,6 +1,6 @@
 ## Setup Guides
 
-This repository contains guides on how I set up software I use on my machine. Most of the guides are currently tested on the following operating systems:
+This repository contains guides on how I set up software I use on my machine. Most of the guides are tested on the following operating systems:
 
 - [Kali GNU/Linux Rolling Release](https://www.kali.org/) ([Windows Subsystem for Linux](https://apps.microsoft.com/store/detail/kali-linux/9PKR34TNCV07))
 - [Linux Mint 20.3 Una](https://linuxmint.com/)
