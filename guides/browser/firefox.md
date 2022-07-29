@@ -25,7 +25,7 @@ This guide helps you install the following extensions:
 This installation guide has been tested on the following environments:
 
 - **Firefox Nightly 104.0a1** (2022-07-24) on *Windows 11 Pro 21H2*.
-- **Firefox Stable 102.0.1** on *Linux Mint 20.3 Cinnamon*.
+- **Firefox Stable 103.0** on *Linux Mint 20.3 Cinnamon*.
 
 ## Customization Guide
 

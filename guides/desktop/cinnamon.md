@@ -28,7 +28,7 @@ This guide has been tested on the following systems:
 7. Move the notification and application-specific icons to the **top-left panel**.
 8. Move the running applications' icons to the **bottom-middle panel**. Leave the application menu (the Mint icon) on the bottom-left panel.
 9. Download "Transparent Panels" from `System Settings > Extensions > Download > Transparent Panels`.
-10. Enable panel transparency for the bottom panel only.
+10. Enable panel transparency for the top and bottom panels.
 
 [^1]: Follow the usage instructions from their `README.md` files.
 
