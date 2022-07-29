@@ -24,7 +24,7 @@ This repository contains guides on how I set up software I use on my machine. Mo
 
 ### Operating Systems
 
-- [Linux Mint](guides/operating-systems/linux-mint.md)
+- [Linux Mint](guides/operating-system/linux-mint.md)
 
 ### Programming Environments
 
