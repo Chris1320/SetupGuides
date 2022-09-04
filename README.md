@@ -1,5 +1,7 @@
 ## Setup Guides
 
+> ***NOTICE***: The project has been moved to https://github.com/SetupGuides/SetupGuides
+
 This repository contains guides on how I set up software I use on my machine. Most of the guides are tested on the following operating systems:
 
 - [Kali GNU/Linux Rolling Release](https://www.kali.org/) ([Windows Subsystem for Linux](https://apps.microsoft.com/store/detail/kali-linux/9PKR34TNCV07))
