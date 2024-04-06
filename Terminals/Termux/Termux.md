@@ -46,6 +46,6 @@ Termux supports remote connections via the *Secure SHell (SSH)* protocol. Follow
 	```bash
 	ssh user@device_ip -p 8022
 	```
-	Change `user` and `device_ip` with your Termux username and your device's IP address respectively. You can find them using the `whoami` and `ip -c addr` commands, respectively.
+	Change `user` and `device_ip` with your Termux username and your device's IP address respectively. You can find them using the `whoami` and `ip -c addr` commands.
 
 [^1]: If you encounter an error, run `$ termux-change-repo` to use a mirror and try again.

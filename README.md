@@ -9,7 +9,7 @@ This repository contains guides on how I set up software I use on my machine. Mo
 - [Termux](https://termux.com/) (Android Terminal Emulator)
 - [Windows 11](https://www.microsoft.com/en-us/windows/windows-11)
 
-This documentation is created using [Obsidian](https://obsidian.md/), but you should be able to read it on [GitHub](https://github.com/Chris1320/SetupGuides) and [GitHub Pages](https://Chris1320.github.io/SetupGuides/) too.
+This documentation is created using [Obsidian](https://obsidian.md/), but you should be able to read it on [GitHub](https://github.com/Chris1320/SetupGuides) and [GitHub Pages](https://chris1320.github.io/SetupGuides/) too.
 
 ## Bug/Error Reporting
 
@@ -20,6 +20,7 @@ Only documentation errors should be reported in this repository. If you find a b
 ### Operating Systems
 
 - [Arch Linux](https://github.com/SetupGuides/ArchLinux)
+- [Fedora Workstation](Operating%20Systems/Fedora%20Workstation/Fedora%20Workstation.md)
 
 ### Shells
 
