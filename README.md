@@ -38,4 +38,4 @@ Since everything in this repository is for documentation only, I decided to use 
 
 ### Text Editors
 
-- [Neovim](https://github.com/SetupGuides/Neovim)
+- [Neovim](Text%20Editors/Neovim/Neovim.md)
