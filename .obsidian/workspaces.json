@@ -108,7 +108,9 @@
                 "type": "leaf",
                 "state": {
                   "type": "outline",
-                  "state": {}
+                  "state": {
+                    "file": "README.md"
+                  }
                 }
               },
               {
@@ -123,7 +125,8 @@
                     "showSearch": false,
                     "searchQuery": "",
                     "backlinkCollapsed": false,
-                    "unlinkedCollapsed": true
+                    "unlinkedCollapsed": true,
+                    "file": "README.md"
                   }
                 }
               },
@@ -134,7 +137,8 @@
                   "type": "outgoing-link",
                   "state": {
                     "linksCollapsed": false,
-                    "unlinkedCollapsed": true
+                    "unlinkedCollapsed": true,
+                    "file": "README.md"
                   }
                 }
               }
