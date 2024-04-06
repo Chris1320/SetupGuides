@@ -1,0 +1,11 @@
+{
+  "promptDelete": false,
+  "defaultViewMode": "preview",
+  "livePreview": false,
+  "useTab": true,
+  "trashOption": "none",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "attachmentFolderPath": "./",
+  "showInlineTitle": false
+}
