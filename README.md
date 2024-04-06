@@ -24,7 +24,7 @@ Only documentation errors should be reported in this repository. If you find a b
 
 ### Shells
 
-- [zsh](https://github.com/SetupGuides/ZSH)
+- [ZSH](Shells/ZSH/ZSH.md)
 
 ### Terminals
 
