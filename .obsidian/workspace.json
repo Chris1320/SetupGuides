@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6fc4aa3fd17ec64c",
+        "id": "7dcac1028eed61b5",
         "type": "tabs",
         "children": [
           {
-            "id": "c856fb5196b2aebc",
+            "id": "509afef58ce99456",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -88,11 +88,38 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c052e42c533e6f3c",
+            "id": "1f97c912a5f3ff67",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "localgraph",
+              "state": {
+                "file": "README.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 0.7132754626224423,
+                  "close": true
+                }
+              }
             }
           }
         ]
@@ -155,8 +182,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c856fb5196b2aebc",
+  "active": "509afef58ce99456",
   "lastOpenFiles": [
+    "README.md",
     "Text Editors/Neovim/Neovim.md",
     "Terminals/Termux/Termux.md",
     "Shells/ZSH/ZSH.md",
@@ -172,7 +200,6 @@
     "Operating_Systems/Arch_Linux/Contents/Installing_and_Setting_Up_The_Desktop.md",
     "Operating_Systems/Arch_Linux/Contents/Environment.md",
     "Operating_Systems/Arch_Linux/Contents/Automatic_Customization.md",
-    "README.md",
     "Operating_Systems/Arch_Linux/Contents",
     "Operating_Systems/Arch_Linux",
     "assets/images/banner/SetupGuides-banner.png",
