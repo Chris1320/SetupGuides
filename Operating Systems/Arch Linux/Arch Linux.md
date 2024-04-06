@@ -1,3 +1,6 @@
+---
+---
+
 <div align="center">
   <h1>Arch Linux Dotfiles</h1>
   <img
