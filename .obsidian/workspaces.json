@@ -119,14 +119,14 @@
                 "state": {
                   "type": "backlink",
                   "state": {
+                    "file": "README.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
                     "showSearch": false,
                     "searchQuery": "",
                     "backlinkCollapsed": false,
-                    "unlinkedCollapsed": true,
-                    "file": "README.md"
+                    "unlinkedCollapsed": true
                   }
                 }
               },
@@ -136,9 +136,9 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
+                    "file": "README.md",
                     "linksCollapsed": false,
-                    "unlinkedCollapsed": true,
-                    "file": "README.md"
+                    "unlinkedCollapsed": true
                   }
                 }
               }
@@ -157,8 +157,8 @@
           "command-palette:Open command palette": false
         }
       },
-      "active": "c052e42c533e6f3c",
-      "mtime": "2024-04-06T11:56:31+08:00"
+      "active": "c856fb5196b2aebc",
+      "mtime": "2024-04-06T13:39:01+08:00"
     }
   },
   "active": "Default"
