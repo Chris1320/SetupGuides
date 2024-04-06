@@ -1,6 +1,8 @@
 # SetupGuides
 
-This repository contains guides on how I set up software I use on my machine. Most of the guides are tested on the following operating systems:
+![SetupGuides-banner](assets/images/banner/SetupGuides-banner.png)
+
+This repository contains guides on how I set up software I use on my machines. Most of the guides are tested on the following operating systems:
 
 - [Arch Linux](https://archlinux.org)
 - [Fedora Workstation](https://fedoraproject.org/workstation/)
@@ -14,6 +16,10 @@ This documentation is created using [Obsidian](https://obsidian.md/), but you sh
 ## Bug/Error Reporting
 
 Only documentation errors should be reported in this repository. If you find a bug or an error in specific customization guides (e.g., a bug in one of the scripts in [Arch Linux Customization Guide](#)), please submit an issue in its dedicated repository.
+
+## Conventional Commits
+
+Since everything in this repository is for documentation only, I decided to use [conventional commits](https://www.conventionalcommits.org/)' types for determining changes in the guides. The `docs` type is used for updates on [SetupGuides](https://github.com/Chris1320/SetupGuides) itself.
 
 ## Guides
 
