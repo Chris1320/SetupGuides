@@ -25,7 +25,7 @@ Since everything in this repository is for documentation only, I decided to use 
 
 ### Operating Systems
 
-- [Arch Linux](https://github.com/SetupGuides/ArchLinux)
+- [Arch Linux](Operating%20Systems/Arch%20Linux/Arch%20Linux.md)
 - [Fedora Workstation](Operating%20Systems/Fedora%20Workstation/Fedora%20Workstation.md)
 
 ### Shells

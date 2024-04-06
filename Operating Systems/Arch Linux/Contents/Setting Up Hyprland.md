@@ -1,0 +1,16 @@
+# Setting Up Hyprland
+
+To start customizing Hyprland, just copy the dotfiles to `~/.config/`. Running Hyprland at this time is not yet recommended since we haven't customized the rest of the programs yet.
+
+```bash
+cp -r ./dotfiles/hypr ~/.config/hypr
+```
+
+> [!NOTE]
+> 
+> If you are having problems with Hyprland, see their [wiki](https://wiki.hyprland.org/Crashes-and-Bugs/).
+
+---
+
+- Previous: [Installing and Setting Up The Desktop](Installing%20and%20Setting%20Up%20The%20Desktop.md)
+- Next: [Setting Up Kitty](Setting%20Up%20Kitty.md)
