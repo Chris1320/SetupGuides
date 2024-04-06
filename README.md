@@ -1,6 +1,6 @@
 # SetupGuides
 
-![SetupGuides-banner](assets/images/banner/SetupGuides-banner.png)
+![SetupGuides-banner](https://media.githubusercontent.com/media/Chris1320/SetupGuides/main/assets/images/banner/SetupGuides-banner.png)
 
 This repository contains guides on how I set up software I use on my machines. Most of the guides are tested on the following operating systems:
 
