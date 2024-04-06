@@ -2,11 +2,11 @@
 
 This is a guide on how I customize my Fedora installation. [Fedora Workstation](https://fedoraproject.org/) is a great operating system if you want something between a beginner-friendly Linux distribution (e.g., [Linux Mint](https://linuxmint.com/)) and a highly customizable and experimental distro (e.g., [Arch Linux](https://archlinux.org/)).
 
-> **WARNING**: This guide is not yet complete and might break your system.
+> [!WARNING] This guide is not yet complete and might break your system.
 
 ## Installation
 
-> **NOTE**: This guide is tested on Fedora Workstation 39.
+> [!NOTE] This guide is tested on Fedora Workstation 39.
 
 ### Installing Fedora Workstation
 
@@ -14,7 +14,9 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 2. Restart your system into the Fedora Workstation Live USB.
 3. Follow the on-screen instructions to install Fedora Workstation into your machine.
 
-   > **TIP**: I personally use the `WIN+SPACE` keymap to switch between languages to keep the same keybindings with Windows. I only have one language chosen:
+   > [!TIP]
+   > 
+   > I personally use the `WIN+SPACE` keymap to switch between languages to keep the same keybindings with Windows. I only have one language chosen:
    >
    > - English (US)
    > 
