@@ -27,7 +27,9 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 
 ### Customization
 
-> **TIP**: I recommend that you use the following customization
+> [!TIP]
+> 
+> I recommend that you use the following customization
 > guides first:
 >
 > - [catppuccin/gnome-terminal](https://github.com/catppuccin/gnome-terminal)
