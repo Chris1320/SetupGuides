@@ -25,8 +25,8 @@ Since everything in this repository is for documentation only, I decided to use 
 
 ### Operating Systems
 
-- [Arch Linux](Operating%20Systems/Arch%20Linux/Arch%20Linux.md)
-- [Fedora Workstation](Operating%20Systems/Fedora%20Workstation/Fedora%20Workstation.md)
+- [Arch_Linux](Operating_Systems/Arch_Linux/Arch_Linux.md)
+- [Fedora_Workstation](Operating_Systems/Fedora_Workstation/Fedora_Workstation.md)
 
 ### Shells
 

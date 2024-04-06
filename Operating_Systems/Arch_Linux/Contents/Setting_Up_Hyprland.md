@@ -12,5 +12,5 @@ cp -r ./dotfiles/hypr ~/.config/hypr
 
 ---
 
-- Previous: [Installing and Setting Up The Desktop](Installing%20and%20Setting%20Up%20The%20Desktop.md)
-- Next: [Setting Up Kitty](Setting%20Up%20Kitty.md)
+- Previous: [Installing_and_Setting_Up_The_Desktop](Installing_and_Setting_Up_The_Desktop.md)
+- Next: [Setting_Up_Kitty](Setting_Up_Kitty.md)

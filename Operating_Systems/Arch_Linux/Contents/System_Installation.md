@@ -1,6 +1,6 @@
 # System Installation
 
-If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [manual](Manual%20Customization.md) or [automatic](Automatic%20Customization.md) customization steps.
+If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [manual](Manual_Customization.md) or [automatic](Automatic_Customization.md) customization steps.
 
 I recommend that you read the [Arch Linux Wiki](https://wiki.archlinux.org/)'s [installation guide](https://wiki.archlinux.org/title/Installation_guide) instead since it is more updated and accurate than a guide that is maintained by one hobbyist like me. I also recommend reading [arch.d3sox.me](https://arch.d3sox.me/) if you have trouble understanding the wiki.
 
@@ -311,4 +311,4 @@ reboot  # Reboot the system
 ---
 
 - Previous: [Environment](Environment.md)
-- Next: [Automatic Customization](Automatic%20Customization.md)
+- Next: [Automatic_Customization](Automatic_Customization.md)

@@ -75,5 +75,5 @@ You may want to read the installation instructions of each programs in case your
 
 ---
 
-- Previous: [Manual Customization](Manual%20Customization.md)
-- Next: [Setting Up Hyprland](Setting%20Up%20Hyprland.md)
+- Previous: [Manual_Customization](Manual_Customization.md)
+- Next: [Setting_Up_Hyprland](Setting_Up_Hyprland.md)

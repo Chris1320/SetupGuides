@@ -28,5 +28,5 @@ echo 'alias icat="kitty +kitten icat"' >> ~/.zshrc  # For ZSH
 
 ---
 
-- Previous: [Setting Up Hyprland](Setting%20Up%20Hyprland.md)
-- Next: [Setting Up SDDM](Setting%20Up%20SDDM.md)
+- Previous: [Setting_Up_Hyprland](Setting_Up_Hyprland.md)
+- Next: [Setting_Up_SDDM](Setting_Up_SDDM.md)

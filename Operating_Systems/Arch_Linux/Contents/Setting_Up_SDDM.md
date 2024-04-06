@@ -25,5 +25,5 @@ Related Links:
 
 ---
 
-- Previous: [Setting Up Kitty](Setting%20Up%20Kitty.md)
-- Next: [Setting Up dunst](Setting%20Up%20dunst.md)
+- Previous: [Setting_Up_Kitty](Setting_Up_Kitty.md)
+- Next: [Setting_Up_dunst](Setting_Up_dunst.md)
