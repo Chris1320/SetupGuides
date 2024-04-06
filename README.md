@@ -27,7 +27,7 @@ Only documentation errors should be reported in this repository. If you find a b
 
 ### Terminals
 
-- [[Terminals/Termux/Termux|Termux]] Terminal Emulator for Android
+- [Termux](Terminals/Termux/Termux.md) Terminal Emulator for Android
 
 ### Text Editors
 

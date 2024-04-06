@@ -7,5 +7,6 @@
   "alwaysUpdateLinks": true,
   "newLinkFormat": "relative",
   "attachmentFolderPath": "./",
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "useMarkdownLinks": true
 }
