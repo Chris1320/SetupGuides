@@ -183,6 +183,7 @@
   },
   "active": "509afef58ce99456",
   "lastOpenFiles": [
+    "README.md",
     "Operating Systems/Arch Linux/Contents/Setting Up Waybar.md",
     "Operating Systems/Arch Linux/Contents/Setting Up dunst.md",
     "Operating Systems/Arch Linux/Contents/Setting Up SDDM.md",
@@ -198,7 +199,6 @@
     "Shells/ZSH/ZSH.md",
     "Terminals/Termux/Termux.md",
     "Text Editors/Neovim/Neovim.md",
-    "README.md",
     "Operating Systems/Arch Linux/Contents",
     "Operating Systems/Arch Linux",
     "assets/images/banner/SetupGuides-banner.png",
