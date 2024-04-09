@@ -79,9 +79,9 @@ systemctl enable fstrim.timer
 
 ## Next Steps
 
-- [Installing_and_Setting_Up_The_Desktop](Installing_and_Setting_Up_The_Desktop.md)
+- [[Installing and Setting Up The Desktop]]
 
 ---
 
-- Previous: [Automatic_Customization](Automatic_Customization.md)
-- Next: [Installing_and_Setting_Up_The_Desktop](Installing_and_Setting_Up_The_Desktop.md)
+- Previous: [[Automatic Customization]]
+- Next: [[Installing and Setting Up The Desktop]]

@@ -1,6 +1,6 @@
 # System Installation
 
-If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [manual](Manual_Customization.md) or [automatic](Automatic_Customization.md) customization steps.
+If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [[Manual Customization|manual]]] or [[Automatic Customization|automatic]] customization steps.
 
 I recommend that you read the [Arch Linux Wiki](https://wiki.archlinux.org/)'s [installation guide](https://wiki.archlinux.org/title/Installation_guide) instead since it is more updated and accurate than a guide that is maintained by one hobbyist like me. I also recommend reading [arch.d3sox.me](https://arch.d3sox.me/) if you have trouble understanding the wiki.
 
@@ -76,7 +76,7 @@ In my case, my main storage device is located at `/dev/sda`. So we run the follo
 fdisk /dev/sda
 ```
 
-Partition the device following the structure shown in [Environment > Disk Partitions](Environment.md#disk-partitions). If you have different needs, you can see more examples in the [Arch Linux Wiki](https://wiki.archlinux.org/title/Partitioning#Example_layouts) and [d3sox](https://arch.d3sox.me/installation/partitioning-formatting#size-recommendations)'s guide. After saving the changes made by `fdisk`, create the filesystems.
+Partition the device following the structure shown in [[Environment#Disk Partitions|Environment > Disk Partitions]]]. If you have different needs, you can see more examples in the [Arch Linux Wiki](https://wiki.archlinux.org/title/Partitioning#Example_layouts) and [d3sox](https://arch.d3sox.me/installation/partitioning-formatting#size-recommendations)'s guide. After saving the changes made by `fdisk`, create the filesystems.
 
 ```bash
 mkfs.fat -F32 -n EFI /dev/sda1  # Create a FAT32 filesystem in `/dev/sda1` with label "EFI"
@@ -310,5 +310,5 @@ reboot  # Reboot the system
 
 ---
 
-- Previous: [Environment](Environment.md)
-- Next: [Automatic_Customization](Automatic_Customization.md)
+- Previous: [[Environment]]
+- Next: [[Automatic Customization]]

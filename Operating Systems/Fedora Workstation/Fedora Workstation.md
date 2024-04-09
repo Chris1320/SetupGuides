@@ -34,9 +34,8 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 >
 > - [catppuccin/gnome-terminal](https://github.com/catppuccin/gnome-terminal)
 >   or replace it with Kitty and [customize it](https://github.com/catppuccin/kitty).
-> - [SetupGuides/ZSH](https://github.com/SetupGuides/ZSH)
-> - [SetupGuides/Neovim](https://github.com/SetupGuides/Neovim) (only if you
->   are going to use [Neovim](https://neovim.io/)).
+> - [[ZSH]]
+> - [[Neovim]] (only if you are going to use [Neovim](https://neovim.io/)).
 
 #### 1. Set the Machine Hostname
 

@@ -1,7 +1,6 @@
 # Termux
 
-[Termux](https://termux.dev/) is an Android terminal emulator and a Linux environment. It can be used to run most
-Linux software without root. This guide will help at setting up and configuring Termux.
+[Termux](https://termux.dev/) is an Android terminal emulator and a Linux environment. It can be used to run most Linux software without root. This guide will help at setting up and configuring Termux.
 
 ## Installation
 
@@ -22,8 +21,8 @@ Linux software without root. This guide will help at setting up and configuring 
 
 ## Recommended Customizations
 
-- [zsh](https://github.com/SetupGuides/ZSH)
-- [Neovim](https://github.com/SetupGuides/Neovim)
+- [[ZSH]]
+- [[Neovim]]
 - [Catppuccin Theme](https://github.com/catppuccin/termux)
 
 ## Enabling SSH Remote Connections

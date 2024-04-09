@@ -156,5 +156,5 @@ This Arch Linux configuration is using the following programs:
 
 ---
 
-- Previous: [Introduction](../Arch_Linux.md)
-- Next: [System_Installation](System_Installation.md)
+- Previous: [[Arch Linux|Introduction]]
+- Next: [[System Installation]]

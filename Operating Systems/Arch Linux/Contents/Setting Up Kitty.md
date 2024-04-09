@@ -24,9 +24,9 @@ echo 'alias icat="kitty +kitten icat"' >> ~/.zshrc  # For ZSH
 
 > [!NOTE]
 > 
-> If you are going to use my [Custom ZSH Configuration](https://github.com/SetupGuides/ZSH), create a new file in `~/.config/zsh/custom/envs/` (e.g., `~/.config/zsh/custom/envs/kitty.env`) instead of pasting to `~/.zshrc`.
+> If you are going to use my [[ZSH|Custom ZSH Configuration]]], create a new file in `~/.config/zsh/custom/envs/` (e.g., `~/.config/zsh/custom/envs/kitty.env`) instead of pasting to `~/.zshrc`.
 
 ---
 
-- Previous: [Setting_Up_Hyprland](Setting_Up_Hyprland.md)
-- Next: [Setting_Up_SDDM](Setting_Up_SDDM.md)
+- Previous: [[Setting Up Hyprland]]
+- Next: [[Setting Up SDDM]]
