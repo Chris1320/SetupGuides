@@ -9,7 +9,9 @@ alias:
 
 -----
 
-![GitHub Pages Deployment Status](https://img.shields.io/github/actions/workflow/status/Chris1320/SetupGuides/deploy.yml)
+<center>
+	<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Chris1320/SetupGuides/deploy.yml">
+</center>
 
 This repository contains guides on how I set up software I use on my machines. Most of the guides are tested on the following operating systems:
 
