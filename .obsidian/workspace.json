@@ -43,14 +43,6 @@
             }
           },
           {
-            "id": "f870cfd1b69ba605",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
             "id": "565f157ef4377234",
             "type": "leaf",
             "state": {
@@ -66,10 +58,10 @@
             }
           },
           {
-            "id": "a33522d3dd6dbaa8",
+            "id": "f870cfd1b69ba605",
             "type": "leaf",
             "state": {
-              "type": "bookmarks",
+              "type": "git-view",
               "state": {}
             }
           }
@@ -119,6 +111,16 @@
                   "scale": 0.7132754626224423,
                   "close": true
                 }
+              }
+            }
+          },
+          {
+            "id": "fe5f6b1db2492635",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "index.md"
               }
             }
           }
@@ -183,8 +185,9 @@
   },
   "active": "509afef58ce99456",
   "lastOpenFiles": [
-    "Terminals/Termux/Termux.md",
+    "Operating Systems/Arch Linux/Contents/Automatic Customization.md",
     "index.md",
+    "Terminals/Termux/Termux.md",
     "Operating Systems/Arch Linux/Contents/Setting Up Waybar.md",
     "Operating Systems/Arch Linux/Contents/Setting Up dunst.md",
     "Operating Systems/Arch Linux/Contents/Setting Up SDDM.md",
@@ -192,7 +195,6 @@
     "Operating Systems/Arch Linux/Contents/Setting Up Hyprland.md",
     "Operating Systems/Arch Linux/Contents/Installing and Setting Up The Desktop.md",
     "Operating Systems/Arch Linux/Contents/Manual Customization.md",
-    "Operating Systems/Arch Linux/Contents/Automatic Customization.md",
     "Operating Systems/Arch Linux/Contents/System Installation.md",
     "Operating Systems/Arch Linux/Contents/Environment.md",
     "Operating Systems/Arch Linux/Arch Linux.md",

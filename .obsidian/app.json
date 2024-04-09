@@ -9,5 +9,5 @@
   "attachmentFolderPath": "./",
   "showInlineTitle": false,
   "useMarkdownLinks": false,
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "hidden"
 }

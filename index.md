@@ -1,3 +1,8 @@
+---
+title: SetupGuides - This is how I customize my stuff.
+draft: false
+---
+
 # SetupGuides
 
 ![SetupGuides-banner](https://media.githubusercontent.com/media/Chris1320/SetupGuides/main/assets/images/banner/SetupGuides-banner.png)
@@ -5,7 +10,8 @@
 -----
 
 <center>
-	<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Chris1320/SetupGuides/deploy.yml">
+	<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Chris1320/SetupGuides/deploy.yml?style=for-the-badge&label=Wiki%20Status&color=%23a6e3a1">
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Chris1320/SetupGuides?style=for-the-badge&color=%2394e2d5">
 </center>
 
 This repository contains guides on how I set up software I use on my machines. Most of the guides are tested on the following operating systems:

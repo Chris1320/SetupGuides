@@ -45,14 +45,6 @@
                 }
               },
               {
-                "id": "f870cfd1b69ba605",
-                "type": "leaf",
-                "state": {
-                  "type": "git-view",
-                  "state": {}
-                }
-              },
-              {
                 "id": "565f157ef4377234",
                 "type": "leaf",
                 "state": {
@@ -68,10 +60,10 @@
                 }
               },
               {
-                "id": "a33522d3dd6dbaa8",
+                "id": "f870cfd1b69ba605",
                 "type": "leaf",
                 "state": {
-                  "type": "bookmarks",
+                  "type": "git-view",
                   "state": {}
                 }
               }
@@ -121,6 +113,16 @@
                       "scale": 0.7132754626224423,
                       "close": true
                     }
+                  }
+                }
+              },
+              {
+                "id": "fe5f6b1db2492635",
+                "type": "leaf",
+                "state": {
+                  "type": "file-properties",
+                  "state": {
+                    "file": "index.md"
                   }
                 }
               }
@@ -184,7 +186,7 @@
         }
       },
       "active": "509afef58ce99456",
-      "mtime": "2024-04-09T18:08:08+08:00"
+      "mtime": "2024-04-09T18:38:10+08:00"
     }
   },
   "active": "Default"
