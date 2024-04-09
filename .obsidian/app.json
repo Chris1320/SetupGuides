@@ -8,5 +8,6 @@
   "newLinkFormat": "shortest",
   "attachmentFolderPath": "./",
   "showInlineTitle": false,
-  "useMarkdownLinks": false
+  "useMarkdownLinks": false,
+  "propertiesInDocument": "source"
 }
