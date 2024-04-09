@@ -1,8 +1,3 @@
----
-alias:
-  - "index"
----
-
 # SetupGuides
 
 ![SetupGuides-banner](https://media.githubusercontent.com/media/Chris1320/SetupGuides/main/assets/images/banner/SetupGuides-banner.png)
