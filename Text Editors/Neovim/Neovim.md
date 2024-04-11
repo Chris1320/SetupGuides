@@ -66,8 +66,14 @@ This setup has been tested on the following platforms:
 
 1. Install the [[#Requirements|requirements]].
 2. Run the installer.
-   - Using _curl_: `bash <(curl -sSf https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/main/install)`
-   - Using _wget_: `bash <(wget -q -O - https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/main/install)`
+   - Using *curl*:
+	   ```bash
+	   bash <(curl -sSf https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/main/install)
+	   ```
+   - Using *wget*:
+	   ```bash
+	   bash <(wget -q -O - https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/main/install)
+	   ```
 3. Run `nvim` and wait for Lazy to install the plugins.
 4. Check for errors by running `:checkhealth`.
 

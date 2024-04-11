@@ -4,17 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "84be934fb09bad62",
+        "id": "7dcac1028eed61b5",
         "type": "tabs",
         "children": [
           {
-            "id": "89b518aa7a6f247d",
+            "id": "509afef58ce99456",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
                 "file": "index.md",
-                "staged": false
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -64,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -85,6 +85,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "index.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -118,11 +119,12 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {}
+              "state": {
+                "file": "index.md"
+              }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "a70ba0ba8f0ff435",
@@ -133,7 +135,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "index.md"
+              }
             }
           },
           {
@@ -142,6 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -158,6 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -177,7 +183,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "89b518aa7a6f247d",
+  "active": "509afef58ce99456",
   "lastOpenFiles": [
     "Text Editors/Neovim/Neovim.md",
     "index.md",
