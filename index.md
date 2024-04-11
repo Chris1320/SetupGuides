@@ -1,5 +1,6 @@
 ---
-title: SetupGuides - This is how I customize my stuff.
+title: Chris1320/SetupGuides
+description: This is how I customize my stuff.
 draft: false
 ---
 
@@ -27,7 +28,7 @@ This documentation is created using [Obsidian](https://obsidian.md/), but you sh
 
 ## Bug/Error Reporting
 
-Only documentation errors should be reported in this repository. If you find a bug or an error in specific customization guides (e.g., a bug in one of the scripts in [[Arch Linux|Arch Linux Customization Guide]]), please submit an issue in its dedicated repository.
+Only documentation errors should be reported in this repository. If you find a bug or an error in dotfiles/scripts of specific guides (e.g., [[Arch Linux]] customization guide), please submit an issue in its dedicated repository.
 
 ## Conventional Commits
 
