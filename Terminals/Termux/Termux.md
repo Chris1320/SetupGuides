@@ -1,3 +1,13 @@
+---
+title: Termux
+description: My Termux customization setup.
+draft: false
+tags:
+  - android
+  - android/terminal
+  - linux
+  - linux/terminal
+---
 # Termux
 
 [Termux](https://termux.dev/) is an Android terminal emulator and a Linux environment. It can be used to run most Linux software without root. This guide will help at setting up and configuring Termux.

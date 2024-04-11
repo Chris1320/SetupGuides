@@ -36,6 +36,10 @@ Since everything in this repository is for documentation only, I decided to use 
 
 ## Guides
 
+### Desktop Environments
+
+- [[GNOME]]
+
 ### Operating Systems
 
 - [[Arch Linux]]

@@ -1,3 +1,11 @@
+---
+title: ZSH
+description: My ZSH setup
+draft: false
+tags:
+  - linux
+  - linux/shell
+---
 # ZSH
 
 > "The [Z shell](https://www.zsh.org/) is a Unix shell that can be used as an interactive login shell and as a command interpreter for shell scripting. ZSH is an extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh."

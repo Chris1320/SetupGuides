@@ -1,3 +1,11 @@
+---
+title: Arch Linux
+description: My Arch Linux (btw) dotfiles.
+draft: false
+tags:
+  - linux
+  - linux/distro
+---
 <div align="center">
   <h1>Arch Linux Dotfiles</h1>
   <img

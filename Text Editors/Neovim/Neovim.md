@@ -2,6 +2,9 @@
 title: Neovim
 description: My Neovim configuration for code editing.
 draft: false
+tags:
+  - linux
+  - text-editor
 ---
 
 # Neovim
