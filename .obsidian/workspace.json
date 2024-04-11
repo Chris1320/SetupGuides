@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "7dcac1028eed61b5",
+        "id": "33fd785f152f470a",
         "type": "tabs",
         "children": [
           {
-            "id": "509afef58ce99456",
+            "id": "ccb4ddac2b13c057",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "preview",
-                "source": true
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "index.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -119,9 +114,7 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {
-                "file": "index.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -135,9 +128,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "index.md"
-              }
+              "state": {}
             }
           },
           {
@@ -146,7 +137,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +153,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -183,12 +172,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "509afef58ce99456",
+  "active": "ccb4ddac2b13c057",
   "lastOpenFiles": [
-    "Text Editors/Neovim/Neovim.md",
+    "Shells/ZSH/ZSH.md",
     "index.md",
-    "Operating Systems/Arch Linux/Contents/Automatic Customization.md",
     "Terminals/Termux/Termux.md",
+    "Text Editors/Neovim/Neovim.md",
+    "Operating Systems/Arch Linux/Contents/Automatic Customization.md",
     "Operating Systems/Arch Linux/Contents/Setting Up Waybar.md",
     "Operating Systems/Arch Linux/Contents/Setting Up dunst.md",
     "Operating Systems/Arch Linux/Contents/Setting Up SDDM.md",
@@ -200,7 +190,6 @@
     "Operating Systems/Arch Linux/Contents/Environment.md",
     "Operating Systems/Arch Linux/Arch Linux.md",
     "Operating Systems/Fedora Workstation/Fedora Workstation.md",
-    "Shells/ZSH/ZSH.md",
     "Operating Systems/Arch Linux/Contents",
     "Operating Systems/Arch Linux",
     "assets/images/banner/SetupGuides-banner.png",

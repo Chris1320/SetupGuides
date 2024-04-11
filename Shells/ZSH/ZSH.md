@@ -55,11 +55,11 @@ It will also install the following packages for productivity:
 
 The installation script has been tested on the following platforms:
 
-- [Arch Linux](https://archlinux.org/)
-- [Fedora Workstation](https://fedoraproject.org/workstation) 38/39
+- [[Arch Linux]]
+- [[Fedora Workstation]] 38/39
 - [Kali Linux](https://kali.org/) (Windows Subsystem for Linux)
 - [Linux Mint](https://linuxmint.com/) 21
-- [Termux](https://termux.dev/) Android Terminal Emulator
+- [[Termux]] Android Terminal Emulator
 
 ### Automatic Installation & Customization
 
@@ -69,17 +69,17 @@ The installation script has been tested on the following platforms:
 
 Download and run the install script using either of the following commands:
 
-- Using _wget_:
+- Using *curl*:
 	```bash
-	bash <(wget -q -O - "https://raw.githubusercontent.com/SetupGuides/ZSH/main/install") install
+	bash <(curl -sSf "https://raw.githubusercontent.com/Chris1320/SetupGuides-ZSH/main/install") install
 	```
-- Using _curl_: 
+- Using *wget*:
 	```bash
-	bash <(curl -sSf "https://raw.githubusercontent.com/SetupGuides/ZSH/main/install") install
+	bash <(wget -q -O - "https://raw.githubusercontent.com/Chris1320/SetupGuides-ZSH/main/install") install
 	```
 
 To disable changing the default shell and opening ZSH, run with `--install-only` flag. Example:
 
 ```bash
-bash <(curl -sSf "https://raw.githubusercontent.com/SetupGuides/ZSH/main/install") install --install-only
+bash <(curl -sSf "https://raw.githubusercontent.com/Chris1320/SetupGuides-ZSH/main/install") install --install-only
 ```
