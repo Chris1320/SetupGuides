@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "33fd785f152f470a",
+        "id": "7dcac1028eed61b5",
         "type": "tabs",
         "children": [
           {
-            "id": "ccb4ddac2b13c057",
+            "id": "509afef58ce99456",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "preview",
+                "source": true
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "index.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -114,7 +119,9 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {}
+              "state": {
+                "file": "index.md"
+              }
             }
           }
         ]
@@ -128,7 +135,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "index.md"
+              }
             }
           },
           {
@@ -137,6 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,6 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,10 +183,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ccb4ddac2b13c057",
+  "active": "509afef58ce99456",
   "lastOpenFiles": [
-    "Shells/ZSH/ZSH.md",
     "index.md",
+    "Shells/ZSH/ZSH.md",
     "Terminals/Termux/Termux.md",
     "Text Editors/Neovim/Neovim.md",
     "Operating Systems/Arch Linux/Contents/Automatic Customization.md",
