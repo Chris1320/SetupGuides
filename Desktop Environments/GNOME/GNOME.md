@@ -16,7 +16,7 @@ tags:
 
 1. Open *Settings* and do the following:
     - Select **Dark** in `Appearance > Style`.
-    - Go to `Date & Time > Clock & Calendar` and set the following into their assigned values:
+    - Go to `System > Date & Time > Clock & Calendar` and set the following into their assigned values:
         - Week Day: *Disabled*
         - Date: *Disabled*
         - Seconds: *Enabled*
