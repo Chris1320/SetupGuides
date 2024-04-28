@@ -57,6 +57,8 @@ tags:
 - [Removable Drive Menu](https://extensions.gnome.org/extension/7/removable-drive-menu/)
 <!-- - [Disconnect Wifi](https://extensions.gnome.org/extension/904/disconnect-wifi/) -->
 
+Disable *Background Logo*
+
 ### Installing PaperWM
 
 1. Install [PaperWM](https://extensions.gnome.org/extension/6099/paperwm/).
