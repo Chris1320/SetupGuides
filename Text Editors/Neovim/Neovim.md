@@ -51,6 +51,7 @@ This setup now uses [LazyVim](https://www.lazyvim.org/) as its base. Older versi
 This setup has been tested on the following platforms:
 
 - [[Arch Linux]]
+- [[Fedora Workstation]] 39/40
 - Kali Linux WSL
 - Linux Mint 21
 - [[Termux]] Android Terminal Emulator
@@ -62,6 +63,9 @@ This setup has been tested on the following platforms:
 - [gcc](https://gcc.gnu.org/) or [clang](https://clang.llvm.org/)
 - [make](https://www.gnu.org/software/make/)
 - [NodeJS](https://nodejs.org/)
+- [Tree-sitter](https://tree-sitter.github.io/tree-sitter) (**Optional**; only needed for `:TSInstallFromGrammar`)
+- [composer](https://getcomposer.org/) (**Optional**; only needed for PHP LSPs and linters)
+- [.NET SDK](https://dot.net/) (**Optional**; only needed for `omnisharp` LSP.)
 
 ## Installation
 
