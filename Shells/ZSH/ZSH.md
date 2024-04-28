@@ -64,7 +64,7 @@ It will also install the following packages for productivity:
 The installation script has been tested on the following platforms:
 
 - [[Arch Linux]]
-- [[Fedora Workstation]] 38/39
+- [[Fedora Workstation]] 38/39/40
 - [Kali Linux](https://kali.org/) (Windows Subsystem for Linux)
 - [Linux Mint](https://linuxmint.com/) 21
 - [[Termux]] Android Terminal Emulator
@@ -74,6 +74,16 @@ The installation script has been tested on the following platforms:
 > [!TIP]
 > 
 > It is recommended that you install a [nerd font](https://www.nerdfonts.com/) before running the customization script. I personally use **JetBrainsMono Nerd Font**, but you can use a different one.
+> 
+> ```bash
+> mkdir -p ~/.local/share/fonts/JetBrainsMono
+> cd ~/.local/share/fonts/JetBrainsMono
+> curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
+> unzip JetBrainsMono.zip
+> rm JetBrainsMono.zip
+> ```
+> 
+> After running the above commands, set the font to `JetBrainsMono Nerd Font Mono` in GNOME Terminal.
 
 Download and run the install script using either of the following commands:
 
