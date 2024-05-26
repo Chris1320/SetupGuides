@@ -28,6 +28,11 @@ tags:
 	```bash
 	termux-setup-storage
 	```
+6. Install essential utilities.
+	```bash
+	pkg install file man \
+		git git-lfs gh gnupg
+	```
 
 ## Recommended Customizations
 
