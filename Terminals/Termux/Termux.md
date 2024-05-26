@@ -30,7 +30,7 @@ tags:
 	```
 6. Install essential utilities.
 	```bash
-	pkg install file man \
+	pkg install file man mc \
 		git git-lfs gh gnupg
 	```
 
