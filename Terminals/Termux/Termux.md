@@ -32,6 +32,10 @@ tags:
 	```bash
 	pkg install file man mc \
 		git git-lfs gh gnupg
+
+	# OPTIONAL: for development
+	pkg install clang nodejs python
+	pip install pipx
 	```
 
 ## Recommended Customizations
