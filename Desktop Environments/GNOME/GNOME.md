@@ -35,16 +35,30 @@ tags:
         - Icons: **Papirus-Dark**
         - Shell: **Catppuccin-Mocha-Standard-Teal-Dark**
         - Legacy Applications: **Catppuccin-Mocha-Standard-Teal-Dark**
-7. [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
+	- Windows
+		- Center New Windows
+	- Startup Applications
+		- EasyEffects
+		- KeePassXC
+		- Vesktop
+1. [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
     - Enable `Applications > Applications blur (beta)`.
-    - Add GNOME Terminal to Applications blur to the whitelist.
-8. [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
+    - Add the following classes to Applications blur whitelist:
+	    - `gnome-terminal-server`
+	    - `io.bassi.Amberol`
+	    - `obsidian`
+	    - `io.missioncenter.MissionCenter`
+	    - `org.gnome.SystemMonitor`
+2. [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
     - Disable `Visibility > Keyboard Layout`
     - Disable `Visibility > Window Picker Caption`
     - Disable `Visibility > Background Menu`
     - Change `Behavior > Startup Status` to `Desktop`.
-9. [User Avatar In Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
+3. [User Avatar In Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
     - Set `Position` to `Left`.
+4. [QSTweak](https://extensions.gnome.org/extension/5446/quick-settings-tweaker/)
+	- Disable `Noti&Media > Notification Widget`.
+	- Disable `Other > Remove Notifications On Date Menu`
 
 ### Installing the Rest of the GNOME Extensions
 
@@ -53,13 +67,20 @@ tags:
 - [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support/)
 - [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
+	- Private Mode: `ALT+SUPER+V`
+	- Toggle The Menu: `SUPER+V`
+	- Clear History: `SHIFT+SUPER+V`
 - [GSConnect](https://extensions.gnome.org/extension/1319/gsconnect/)
 - [Removable Drive Menu](https://extensions.gnome.org/extension/7/removable-drive-menu/)
 <!-- - [Disconnect Wifi](https://extensions.gnome.org/extension/904/disconnect-wifi/) -->
 
 Disable *Background Logo*
 
+### Customize Keyboard Shortcuts
+
 ### Installing PaperWM
+
+> [!WARNING] Following this section is not yet recommended as I'm still experimenting with it.
 
 1. Install [PaperWM](https://extensions.gnome.org/extension/6099/paperwm/).
 2. Edit settings

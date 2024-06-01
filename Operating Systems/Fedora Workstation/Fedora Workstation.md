@@ -9,11 +9,11 @@ tags:
 
 This is a guide on how I customize my Fedora installation. [Fedora Workstation](https://fedoraproject.org/) is a great operating system if you want something between a beginner-friendly Linux distribution (e.g., [Linux Mint](https://linuxmint.com/)) and a highly customizable and experimental distro (e.g., [Arch Linux](https://archlinux.org/)).
 
-> [!WARNING] This guide is not yet complete and might break your system.
+> [!WARNING] This guide is still in beta.
 
 ## Installation
 
-> [!NOTE] This guide is tested on Fedora Workstation 40, but it should also work on Fedora Workstation 39.
+> [!NOTE] This guide is tested on **Fedora Workstation 40**.
 
 ### Installing Fedora Workstation
 
@@ -34,7 +34,7 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 
 > [!WARNING]
 > 
-> **Do not** enable third-party repositories when asked.
+> **Do not** enable third-party repositories when asked. We are going to manually enable it when we [[#2. Configure Package Managers|configure our package managers]].
 
 ### Setting Up The System
 
@@ -42,18 +42,20 @@ Open the terminal and follow the instructions.
 
 #### 1. Set the Machine Hostname
 
-There are two ways to do this:
+There are two ways to do this. We can change the system hostname normally
 
 ```bash
-# change the system hostname normally
 hostnamectl hostname <YOUR_DESIRED_HOSTNAME>
+```
 
-# or specify different static and pretty hostnames
+or specify different *static* and *pretty* hostnames
+
+```bash
 hostnamectl hostname --static <YOUR_DESIRED_STATIC_HOSTNAME>
 hostnamectl hostname --pretty <YOUR_DESIRED_PRETTY_HOSTNAME>
 ```
 
-Run `man hostnamectl` for more information.
+> [!INFO] Run `man hostnamectl` for more information.
 
 #### 2. Configure Package Managers
 
@@ -69,7 +71,8 @@ Since we did not enable the *Third-Party Repositories* when we were asked earlie
 
 ```bash
 # Enable RPMFusion repositories
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+sudo dnf install \
+	https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf config-manager --enable fedora-cisco-openh264
 sudo dnf groupupdate core
@@ -83,7 +86,7 @@ More setup information can be found in the following links:
 - [RPMFusion](https://rpmfusion.org/Configuration)
 - [Flathub](https://flathub.org/setup/Fedora)
 
-> [!TIP]
+> [!TIP]- Verifying results
 > 
 > Verify the results by checking the outputs of the following commands:
 > 
@@ -95,7 +98,7 @@ More setup information can be found in the following links:
 
 #### 3. Update Your System
 
-Regardless of the operating system you use, it is a good practice to update the software installed after installing your new system.
+Regardless of the operating system you use, it is a good practice to update your software after installing the new system.
 
 ```bash
 # update dnf and flatpak packages
@@ -109,17 +112,17 @@ sudo fwupdmgr get-updates
 sudo fwupdmgr update
 ```
 
-> [!INFO] A reboot is recommended after update.
+> [!INFO] A reboot is recommended after updating.
 
 #### 4. Install Utilities
 
 ```bash
 # install essential CLI utilities and libraries
 sudo dnf install \
-	git git-lfs gh p7zip p7zip-gui \
-    file-roller dmg2img trash-cli \
-    openssl inxi wl-clipboard \
-    python3-pip pipx
+	git git-lfs gh \
+	unrar p7zip p7zip-gui \
+    file-roller dmg2img trash-cli tmux \
+    openssl inxi wl-clipboard
 
 # install GNOME/Nautilus customization helpers and extensions
 sudo dnf install \
@@ -142,18 +145,25 @@ sudo dnf group upgrade --with-optional Multimedia
 flatpak install -y flatseal
 ```
 
-### Ricing Your New System
+Install other utilities that I frequently use/nice to have.
 
-> [!TIP]
-> 
-> I recommend that you use the following customization
-> guides first:
->
-> - [catppuccin/gnome-terminal](https://github.com/catppuccin/gnome-terminal)
-> - [[ZSH]]
-> - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor)
+```bash
+sudo dnf install python3-pip pipx tealdeer
+pipx install howdoi yt-dlp magika jupyterlab poetry
+flatpak install flathub org.keepassxc.KeePassXC
+flatpak install flathub md.obsidian.Obsidian
+```
 
-#### 1. Replace Firefox Stable with Firefox Nightly
+#### 5. Language
+
+Open Settings and go to `Keyboard > Input Sources`. Add the following languages:
+
+- Japanese (Anthy)
+- Korean (Hangul)
+
+You can now write Japanese and Korean by switching to these languages using `WIN+SPACE`.
+
+#### 6. Replacing the Default Browser
 
 I have been using Firefox Nightly in my Windows machine for more than 4 years to get the latest features and fixes, and I did not have any major problems about it. I don't think it hurts to use Firefox Nightly than Firefox Stable, plus I get that good-looking blue Firefox icon.
 
@@ -165,8 +175,10 @@ sudo tar -xf ~/Downloads/FirefoxNightly.tar.bz2 --one-top-level=~/.local/share/f
 # OPTIONAL: move old Firefox data to trash
 trash ~/.mozilla
 
-# OPTIONAL: install speech-dispatcher for text-to-speech support
+# OPTIONAL: install and enable speech-dispatcher for text-to-speech support
 sudo dnf install speech-dispatcher
+systemctl start speech.dispatcherd.service
+systemctl enable speech.dispatcherd.service
 
 # run Firefox Nightly once to set it as default browser. You can now also configure it at this point or restore an existing profile backup.
 ~/.local/share/firefox-nightly/firefox
@@ -175,32 +187,86 @@ sudo dnf install speech-dispatcher
 sudo dnf remove firefox
 ```
 
-Add the desktop shortcut to the applications list by running `sudo desktop-file-install firefox-nightly.desktop` and create a symlink of the Firefox executable to `~/.local/bin/`.
+> [!TIP]
+> 
+> Add [the desktop shortcut](https://github.com/Chris1320/SetupGuides-dotfiles/tree/main/firefox-nightly) to the applications list by running `sudo desktop-file-install firefox-nightly.desktop` and create a symlink of the Firefox executable to `~/.local/bin/`.
+> 
+> > [!CAUTION] Make sure to edit the desktop file's filepaths first!
 
-#### 2. Setting Up Audio And Video
-
-Install EasyEffects.
-
-```bash
-flatpak install flathub com.github.wwmm.easyeffects
-```
-
-### Others
+I also have a backup browser as a fallback. I use [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium), available as a flatpak.
 
 ```bash
-sudo dnf install python3-pip pipx tealdeer
-pipx install howdoi yt-dlp magika
-flatpak install flathub org.keepassxc.KeePassXC
-flatpak install flathub md.obsidian.Obsidian
+flatpak install flathub io.github.ungoogled_software.ungoogled_chromium
 ```
 
-Nautilus:
+### Ricing Your New System
 
-- Sort folders before files
-- Create Link
-- Delete Permanently
+> [!QUESTION]
+> 
+> I recommend that you use the following customization
+> guides first:
+>
+> - [catppuccin/gnome-terminal](https://github.com/catppuccin/gnome-terminal) or install `kitty` instead.
+> - [[ZSH]]
+> - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor)
 
-update xdg dirs
+#### 1. Setting Up Audio And Video
+
+Install EasyEffects, OBS Studio, and its essential plugins..
+
+```bash
+# install EasyEffects and OBS Studio
+flatpak install flathub com.github.wwmm.easyeffects com.obsproject.Studio
+sudo dnf install v4l2loopback  # To use OBS Studio's virtual camera feature
+
+# Create the `plugins/` directory in OBS Studio.
+mkdir -p "~/.var/app/com.obsproject.Studio/config/obs-studio/plugins"
+# Optional; to use smartphone as webcam (proprietary software)
+flatpak install flathub com.obsproject.Studio.Plugin.DroidCam
+```
+
+Download and install [Composite Blur](https://obsproject.com/forum/resources/composite-blur.1780/) plugin for OBS Studio.
+
+#### 2. Configuring Nautilus
+
+Open Nautilus and open its preferences panel (`CTRL+,`)
+
+- General
+	- *Enable* `Sort folders before files` option
+- Optional Context Menu Actions
+	- *Show* `Create Link`
+	- *Show* `Delete Permanently`
+
+#### 3. Update XDG Directories
+
+I want my home directory to be clean as possible. Dotfiles are everywhere, but fortunately they can be hidden in Nautilus. However, default user directories that I do not frequently visit cannot be hidden. Edit the `~/.config/user-dirs.dirs` file and move the directories to where you want to. Alternatively, you can run the following commands to move the `Desktop/`, `Templates/`, and `Public/` directories inside `~/.desktop/`.
+
+```bash
+xdg-user-dirs-update --set XDG_DESKTOP_DIR "$HOME/.desktop/Desktop"
+xdg-user-dirs-update --set XDG_TEMPLATES_DIR "$HOME/.desktop/Templates"
+xdg-user-dirs-update --set XDG_PUBLICSHARE_DIR "$HOME/.desktop/Public"
+```
+
+> [!NOTE]- My `xdg-user-dirs` Configuration
+> 
+> ```bash
+> # This file is written by xdg-user-dirs-update
+> # If you want to change or add directories, just edit the line you're
+> # interested in. All local changes will be retained on the next run.
+> # Format is XDG_xxx_DIR="$HOME/yyy", where yyy is a shell-escaped
+> # homedir-relative path, or XDG_xxx_DIR="/yyy", where /yyy is an
+> # absolute path. No other format is supported.
+> # 
+> XDG_DESKTOP_DIR="$HOME/.desktop/Desktop"
+> XDG_DOWNLOAD_DIR="$HOME/Downloads"
+> XDG_TEMPLATES_DIR="$HOME/.desktop/Templates"
+> XDG_PUBLICSHARE_DIR="$HOME/.desktop/Public"
+> XDG_DOCUMENTS_DIR="$HOME/Documents"
+> XDG_MUSIC_DIR="$HOME/Music"
+> XDG_PICTURES_DIR="$HOME/Pictures"
+> XDG_VIDEOS_DIR="$HOME/Videos"
+> 
+> ```
 
 #### 7. Customizing GNOME
 
@@ -230,21 +296,36 @@ Open *Flatseal*, select *Vesktop*, and in the `Portals` section, enable the foll
 > xdg-run/discord-ipc-*
 > ```
 > 
+> Create a symlink of the latter pointing to the former.
+> 
 > You can read more information on [flathub/dev.vencord.Vesktop](https://github.com/flathub/dev.vencord.Vesktop#discord-rich-presence).
 
 ### Running Windows Software and Gaming
 
 ```bash
 flatpak install flathub com.valvesoftware.Steam
-flatpak install com.valvesoftware.Steam net.lutris.Lutris
+flatpak install flathub com.usebottles.bottles
+flatpak install flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+flatpak install flathub net.davidotek.pupgui2
+sudo dnf install gamemode
+
+# Enable Steam Proton Integration
+flatpak override --user com.usebottles.bottles --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
+# Grant all flatpak applications read-only access to MangoHUD config
+flatpak override --user --filesystem=xdg-config/MangoHud:ro
+# Enable MangoHUD on all Steam games
+flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 ```
 
-Open Lutris and go to settings
+Install Proton-GE. Set `Steam Settings > Compatibility > Run other titles with` to `GE-Proton`.
 
-- `Interface > Use dark theme`: *Enabled*
-- `Interface > Enable Discord Rich Presence for Available Games`: *Enabled*
-- `Storage > Game library`: `~/.local/share/lutris`
-- `Storage > Installer cache`: `~/.cache/lutris`
+> [!TIP]+
+> 
+> When you are going to play a game, enable *mangohud* and *gamemode* by adding the following to the launch options:
+> 
+> ```bash
+> mangohud gamemoderun %command%
+> ```
 
 ### Setting Up Virtualization
 
@@ -292,3 +373,9 @@ lsmod | grep kvm
 > > ```bash
 > > echo 'options kvm_amd nested=1' | sudo tee -a /etc/modprobe.d/kvm.conf
 > > ```
+
+### Running Android Applications
+
+```bash
+sudo dnf install waydroid
+```
