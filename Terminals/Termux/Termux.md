@@ -30,7 +30,7 @@ tags:
 	```
 6. Install essential utilities.
 	```bash
-	pkg install file man mc \
+	pkg install file man mc tree \
 		git git-lfs gh gnupg
 
 	# OPTIONAL: for development
