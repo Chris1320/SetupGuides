@@ -120,7 +120,7 @@ sudo fwupdmgr update
 # install essential CLI utilities and libraries
 sudo dnf install \
 	git git-lfs gh \
-	unrar p7zip p7zip-gui \
+	mc unrar p7zip p7zip-gui \
     file-roller dmg2img trash-cli tmux \
     openssl inxi wl-clipboard
 
@@ -170,15 +170,15 @@ I have been using Firefox Nightly in my Windows machine for more than 4 years to
 ```bash
 # Download the archive and extract its contents to ~/.local/share/firefox-nightly
 wget -O ~/Downloads/FirefoxNightly.tar.bz2 "https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US"
-sudo tar -xf ~/Downloads/FirefoxNightly.tar.bz2 --one-top-level=~/.local/share/firefox-nightly --strip-components=1
+tar -xf ~/Downloads/FirefoxNightly.tar.bz2 --one-top-level=~/.local/share/firefox-nightly --strip-components=1
 
 # OPTIONAL: move old Firefox data to trash
 trash ~/.mozilla
 
 # OPTIONAL: install and enable speech-dispatcher for text-to-speech support
 sudo dnf install speech-dispatcher
-systemctl start speech.dispatcherd.service
-systemctl enable speech.dispatcherd.service
+systemctl enable speech-dispatcherd.service
+systemctl start speech-dispatcherd.service
 
 # run Firefox Nightly once to set it as default browser. You can now also configure it at this point or restore an existing profile backup.
 ~/.local/share/firefox-nightly/firefox
@@ -201,7 +201,7 @@ flatpak install flathub io.github.ungoogled_software.ungoogled_chromium
 
 ### Ricing Your New System
 
-> [!QUESTION]
+> [!QUESTION] Prerequisites
 > 
 > I recommend that you use the following customization
 > guides first:
