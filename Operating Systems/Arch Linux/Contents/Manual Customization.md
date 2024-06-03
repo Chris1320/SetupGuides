@@ -7,7 +7,10 @@ Now that you have a new Arch Linux system, we will now start performing customiz
 [Install Paru](https://github.com/Morganamilo/paru). This is the AUR helper that we will use.
 
 ```bash
-sudo pacman -S --needed base-devel  # If it is not yet installed
+sudo pacman -S --needed base-devel rustup  # If it is not yet installed
+
+# Install the latest stable version of Rust
+rustup toolchain install stable
 
 # Clone the repo in a temp directory.
 export PARU_TMP_DIR=$(mktemp -d)
@@ -43,6 +46,8 @@ We are going to use the following fonts and icons, so it's best to install it no
 paru -Syu otf-font-awesome ttf-jetbrains-mono-nerd ttf-noto-nerd \
     papirus-icon-theme papirus-folders-catppuccin-git
 ```
+
+> [!CAUTION] If `papirus-folders-catppuccin-git` fails to install, just re-login or reboot the system after installing `papirus-icon-theme`.
 
 ## Useful Packages
 

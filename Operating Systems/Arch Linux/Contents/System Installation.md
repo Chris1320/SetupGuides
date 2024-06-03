@@ -1,6 +1,6 @@
 # System Installation
 
-If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [[Manual Customization|manual]]] or [[Automatic Customization|automatic]] customization steps.
+If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [[Manual Customization|manual]] or [[Automatic Customization|automatic]] customization steps.
 
 I recommend that you read the [Arch Linux Wiki](https://wiki.archlinux.org/)'s [installation guide](https://wiki.archlinux.org/title/Installation_guide) instead since it is more updated and accurate than a guide that is maintained by one hobbyist like me. I also recommend reading [arch.d3sox.me](https://arch.d3sox.me/) if you have trouble understanding the wiki.
 
@@ -36,7 +36,7 @@ station wlan0 connect <SSID>
 exit
 ```
 
-> If you are having problems turning on your wireless NIC, make sure that it is not being soft-blocked by `rfkill`.
+> [!TIP] If you are having problems turning on your wireless NIC, make sure that it is not being soft-blocked by `rfkill`.
 
 To make sure that you have an internet connection, ping the Arch Linux website.
 
@@ -76,19 +76,30 @@ In my case, my main storage device is located at `/dev/sda`. So we run the follo
 fdisk /dev/sda
 ```
 
-Partition the device following the structure shown in [[Environment#Disk Partitions|Environment > Disk Partitions]]]. If you have different needs, you can see more examples in the [Arch Linux Wiki](https://wiki.archlinux.org/title/Partitioning#Example_layouts) and [d3sox](https://arch.d3sox.me/installation/partitioning-formatting#size-recommendations)'s guide. After saving the changes made by `fdisk`, create the filesystems.
+Partition the device following the structure shown in [[Environment#Disk Partitions|Environment > Disk Partitions]]. If you have different needs, you can see more examples in the [Arch Linux Wiki](https://wiki.archlinux.org/title/Partitioning#Example_layouts) and [d3sox](https://arch.d3sox.me/installation/partitioning-formatting#size-recommendations)'s guide. After saving the changes made by `fdisk`, create the filesystems.
 
 ```bash
-mkfs.fat -F32 -n EFI /dev/sda1  # Create a FAT32 filesystem in `/dev/sda1` with label "EFI"
-mkswap -L SWAP /dev/sda2  # Create a SWAP filesystem in `/dev/sda2` with label "SWAP"
-mkfs.btrfs -L ROOT /dev/sda3  # Create a BTRFS filesystem in `/dev/sda3` with label "ROOT"
-mkfs.ext4 -L HOME /dev.sda4  # Create an EXT4  filesystem in `/dev/sda4` with label "HOME"
+mkfs.fat -F32 -n EFI /dev/sda1  # Create a FAT32 filesystem in `/dev/sda1` labeled "EFI"
+mkfs.ext4 -L BOOT /dev/sda2  # Create an EXT4 filesystem in `/dev/sda2` labeled "BOOT"
+mkfs.btrfs -L ARCH /dev/sda3  # Create a BTRFS filesystem in `/dev/sda3` labeled "ARCH"
+
+# Mount /mnt to create Btrfs subvolumes.
+mount --mkdir /dev/sda3 /mnt
+
+# Create Btrfs subvolumes
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@snapshots
+
+# Unmount /mnt
+umount /mnt
 
 # Mount the partitions in their respective mountpoints.
-mount /dev/sda3 /mnt
-mount --mkdir /dev/sda1 /mnt/boot
-mount --mkdir /dev/sda4 /mnt/home
-swapon /dev/sda2
+mount --mkdir -o noatime,compress=zstd:1,subvol=@ /dev/sda3 /mnt
+mount --mkdir -o noatime,compress=zstd:1,subvol=@home /dev/sda3 /mnt/home
+mount --mkdir -o noatime,compress=zstd:1,subvol=@snapshots /dev/sda3 /mnt/snapshots
+mount --mkdir /dev/sda2 /mnt/boot
+mount --mkdir /dev/sda1 /mnt/boot/efi
 ```
 
 ## Installing Arch Linux
@@ -123,10 +134,11 @@ Use the `pacstrap` command to install Arch Linux into your system.
 pacstrap -K /mnt \
     base base-devel linux linux-firmware linux-headers \
     networkmanager wpa_supplicant \
-    sysfsutils usbutils btrfs-progs e2fsprogs \
+    sysfsutils usbutils btrfs-progs e2fsprogs dosfstools lvm2 \
     inetutils dhcping traceroute \
-    nano less which tree sudo \
-    man-db man-pages
+    nano less which tree sudo reflector \
+    man-db man-pages \
+    git git-lfs xdg-utils xdg-user-dirs
 ```
 
 Append more package names as you wish. This command may take a while to complete.
@@ -140,7 +152,7 @@ genfstab -L /mnt >> /mnt/etc/fstab  # Define by labels
 genfstab -U /mnt >> /mnt/etc/fstab  # Define by UUIDs
 ```
 
-> **NOTE**: Check the `/mnt/etc/fstab` file for any errors.
+> [!NOTE] Check the `/mnt/etc/fstab` file for any errors.
 
 ### Chroot into Your New Arch Linux System
 
@@ -148,18 +160,97 @@ genfstab -U /mnt >> /mnt/etc/fstab  # Define by UUIDs
 arch-chroot /mnt
 ```
 
+### Configure Pacman
+
+```bash
+nano /etc/pacman.conf
+```
+
+#### Enable `multilib` Repository
+
+Uncomment the following lines to make 32-bit libraries available to download.
+
+```text
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+#### Enable Parallel Downloads
+
+Uncomment the following line to enable parallel downloading of files. You can change the value to whatever you like.
+
+```text
+ParallelDownloads = 5
+```
+
+#### Other Stuff
+
+Uncomment/Add the following lines under `Misc options`:
+
+1. `Color`
+2. `ILoveCandy`
+3. `VerbosePkgLists`
+
+#### Post-Configuration
+
+After editing the configuration file, you may now save and close it. Run `pacman -Syu` to update the repositories.
+
+### Add `zram`
+
+Instead of having a swap partition, we are going to use zram instead.
+
+```bash
+pacman -S zram-generator
+```
+
+After installation, create/edit `/etc/systemd/zram-generator.conf` and replace its contents with the following:
+
+```
+[zram0]
+zram-size = min(ram, 8192)
+compression-algorithm = zstd
+```
+
+We can also optimize our `zram` configuration by creating `/etc/sysctl.d/99-vm-zram-parameters.conf` and adding the following in the file:
+
+```
+vm.swappiness = 180
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
+vm.page-cluster = 0
+```
+
+### Installing The Graphics Driver
+
+Depending on your graphics card, run the appropriate command to install the graphics drivers needed:
+
+| Manufacturer         | Command                                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ |
+| AMD                  | `pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver mesa-vdpau` |
+| Intel                | `pacman -S mesa lib32-mesa xf86-video-intel vulkan-intel`                                                    |
+| Nvidia (Proprietary) | `pacman -S nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils`                                      |
+| Nvidia (Nouveau)     | `pacman -S mesa xf86-video-nouveau`                                                                          |
+
+### `initramfs` Setup
+
+Now, we need to edit our initial ram disk by running `nano /etc/mkinitcpio.conf`. Inside the parenthesis of `MODULES=()`, add the following (separated by a space):
+
+- `btrfs` and `ext4`, since we are using Btrfs and EXT4 as our filesystems.
+- `amdgpu` if you are running AMD GPU, `i915` if Intel, `nvidia nvidia_modeset nvidia_uvm nvidia_drm` if you use proprietary Nvidia drivers, or `nouveau` if you are using open-source Nvidia drivers.
+
+As an example, my machine has a built-in Intel GPU so I have the following:
+
+```bash
+MODULES=(btrfs ext4 i915)
+```
+
+After editing, we run `mkinitcpio -P` to process all preset files.
+
 ### Install Bootloader
 
 In this step, I assume that you are installing on a UEFI system. Otherwise, check [d3sox](https://arch.d3sox.me/installation/install-bootloader) for more information.
 
-```bash
-pacman -S grub efibootmgr os-prober
-mkdir -p /boot/EFI/GRUB
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-> [!TIP]
+> [!TIP]+
 > 
 > If you want to automatically detect other operating systems, run `nano /etc/default/grub` and add/uncomment the following line:
 >
@@ -167,7 +258,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 > GRUB_DISABLE_OS_PROBER=false
 > ```
 
-> [!NOTE]
+```bash
+pacman -S grub efibootmgr os-prober grub-btrfs
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+> [!NOTE]+
 > 
 > If you forgot to perform `grub-mkconfig` and shut down/reboot the system instead (which I _totally_ did not do while installing Arch), just boot into your live USB again, mount the partitions, and `chroot` into your system.
 
@@ -209,41 +306,6 @@ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 hwclock --systohc
 ```
 
-### Configure Pacman
-
-```bash
-nano /etc/pacman.conf
-```
-
-#### Enable `multilib` Repository
-
-Uncomment the following lines to make 32-bit libraries available to download.
-
-```text
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-```
-
-#### Enable Parallel Downloads
-
-Uncomment the following line to enable parallel downloading of files. You can change the value to whatever you like.
-
-```text
-ParallelDownloads = 5
-```
-
-#### Other Stuff
-
-Uncomment/Add the following lines under `Misc options`:
-
-1. `Color`
-2. `ILoveCandy`
-3. `VerbosePkgLists`
-
-#### Post-Configuration
-
-After editing the configuration file, you may now save and close it. Run `pacman -Syu` to update the repositories.
-
 ### Setting Up Users
 
 > [!TIP] It is recommended to use strong passwords for your user accounts.
@@ -256,12 +318,9 @@ passwd
 
 #### Add A Non-Root User Account
 
-A common security practice is that you should **not** use the root account
-unless needed and you know that it is safe to run. To create a non-root
-user, run the commands below and change the parameters to the values you desire.
+A common security practice is that you should **not** use the root account unless needed and you know that it is safe to run. To create a non-root user, run the commands below and change the parameters to the values you desire.
 
-> For more information, visit the
-> [Arch wiki](https://wiki.archlinux.org/title/Users_and_groups).
+> [!QUESTION] For more information, visit the [Arch wiki](https://wiki.archlinux.org/title/Users_and_groups).
 
 ```bash
 # Change <USERNAME> with your desired username.
@@ -278,17 +337,18 @@ EDITOR=nano visudo
 And uncomment the following line to allow members of the group `wheel` to execute any command:
 
 ```text
-%wheel ALL=(ALL) ALL
+%wheel ALL=(ALL:ALL) ALL
 ```
 
-## Enable `NetworkManager` Service
+### Enable `NetworkManager` Service
 
 ```bash
 systemctl enable NetworkManager.service
-systemctl start NetworkManager.service
 ```
 
-### Enable Wireless Network Interface
+#### Enable Wireless Network Interface
+
+> [!ERROR] This section will be removed in the future as this is not necessary, and will **result in an error** instead.
 
 You can enable the WLAN interface by using the `nmcli` command.
 

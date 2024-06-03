@@ -8,15 +8,23 @@ I am using Arch Linux on my laptop because it gives me a functional system while
 
 ### Disk Partitions
 
-During the installation I've configured my machine to have the following
-disk partitions:
+During the installation I've configured my machine to have the following disk partitions:
 
-| Device      | Size                    | Mountpoint  | Filesystem | Label | Description       |
-| ----------- | ----------------------- | ----------- | ---------- | ----- | ----------------- |
-| `/dev/sda1` | 300M                    | `/mnt/boot` | FAT32      | EFI   | EFI Partition     |
-| `/dev/sda2` | 8G                      | SWAP        | SWAP       | SWAP  | Swap Partition    |
-| `/dev/sda3` | 60G                     | `/mnt`      | BTRFS      | ROOT  | `/` Partition     |
-| `/dev/sda4` | Remaining of the Device | `/mnt/home` | EXT4       | HOME  | `/home` Partition |
+| Device      | Size                    | Mountpoint      | Filesystem | Label | Description                |
+| ----------- | ----------------------- | --------------- | ---------- | ----- | -------------------------- |
+| `/dev/sda1` | 600M                    | `/mnt/boot/efi` | FAT32      | EFI   | The EFI partition          |
+| `/dev/sda2` | 1G                      | `/mnt/boot`     | EXT4       | BOOT  | The boot partition         |
+| `/dev/sda3` | Remaining of the Device | `/mnt`          | Btrfs      | ARCH  | The root and home parition |
+
+`/dev/sda3` will be a [Btrfs filesystem](https://wiki.archlinux.org/title/Btrfs) with the following subvolumes:
+
+| Subvolume         | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `/mnt/@root`      | The root partition                          |
+| `/mnt/@home`      | The home partition                          |
+| `/mnt/@snapshots` | The partition where snapshots will be saved |
+
+I used to have a dedicated swap partition, but I am now using [zram](https://wiki.archlinux.org/title/Zram) instead.
 
 ### Programs Used
 
