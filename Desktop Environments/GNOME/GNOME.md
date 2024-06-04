@@ -74,58 +74,129 @@ tags:
 - [Removable Drive Menu](https://extensions.gnome.org/extension/7/removable-drive-menu/)
 <!-- - [Disconnect Wifi](https://extensions.gnome.org/extension/904/disconnect-wifi/) -->
 
-Disable *Background Logo*
+Disable the *Background Logo* built-in extension.
 
-### Customize Keyboard Shortcuts
+### Custom Keyboard Shortcuts
 
-### Installing PaperWM
+- Accessibility
+	- Turn screen reader on or off: *Disabled*
+- Launchers
+	- Launch Help Browser: *Disabled*
+- Navigation
+	- Move window one monitor down: *Disabled*
+	- Move window one monitor to the left: *Disabled*
+	- Move window one monitor to the right: *Disabled*
+	- Move window one monitor up: *Disabled*
+	- Move window one workspace to the left: `SHIFT+CTRL+ALT+LEFT`
+	- Move window one workspace to the right: `SHIFT+CTRL+ALT+RIGHT`
+	- Move window to last workspace: *Disabled*
+	- Move window to workspace 1: `SHIFT+SUPER+1`
+	- Move window to workspace 2: `SHIFT+SUPER+2`
+	- Move window to workspace 3: `SHIFT+SUPER+3`
+	- Move window to workspace 4: `SHIFT+SUPER+4`
+	- Switch system controls directly: *Disabled*
+	- Switch to last workspace: *Disabled*
+	- Switch to workspace 1: `ALT+SUPER+1`
+	- Switch to workspace 2: `ALT+SUPER+2`
+	- Switch to workspace 3: `ALT+SUPER+3`
+	- Switch to workspace 4: `ALTB+SUPER+4`
+	- Switch to workspace on the left: `CTRL+ALT+LEFT`
+	- Switch to workspace on the right: `CTRL+ALT+RIGHT`
+	- Switch windows directly: *Disabled*
+	- Switch windows of an app directly: *Disabled*
+- Screenshots
+	- Record a screencast interactively: `SHIFT+SUPER+R`
+	- Take a screenshot: `SUPER+S`
+	- Take a screenshot interactively: `SHIFT+SUPER+S`
+	- Take a screenshot of a window: `ALT+SUPER+S`
+- Sound and Media
+	- Microphone mute/unmute: `SUPER+M`
+- System
+	- Focus the active notification: `CTRL+SUPER+X`
+	- Log out: `SHIFT+CTRL+ALT+DEL`
+	- Open the quick settings menu: `SUPER+D`
+	- Restore the keyboard shortcuts: *Disabled*
+	- Show all apps: *Disabled*
+	- Show the notification list: `SUPER+N`
+	- Show the run command prompt: `SUPER+R`
+- Windows
+	- Close window: `SUPER+W`
+	- Maximize window: *Disabled*
+	- Restore window: *Disabled*
+	- Toggle fullscreen mode: `SUPER+F`
+	- View split on left: *Disabled*
+	- View split on right: *Disabled*
+- Custom Shortcuts
+	- System Monitor
+		- Command: `gnome-system-monitor`
+		- Shortcut: `SHIFT+SUPER+ESC`
 
-> [!WARNING] Following this section is not yet recommended as I'm still experimenting with it.
+### GNOME Window Tiling
 
-1. Install [PaperWM](https://extensions.gnome.org/extension/6099/paperwm/).
-2. Edit settings
-    - Turn on `Enable Gnome Workspace Indicator Pill`
-3. Adjust keybindings.
+I want a similar experience with Hyprland in GNOME, so I use [Forge](https://extensions.gnome.org/extension/4481/forge/) to tile my windows. Install the extension and open its settings.
 
-| Operation                                                                 | Keybind                |
-| ------------------------------------------------------------------------- | ---------------------- |
-| Open new window                                                           | `Super+Return`         |
-| Close the active window                                                   | `Super+W`              |
-| Switch to the next window                                                 | *Disabled*             |
-| Switch to the previous window                                             | *Disabled*             |
-| Switch to the next window (with wrap-around)                              | `Super+]`              |
-| Switch to the previous window (with wrap-around)                          | `Super+[`              |
-| Switch to previously active window                                        | `Super+Tab`            |
-| Switch to previously active window, backward order                        | `Shift+Super+Tab`      |
-| Switch to previously active scratch window                                | `Ctrl+Super+Tab`       |
-| Switch to previously active scratch window, backward order                | `Shift+Ctrl+Super+Tab` |
-| Move the active window to the left                                        | `Shift+Super+Left`     |
-| Move the active window to the right                                       | `Shift+Super+Right`    |
-| Move the active window up                                                 | `Shift+Super+Up`       |
-| Move the active window down                                               | `Shift+Super+Down`     |
-| Activate the window under mouse cursor                                    | `Super+Backslash`      |
-| Switch to previously active workspace                                     | *Disabled*             |
-| Switch to previously active workspace, backward order                     | *Disabled*             |
-| Move the active window to the previously active workspace                 | *Disabled*             |
-| Move the active window to the previously active workspace, backward order | *Disabled*             |
-| Switch to workspace above (ws only from current monitor)                  | `Alt+Super+Up`         |
-| Switch to workspace below (ws only from current monitor)                  | `Alt+Super+Down`       |
-| Move window one workspace up                                              | `Shift+Alt+Super+Up`   |
-| Move window one workspace down                                            | `Shift+Alt+Super+Down` |
-| Switch to the right monitor                                               | `Ctrl+Super+Right`     |
-| Switch to the left monitor                                                | `Ctrl+Super+Left`      |
-| Switch to the above monitor                                               | `Ctrl+Super+Up`        |
-| Switch to the below monitor                                               | `Ctrl+Super+Down`      |
-| Swap workspace with monitor to the right                                  | *Disabled*             |
-| Swap workspace with monitor to the left                                   | *Disabled*             |
-| Swap workspace with monitor above                                         | *Disabled*             |
-| Swap workspace with monitor below                                         | *Disabled*             |
-| Move the active window to the right monitor                               | `Ctrl+Alt+Super+Right` |
-| Move the active window to the left monitor                                | `Ctrl+Alt+Super+Left`  |
-| Move the active window to the above monitor                               | `Ctrl+Alt+Super+Up`    |
-| Move the active window to the below monitor                               | `Ctrl+Alt+Super+Down`  |
-| Toggles the floating scratch layer                                        | `Super+Tilde`          |
-| Attach/detach the active window into the scratch layer                    | `Shift+Super+~`        |
+- Settings
+	- Default Drag-and-Drop Center Layout: <u>Swap</u>
+- Appearance
+	- Color
+		- Tiled Focus Hint and Preview
+			- Border Color: `#94e2d5`
+		- Tabbed Focus Hint and Preview
+			- Border Color: `#94e2d5`
+		- Stacked Focus Hint and Preview
+			- Border Color: `#94e2d5`
+		- Floated Focus Hint
+			- Border Color: `#94e2d5`
+		- Split Direction Hint
+			- Border Color: `#f9e2af`
+- Keyboard
+	- Update Shortcuts
+		- Window Shortcuts
+			- `window-focus-down`: `<Super>Down`
+			- `window-focus-left`: `<Super>Left`
+			- `window-focus-right`: `<Super>Right`
+			- `window-focus-up`: `<Super>Up`
+			- `window-gap-size-decrease`: *unset*
+			- `window-gap-size-increase`: *unset*
+			- `window-move-down`: *unset*
+			- `window-move-left`: *unset*
+			- `window-move-right`: *unset*
+			- `window-move-up`: *unset*
+			- `window-resize-bottom-decrease`: *unset*
+			- `window-resize-bottom-increase`: *unset*
+			- `window-resize-left-decrease`: *unset*
+			- `window-resize-left-increase`: *unset*
+			- `window-resize-right-decrease`: *unset*
+			- `window-resize-right-increase`: *unset*
+			- `window-resize-top-decrease`: *unset*
+			- `window-resize-top-increase`: *unset*
+			- `window-snap-center`: `<Super>c`
+			- `window-snap-one-third-left`: *unset*
+			- `window-snap-one-third-right`: *unset*
+			- `window-snap-two-third-left`: *unset*
+			- `window-snap-two-third-right`: *unset*
+			- `window-swap-down`: `<Shift><Super>Down`
+			- `window-swap-last-active`: *unset*
+			- `window-swap-left`: `<Shift><Super>Left`
+			- `window-swap-right`: `<Shift><Super>Right`
+			- `window-swap-up`: `<Shift><Super>Up`
+			- `window-toggle-float`: `<Super>b`
+		- Workspace Shortcuts
+			- `workspace-active-tile-toggle`: `<Shift><Super>w`
+		- Container Shortcuts
+			- `con-split-horizontal`: *unset*
+			- `con-split-layout-toggle`: *unset*
+			- `con-split-vertical`: *unset*
+			- `con-stacked-layout-toggle`: *unset*
+			- `con-tabbed-layout-toggle`: *unset*
+			- `con-tabbed-showtab-decoration-toggle`: `<Super><Alt>y`
+		- Focus Shortcuts
+			- `focus-border-toggle`: *unset*
+		- Other Shortcuts
+			- `prefs-open`: *unset*
+			- `prefs-tiling-toggle`: *unset*
+	- Drag-Drop Tiling Modifier Key Options
+		- Tile Modifier: Super
 
 [^1]: SF Pro is made by Apple. You have to download their font package from [their website](https://developer.apple.com/fonts/), extract the fonts using `dmg2img`, and then install it into your system.
 [^2]: You can get nerd fonts at [nerdfonts.com](https://www.nerdfonts.com/).
