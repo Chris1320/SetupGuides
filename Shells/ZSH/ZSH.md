@@ -27,13 +27,11 @@ This customization guide will also help you install/enable the following plugins
 | Plugin                                                                                              | Description                                                            |
 | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [command-not-found](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found)       | Provide suggested packages to be installed if a command is not found.  |
-| [fd](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fd)                                     | Add completions for `fd` file searcher.                                |
 | [fzf](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf)                                   | Enable fuzzy auto-completion.                                          |
 | [gh](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh)                                     | Add completions for `gh` GitHub CLI.                                   |
 | [poetry](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/poetry)                             | Add completions for `poetry`, a Python dependency manager.             |
 | [python](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/python)                             | Add useful aliases for `python` operations.                            |
 | [qrcode](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/qrcode)                             | Generate QR codes from your terminal.                                  |
-| [ripgrep](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ripgrep)                           | Add completions for `rg` text searcher.                                |
 | [ssh-agent](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent)                       | Automatically start `ssh-agent`.                                       |
 | [sudo](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo)                                 | Prefix current/previous command with `sudo` by pressing `<ESC>` twice. |
 | [tmux](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux)                                 | Add useful aliases for `tmux` terminal multiplexer.                    |
