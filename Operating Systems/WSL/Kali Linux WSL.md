@@ -1,7 +1,7 @@
 ---
 title: Kali Linux (WSL)
 description: My Kali Linux in Windows Subsystem for Linux (WSL) configuration
-draft: true
+draft: false
 tags:
   - linux/distro
   - windows/wsl
