@@ -45,6 +45,10 @@ Since everything in this repository is for documentation only, I decided to use 
 - [[Arch Linux]]
 - [[Fedora Workstation]]
 
+#### Windows Subsystem for Linux
+
+- [[Kali Linux (WSL)]]
+
 ### Shells
 
 - [[ZSH]]
