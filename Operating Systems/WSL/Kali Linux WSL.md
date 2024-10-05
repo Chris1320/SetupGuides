@@ -95,7 +95,7 @@ sudo -e /etc/hosts
 I recommend that you use my [[ZSH|custom ZSH configuration]] for more convenience. After that, we'll have to install some dependencies of the packages that we'll download and install.
 
 ```bash
-sudo apt install fuse gcc make nodejs npm jq trash-cli
+sudo apt install fuse gcc make nodejs npm jq trash-cli tree-sitter-cli
 ```
 
 It is also a good time to create directories that you'll use often:
