@@ -44,6 +44,8 @@ Open a Windows Command Prompt or PowerShell, and run the following command to in
 wsl --install kali-linux
 ```
 
+> [!TIP] It is recommended that you [install from the Microsoft Store](https://www.microsoft.com/store/productId/9PKR34TNCV07) instead.
+
 It will start downloading the distribution and after a few minutes you will be asked for a new UNIX username and password. When you finished setting up the your new Kali Linux credentials, update the system.
 
 ```bash
@@ -95,7 +97,15 @@ sudo -e /etc/hosts
 I recommend that you use my [[ZSH|custom ZSH configuration]] for more convenience. After that, we'll have to install some dependencies of the packages that we'll download and install.
 
 ```bash
-sudo apt install fuse gcc make nodejs npm jq trash-cli tree-sitter-cli
+sudo apt install \
+    7zip 7zip-rar dotnet-sdk-6.0 file \
+    fuse gcc git git-lfs gh jq make \
+    mc nodejs npm pipx python3 \
+    python3-pip python3-venv \
+    tealdeer tmux trash-cli \
+    tree-sitter-cli \
+    unrar unzip zip
+pipx install howdoi yt-dlp magika jupyterlab poetry
 ```
 
 It is also a good time to create directories that you'll use often:
