@@ -51,10 +51,22 @@ sudo apt update
 sudo apt upgrade
 ```
 
-I always change my WSL distro's hostname, so I use the following command to change it. Replace `edgeRunner` with a name that you like to use as the machine's hostname.
+Edit the `/etc/wsl.conf` file according to your needs. You can see the documentation here: [Advanced settings configuration in WSL | Microsoft Learn](https://learn.microsoft.com/en-us/windows/wsl/wsl-config)
 
-```bash
-printf "[network]\nhostname = edgeRunner\ngenerateHosts = false\n" | sudo tee /etc/wsl.conf
+```toml
+[boot]
+systemd = true
+
+[automount]
+enabled = true
+
+[network]
+hostname = edgeRunner
+generateHosts = false
+
+[interop]
+enabled = false
+appendWindowsPath = false
 ```
 
 After changing the hostname via `wsl.conf`, you now have to update the `hosts` file. Open it and change all occurences of the old hostname with the new hostname you've chosen.
