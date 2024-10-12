@@ -7,4 +7,4 @@ paru -S swaylock-effects-git
 -----
 
 - Previous: [[Setting Up Rofi]]
-- Next: N/A
+- Next: [[Audio and Video]]

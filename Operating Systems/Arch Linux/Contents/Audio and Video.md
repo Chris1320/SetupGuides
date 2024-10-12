@@ -6,3 +6,8 @@ PipeWire is now superseding PulseAudio when it comes to handling audio and video
 paru -S pipewire pipewire-audio pipewire-pulse lib32-pipewire \
 	easyeffects playerctl wireplumber \
 ```
+
+-----
+
+-  Previous: [[Setting Up Swaylock]]
+- Next: [[Setting Up The Browsers]]
