@@ -7,21 +7,25 @@ tags:
   - linux/distro
 ---
 <div align="center">
+  <img
+    src="https://archlinux.org/static/logos/archlinux-logo-dark-scalable.518881f04ca9.svg"
+    alt="Arch Linux Logo" width="75%"
+/>
   <h1>Arch Linux Dotfiles</h1>
   <img
-    src="https://img.shields.io/github/directory-file-count/SetupGuides/ArchLinux/dotfiles?color=%23cba6f7&label=Dotfiles&style=for-the-badge"
+    src="https://img.shields.io/github/directory-file-count/Chris1320/SetupGuides-ArchLinux/dotfiles?color=%23cba6f7&label=Dotfiles&style=for-the-badge"
     alt="Dotfiles"
   />
   <img
-    src="https://img.shields.io/github/directory-file-count/SetupGuides/ArchLinux/scripts?color=%23b4befe&label=Scripts&style=for-the-badge"
+    src="https://img.shields.io/github/directory-file-count/Chris1320/SetupGuides-ArchLinux/scripts?color=%23b4befe&label=Scripts&style=for-the-badge"
     alt="Scripts"
   />
   <img
-    src="https://img.shields.io/github/issues-raw/SetupGuides/ArchLinux?color=%23f38ba8&style=for-the-badge"
+    src="https://img.shields.io/github/issues-raw/Chris1320/SetupGuides-ArchLinux?color=%23f38ba8&style=for-the-badge"
     alt="Issues"
   />
   <img
-    src="https://img.shields.io/github/last-commit/SetupGuides/ArchLinux?color=%23f9e2af&style=for-the-badge"
+    src="https://img.shields.io/github/last-commit/Chris1320/SetupGuides-ArchLinux?color=%23f9e2af&style=for-the-badge"
     alt="Last Commit"
   />
 </div>

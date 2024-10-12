@@ -273,7 +273,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 `<YOUR_HOSTNAME>` will be the name of your machine. Change it to whatever you like, but following [RFC1178](https://tools.ietf.org/html/rfc1178) is recommended.
 
 ```bash
-echo <YOUR_HOSTNAME> /etc/hostname
+echo <YOUR_HOSTNAME> > /etc/hostname
 nano /etc/hosts
 ```
 
