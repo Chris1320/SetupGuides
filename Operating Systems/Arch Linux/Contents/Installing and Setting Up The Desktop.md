@@ -1,5 +1,9 @@
 # Installing and Setting Up The Desktop
 
+> [!WARNING]
+> 
+> **This section will be removed**. The installation of the packages below will be moved to sections where it will be configured, so that you can keep track of what are the functions of each package.
+
 In this part of the customization process, we will install
 the following programs and their dependencies:
 
@@ -45,30 +49,12 @@ the following programs and their dependencies:
 
 ```bash
 paru -S \
-    brightnessctl \
-    btop \
-    dunst libnotify \
-    fcitx5 \
-    firefox \
-    grim slurp swappy \
-    hyprland hyprpaper polkit-gnome \
-        catppuccin-cursors-mocha catppuccin-gtk-theme-mocha \
-    keepassxc \
-    kitty \
-    pipewire pipewire-audio pipewire-pulse lib32-pipewire \
-        easyeffects playerctl wireplumber \
-    rofi-lbonn-wayland-git rofimoji \
-    sddm-git sddm-catppuccin-git \
         qt5-graphicaleffects qt5-svg qt5-quickcontrols2 \
-    socat \
-    swaylock-effects-git \
     thunar gvfs \
         thunar-archive-plugin file-roller \
         thunar-media-tags-plugin thunar-volman \
         tumbler tumbler-extra-thumbnailers raw-thumbnailer \
             ffmpegthumbnailer \
-    waybar-hyprland-git \
-    wl-clipboard cliphist \
 ```
 
 You may want to read the installation instructions of each programs in case your hardware/software configuration needs extra installation steps.
