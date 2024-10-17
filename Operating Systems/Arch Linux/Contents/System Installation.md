@@ -133,15 +133,15 @@ Use the `pacstrap` command to install Arch Linux into your system.
 ```bash
 pacstrap -K /mnt \
     base base-devel linux linux-firmware linux-headers \
-    networkmanager wpa_supplicant \
+    iwd networkmanager wpa_supplicant \
     sysfsutils usbutils btrfs-progs e2fsprogs dosfstools lvm2 \
     inetutils dhcping traceroute \
-    nano less which tree sudo reflector \
+    earlyoom nano less which tree sudo reflector \
     man-db man-pages \
     git git-lfs xdg-utils xdg-user-dirs
 ```
 
-Append more package names as you wish. This command may take a while to complete.
+Append more package names as needed. For example, my laptop has Broadcom wireless devices so I have to install `broadcom-wl` as well. This command may take a while to complete.
 
 ### Generate `fstab`
 
@@ -273,7 +273,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 `<YOUR_HOSTNAME>` will be the name of your machine. Change it to whatever you like, but following [RFC1178](https://tools.ietf.org/html/rfc1178) is recommended.
 
 ```bash
-echo <YOUR_HOSTNAME> > /etc/hostname
+printf '<YOUR_HOSTNAME>' > /etc/hostname
 nano /etc/hosts
 ```
 
@@ -293,7 +293,7 @@ Uncomment the languages that you plan to use in `/etc/locale.gen` and then gener
 nano /etc/locale.gen
 locale-gen
 
-echo LANG=en_US.UTF-8 > /etc/locale.conf  # You can change the locale if you want
+printf 'LANG=en_US.UTF-8' > /etc/locale.conf  # You can change the locale if you want
 export LANG=en_US.UTF-8
 ```
 
@@ -340,10 +340,11 @@ And uncomment the following line to allow members of the group `wheel` to execut
 %wheel ALL=(ALL:ALL) ALL
 ```
 
-### Enable `NetworkManager` Service
+### Enable Networking-Related Services
 
 ```bash
 systemctl enable NetworkManager.service
+systemctl enable iwd.service
 ```
 
 #### Enable Wireless Network Interface
@@ -360,6 +361,13 @@ nmcli device wifi connect <BSSID>  # connect to an AP
 ```
 
 More information: [Arch Linux Wiki > Wireless](https://wiki.archlinux.org/title/Network_configuration/Wireless)
+
+### Enable Other System Services
+
+```bash
+systemctl enable reflector.service
+systemctl enable earlyoom.service
+```
 
 ## Reboot
 

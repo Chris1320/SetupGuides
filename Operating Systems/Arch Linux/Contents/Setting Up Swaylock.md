@@ -1,5 +1,7 @@
 # Setting Up Swaylock
 
+> [!BUG] Will be replaced by hyprlock
+
 ```bash
 paru -S swaylock-effects-git
 ```

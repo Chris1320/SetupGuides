@@ -8,6 +8,7 @@ paru -S hyprland hyprpaper \
 	grim slurp swappy \
 	polkit-gnome keepassxc \
 	wl-clipboard cliphist \
+	catppuccin-cursors-mocha \
 	socat
 ```
 
@@ -18,6 +19,7 @@ To start customizing Hyprland, just copy the dotfiles to `~/.config/`. Running H
 ```bash
 # Make sure you're still at the repository's root directory
 cp -r ./dotfiles/hypr ~/.config/hypr
+cp -r ./scripts ~/.config/scripts
 ```
 
 Now, Hyprland's configuration files are in place, but we still need to configure the rest of the system for it to function properly.

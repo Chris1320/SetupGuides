@@ -20,7 +20,7 @@ During the installation I've configured my machine to have the following disk pa
 
 | Subvolume         | Description                                 |
 | ----------------- | ------------------------------------------- |
-| `/mnt/@root`      | The root partition                          |
+| `/mnt/@`          | The root partition                          |
 | `/mnt/@home`      | The home partition                          |
 | `/mnt/@snapshots` | The partition where snapshots will be saved |
 

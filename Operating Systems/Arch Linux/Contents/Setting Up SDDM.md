@@ -3,7 +3,7 @@
 SDDM will be the display manager that our setup will use. It will be your "login screen". Install and enable the SDDM service to start the display manager on boot.
 
 ```bash
-paru -S sddm qt6-svg qt6-virtualkeyboard catppuccin-cursors-mocha ttf-opensans noto-fonts
+paru -S sddm qt6-svg qt6-virtualkeyboard ttf-opensans noto-fonts qt6-multimedia-ffmpeg pipewire-jack
 systemctl enable sddm.service
 ```
 

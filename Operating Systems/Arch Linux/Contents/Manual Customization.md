@@ -32,13 +32,14 @@ Install `git` and `git-lfs`, and clone this repository.
 
 ```bash
 paru -S git git-lfs
-git clone https://github.com/Chris1320/SetupGuides-ArchLinux.git ~/ArchLinuxDotfiles
-cd ~/ArchLinuxDotfiles
+mkdir ~/Temp
+git clone https://github.com/Chris1320/SetupGuides-ArchLinux.git ~/Temp/ArchLinuxDotfiles
+cd ~/Temp/ArchLinuxDotfiles
 git submodule init  # Initialize git submodules
 git submodule update  # Pull submodules from remote
 ```
 
-> [!NOTE] From now on, this guide will assume that you are in `~/ArchLinuxDotfiles` directory unless specified.
+> [!NOTE] From now on, this guide will assume that you are in `~/Temp/ArchLinuxDotfiles` directory unless specified.
 
 ## Custom Fonts and Icons
 
@@ -67,6 +68,8 @@ paru -S bluez bluez-utils blueman
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
 ```
+
+I also install required Bluetooth drivers in this part, if necessary. For example, my laptop has Broadcom devices, so I also install `broadcom-bt-firmware` from the AUR via `paru`.
 
 ### Enable Printer Support
 
