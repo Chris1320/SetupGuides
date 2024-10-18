@@ -39,6 +39,15 @@ the rest of the system for it to function properly.
 
 > [!BUG] If you are having problems with Hyprland, see their [wiki](https://wiki.hyprland.org/Crashes-and-Bugs/).
 
+## Hyprcursors
+
+Hyprland's author introduced a new cursor theme format, called _Hyprcursor_.
+It is supposed to be a more efficient and faster cursor theme format.
+
+```bash
+# TODO
+```
+
 ---
 
 - Previous: [[Installing and Setting Up The Desktop]]

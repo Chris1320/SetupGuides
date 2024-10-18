@@ -88,6 +88,28 @@ systemctl enable cups.service saned.socket
 systemctl enable fstrim.timer
 ```
 
+### Essential Utilities
+
+```bash
+paru -S tar unzip unrar p7zip trash-cli
+```
+
+#### Development Tools
+
+```bash
+# Install C/C++, .NET, and Python development tools
+paru -S gcc dotnet-sdk python python-pip python-pipx
+pipx install howdoi yt-dlp magika jupyterlab poetry
+
+# Install Node Version Manager and the latest NodeJS version
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh" | bash
+# Move new lines from .zshrc to user_env.sh and restart the terminal
+nvm install node
+
+# Install Java Development Kit
+paru -S jdk-openjdk
+```
+
 ## Next Steps
 
 - [[Installing and Setting Up The Desktop]]
