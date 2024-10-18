@@ -23,4 +23,5 @@ bash <(curl -sSf https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/
 
 ```bash
 paru -S localsend-bin pfetch github-cli
+pipx install howdoi yt-dlp magika jupyterlab
 ```

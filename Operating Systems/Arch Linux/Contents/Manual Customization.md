@@ -99,15 +99,15 @@ paru -S tar unzip unrar p7zip trash-cli
 ```bash
 # Install C/C++, .NET, and Python development tools
 paru -S gcc dotnet-sdk python python-pip python-pipx
-pipx install howdoi yt-dlp magika jupyterlab poetry
+pipx install poetry
 
 # Install Node Version Manager and the latest NodeJS version
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh" | bash
 # Move new lines from .zshrc to user_env.sh and restart the terminal
 nvm install node
 
-# Install Java Development Kit
-paru -S jdk-openjdk
+# Install Java Development Kit and PHP development tools
+paru -S jdk-openjdk php composer
 ```
 
 ## Next Steps
