@@ -9,10 +9,6 @@ tags:
 
 # Installing Useful Software
 
-## Installing ZSH
-
-ZSH is my preferred shell. See [[ZSH]] to install and customize it.
-
 ## Installing Neovim
 
 Neovim is the best text editor and IDE on Linux btw (fight me). We'll have to install some packages that are required by the plugins first.
@@ -32,5 +28,5 @@ bash <(curl -sSf https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/
 ## Others
 
 ```bash
-paru -S localsend-bin
+paru -S localsend-bin pfetch trash-cli github-cli
 ```
