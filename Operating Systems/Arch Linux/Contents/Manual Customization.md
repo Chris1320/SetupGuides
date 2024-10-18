@@ -35,8 +35,9 @@ paru -S git git-lfs
 mkdir ~/Temp
 git clone https://github.com/Chris1320/SetupGuides-ArchLinux.git ~/Temp/ArchLinuxDotfiles
 cd ~/Temp/ArchLinuxDotfiles
-git submodule init  # Initialize git submodules
+git submodule init    # Initialize git submodules
 git submodule update  # Pull submodules from remote
+git lfs pull          # Download LFS files
 ```
 
 > [!NOTE] From now on, this guide will assume that you are in `~/Temp/ArchLinuxDotfiles` directory unless specified.

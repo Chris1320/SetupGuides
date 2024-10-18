@@ -22,7 +22,19 @@ cp -r ./dotfiles/hypr ~/.config/hypr
 cp -r ./scripts ~/.config/scripts
 ```
 
-Now, Hyprland's configuration files are in place, but we still need to configure the rest of the system for it to function properly.
+Also copy your desired background image to `~/.config/background`.
+
+```bash
+cp "./assets/wallpapers/<your desired wallpaper>" ~/.config/background
+```
+
+> [!TIP] Previewing Images In The Terminal
+>
+> You can run `icat ./assets/wallpapers/<your desired wallpaper>` to
+> preview the image in the terminal.
+
+Now, Hyprland's configuration files are in place, but we still need to configure
+the rest of the system for it to function properly.
 
 > [!BUG] If you are having problems with Hyprland, see their [wiki](https://wiki.hyprland.org/Crashes-and-Bugs/).
 
