@@ -26,6 +26,7 @@ Also copy your desired background image to `~/.config/background`.
 
 ```bash
 cp "./assets/wallpapers/<your desired wallpaper>" ~/.config/background
+# I personally use `evening-sky.png` as my wallpaper.
 ```
 
 > [!TIP] Previewing Images In The Terminal
