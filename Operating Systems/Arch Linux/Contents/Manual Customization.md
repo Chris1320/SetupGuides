@@ -110,11 +110,7 @@ nvm install node
 paru -S jdk-openjdk php composer
 ```
 
-## Next Steps
-
-- [[Installing and Setting Up The Desktop]]
-
 ---
 
 - Previous: [[Automatic Customization]]
-- Next: [[Installing and Setting Up The Desktop]]
+- Next: [[Setting Up Hyprland]]

@@ -48,7 +48,13 @@ It is supposed to be a more efficient and faster cursor theme format.
 # TODO
 ```
 
+## GTK Theme
+
+```bash
+paru -S gtk-engine-murrine
+```
+
 ---
 
-- Previous: [[Installing and Setting Up The Desktop]]
+- Previous: [[Manual Customization]]
 - Next: [[Setting Up Kitty]]

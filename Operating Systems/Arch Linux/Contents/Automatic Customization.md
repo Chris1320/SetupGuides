@@ -1,6 +1,6 @@
 # Automatic Installation
 
-This installation method is still under development. <!-- TODO -->
+This installation method is still under development. It will probably available Soon™️. <!-- TODO -->
 
 ---
 
