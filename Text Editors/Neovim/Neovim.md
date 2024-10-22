@@ -30,11 +30,6 @@ This setup now uses [LazyVim](https://www.lazyvim.org/) as its base. Older versi
 > 	- [Tailwind](https://www.lazyvim.org/extras/lang/tailwind)
 > 	- [Typescript](https://www.lazyvim.org/extras/lang/typescript)
 
-> The following base plugins are disabled:
-> 
-> - [flash.nvim](https://github.com/folke/flash.nvim)
-> - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-
 > The following plugins are added in addition to the base plugins:
 > 
 > - [gitignore.nvim](https://github.com/wintermute-cell/gitignore.nvim): A neovim plugin for generating `.gitignore` files.
