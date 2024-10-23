@@ -91,7 +91,7 @@ systemctl enable fstrim.timer
 ### Essential Utilities
 
 ```bash
-paru -S flatpak tar unzip unrar p7zip trash-cli
+paru -S flatpak mc tar unzip unrar p7zip zip trash-cli
 ```
 
 #### Development Tools
