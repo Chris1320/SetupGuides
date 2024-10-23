@@ -7,6 +7,7 @@ paru -S hyprland hyprpaper \
 	brightnessctl btop fcitx5 \
 	grim slurp swappy \
 	polkit-gnome keepassxc \
+	nm-connection-editor \
 	wl-clipboard cliphist \
 	catppuccin-cursors-mocha \
 	socat jq
