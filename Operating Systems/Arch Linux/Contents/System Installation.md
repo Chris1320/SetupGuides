@@ -342,9 +342,17 @@ And uncomment the following line to allow members of the group `wheel` to execut
 
 ### Enable Networking-Related Services
 
+First, enable the `NetworkManager` service.
+
 ```bash
 systemctl enable NetworkManager.service
-systemctl enable iwd.service
+```
+
+Then, create or edit `/etc/NetworkManager/conf.d/wifi_backend.conf` and insert the following configuration:
+
+```toml
+[device]
+wifi.backend=iwd
 ```
 
 #### Enable Wireless Network Interface
