@@ -6,7 +6,8 @@
 paru -S hyprland hyprpaper \
 	brightnessctl btop fcitx5 \
 	grim slurp swappy \
-	polkit-gnome keepassxc \
+	polkit-gnome gnome-keyring \
+	seahorse libsecret \
 	nm-connection-editor \
 	wl-clipboard cliphist \
 	catppuccin-cursors-mocha \

@@ -24,6 +24,14 @@ gpg --edit-key <THE KEY ID>
 # gpg> quit
 ```
 
+### Using GNOME Keyring as Secrets Manager
+
+Use GNOME 3 pinentry when asking for GPG password. Edit `~/.gnupg/gpg-agent.conf` and insert the following line:
+
+```text
+pinentry-program /usr/bin/pinentry-gnome3
+```
+
 ## Importing Your SSH keys
 
 First of all, you have to install OpenSSH.
@@ -76,6 +84,13 @@ It should print out something like this:
 
 ```text
 Hi Chris1320! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+### Using GNOME Keyring as Secrets Manager
+
+```bash
+systemctl enable --user gcr-ssh-agent.socket
+systemctl start --user gcr-ssh-agent.socket
 ```
 
 -----
