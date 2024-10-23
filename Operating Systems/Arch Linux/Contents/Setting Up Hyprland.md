@@ -9,7 +9,7 @@ paru -S hyprland hyprpaper \
 	polkit-gnome keepassxc \
 	wl-clipboard cliphist \
 	catppuccin-cursors-mocha \
-	socat
+	socat jq
 ```
 
 > [!TIP] If you ever need help, Hyprland has their own wiki, so [read it](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/)!
