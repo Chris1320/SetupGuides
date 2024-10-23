@@ -5,6 +5,9 @@ PipeWire is now superseding PulseAudio when it comes to handling audio and video
 ```bash
 paru -S pipewire pipewire-audio pipewire-pulse lib32-pipewire \
 	easyeffects playerctl wireplumber \
+	gst-libav gst-plugins-base \
+	gst-plugins-{good,bad,ugly} gstreamer-vaapi \
+	x265 x264 lame
 ```
 
 -----
