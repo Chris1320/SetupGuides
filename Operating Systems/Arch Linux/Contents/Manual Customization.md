@@ -48,7 +48,8 @@ We are going to use the following fonts and icons, so it's best to install it no
 
 ```bash
 paru -Syu otf-font-awesome ttf-jetbrains-mono-nerd ttf-noto-nerd \
-    papirus-icon-theme papirus-folders-catppuccin-git
+    papirus-icon-theme papirus-folders-catppuccin-git \
+    ttf-material-icons-git
 ```
 
 > [!CAUTION] If `papirus-folders-catppuccin-git` fails to install, just re-login or reboot the system after installing `papirus-icon-theme`.

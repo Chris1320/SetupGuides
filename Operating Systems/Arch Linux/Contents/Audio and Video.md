@@ -12,5 +12,5 @@ paru -S pipewire pipewire-audio pipewire-pulse lib32-pipewire \
 
 -----
 
--  Previous: [[Setting Up Swaylock]]
+-  Previous: [[Setting Up Hyprlock]]
 - Next: [[Setting Up The Browsers]]

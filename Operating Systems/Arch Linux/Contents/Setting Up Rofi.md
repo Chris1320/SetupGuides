@@ -10,4 +10,4 @@ cp -r ./dotfiles/rofi ~/.config/rofi
 -----
 
 - Previous: [[Setting Up Waybar]]
-- Next: [[Setting Up Swaylock]]
+- Next: [[Setting Up Hyprlock]]

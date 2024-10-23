@@ -59,6 +59,6 @@ Some, if not all of the dotfiles, can also be used in other operating systems/di
 	- [[Setting Up dunst]]
 	- [[Setting Up Waybar]]
 	- [[Setting Up Rofi]]
-	- [[Setting Up Swaylock]]
+	- [[Setting Up Hyprlock]]
 	- [[Audio and Video]]
 	- [[Setting Up The Browsers]]
