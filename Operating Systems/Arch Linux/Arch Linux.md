@@ -40,7 +40,7 @@ This repository contains most of my dotfiles and notes that are used in my Arch 
 - You have made a [[System Installation#Add A Non-Root User Account|non-root user]] in your system and is currently active.
 - You are currently connected to the internet.
 
-Some, if not all of the dotfiles, can also be used in other operating systems/distributions, but it's up to you on how you will do it since I haven't tested it on other systems yet.
+Some (if not all) of the dotfiles can also be used in other operating systems/distributions, but it's up to you on how you will do it since I haven't tested it on other systems yet.
 
 > [!WARNING]
 > 
@@ -48,17 +48,8 @@ Some, if not all of the dotfiles, can also be used in other operating systems/di
 
 ## Table of Contents
 
-- Introduction (you are here!)
+- [[Arch Linux|Introduction]] (you are here!)
 - [[Environment]]
 - [[System Installation]]
 - [[Automatic Customization]]
 - [[Manual Customization]]
-	- [[Setting Up Hyprland]]
-	- [[Setting Up Kitty]]
-	- [[Setting Up SDDM]]
-	- [[Setting Up dunst]]
-	- [[Setting Up Waybar]]
-	- [[Setting Up Rofi]]
-	- [[Setting Up Hyprlock]]
-	- [[Audio and Video]]
-	- [[Setting Up The Browsers]]

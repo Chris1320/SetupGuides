@@ -110,10 +110,11 @@ Use [reflector](https://wiki.archlinux.org/title/Reflector) to rank the mirror s
 
 ```bash
 reflector \
-    --age 15 \
-    --protocol https \
-    --sort rate \
-    --save /etc/pacman.d/mirrorlist
+	--latest 10 \
+	--age 18 \
+	--protocol https \
+	--sort rate \
+	--save /etc/pacman.d/mirrorlist
 ```
 
 ### Perform the Base Installation
@@ -133,11 +134,13 @@ Use the `pacstrap` command to install Arch Linux into your system.
 ```bash
 pacstrap -K /mnt \
     base base-devel linux linux-firmware linux-headers \
-    iwd networkmanager wpa_supplicant \
+    iwd networkmanager networkmanager-openvpn \
+    networkmanager-pptp networkmanager-vpnc \
+    wireless_tools wpa_supplicant ifplugd \
     sysfsutils usbutils btrfs-progs e2fsprogs dosfstools lvm2 \
     inetutils dhcping traceroute \
     earlyoom nano less which tree sudo reflector \
-    man-db man-pages \
+    dialog man-db man-pages \
     git git-lfs xdg-utils xdg-user-dirs
 ```
 
@@ -222,21 +225,41 @@ vm.page-cluster = 0
 
 ### Installing The Graphics Driver
 
+First, install Mesa and Vulkan graphics drivers.
+
+```bash
+pacman -S mesa lib32-mesa vulkan-icd-loader lib32-vulkan-icd-loader
+```
+
 Depending on your graphics card, run the appropriate command to install the graphics drivers needed:
 
-| Manufacturer         | Command                                                                                                      |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ |
-| AMD                  | `pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver mesa-vdpau` |
-| Intel                | `pacman -S mesa lib32-mesa xf86-video-intel vulkan-intel`                                                    |
-| Nvidia (Proprietary) | `pacman -S nvidia-dkms nvidia-settings nvidia-utils lib32-nvidia-utils`                                      |
-| Nvidia (Nouveau)     | `pacman -S mesa xf86-video-nouveau`                                                                          |
+| Manufacturer                              | Command                                                                                                                                                                           |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AMD (New)                                 | `pacman -S xf86-video-amdgpu libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau libva-vdpau-driver lib32-libva-vdpau-driver vulkan-radeon lib32-vulkan-radeon` |
+| AMD (Old)                                 | `pacman -S xf86-video-ati libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau libva-vdpau-driver lib32-libva-vdpau-driver vulkan-radeon lib32-vulkan-radeon`    |
+| Intel \[[[#^f23282\|See warning below]]\] | `pacman -S xf86-video-intel vulkan-intel`                                                                                                                                         |
+| Nvidia (Nouveau)                          | `pacman -S xf86-video-nouveau nvidia-utils lib32-nvidia-utils libvdpau lib32-libvdpau`                                                                                            |
+| Virtual Machine (Hyper-V)                 | `pacman -S xf86-video-fbdev`                                                                                                                                                      |
+| Virtual Machine (Others)                  | `pacman -S xf86-video-vmware`                                                                                                                                                     |
+
+> [!WARNING]- Troubleshooting
+> 
+> > [!WARNING]- Intel
+> >
+> > According to [Arch Linux Wiki > Intel Graphics > Installation](https://wiki.archlinux.org/title/Intel_graphics#Installation), there are multiple problems when installing `xf86-video-intel` so you might want to **not install** the package.
+> 
+> > [!WARNING]- NVIDIA
+> > 
+> > If you are having problems, read [Arch Linux Wiki > NVIDIA](https://wiki.archlinux.org/title/NVIDIA).
+
+^f23282
 
 ### `initramfs` Setup
 
 Now, we need to edit our initial ram disk by running `nano /etc/mkinitcpio.conf`. Inside the parenthesis of `MODULES=()`, add the following (separated by a space):
 
 - `btrfs` and `ext4`, since we are using Btrfs and EXT4 as our filesystems.
-- `amdgpu` if you are running AMD GPU, `i915` if Intel, `nvidia nvidia_modeset nvidia_uvm nvidia_drm` if you use proprietary Nvidia drivers, or `nouveau` if you are using open-source Nvidia drivers.
+- `amdgpu` if you are running the new AMD GPU driver, `i915` if Intel, or `nvidia nvidia_modeset nvidia_uvm nvidia_drm` if you use proprietary NVIDIA drivers.
 
 As an example, my machine has a built-in Intel GPU so I have the following:
 
@@ -244,13 +267,15 @@ As an example, my machine has a built-in Intel GPU so I have the following:
 MODULES=(btrfs ext4 i915)
 ```
 
+> [!WARNING] If you are running proprietary NVIDIA drivers, remove `kms` inside `HOOKS=()`.
+
 After editing, we run `mkinitcpio -P` to process all preset files.
 
 ### Install Bootloader
 
 In this step, I assume that you are installing on a UEFI system. Otherwise, check [d3sox](https://arch.d3sox.me/installation/install-bootloader) for more information.
 
-> [!TIP]+
+> [!TIP]+ GRUB OS Prober
 > 
 > If you want to automatically detect other operating systems, run `nano /etc/default/grub` and add/uncomment the following line:
 >
@@ -342,35 +367,34 @@ And uncomment the following line to allow members of the group `wheel` to execut
 
 ### Enable Networking-Related Services
 
-First, enable the `NetworkManager` service.
-
-```bash
-systemctl enable NetworkManager.service
-```
-
-Then, create or edit `/etc/NetworkManager/conf.d/wifi_backend.conf` and insert the following configuration:
+First, create or edit `/etc/NetworkManager/conf.d/wifi_backend.conf` and insert the following configuration:
 
 ```toml
 [device]
 wifi.backend=iwd
 ```
 
-#### Enable Wireless Network Interface
-
-> [!ERROR] This section will be removed in the future as this is not necessary, and will **result in an error** instead.
-
-You can enable the WLAN interface by using the `nmcli` command.
+Then, enable the `NetworkManager` service.
 
 ```bash
-nmcli radio wifi on                # turn on the WLAN interface
-nmcli device status                # check the status of the interfaces
-nmcli device wifi list             # list available APs
-nmcli device wifi connect <BSSID>  # connect to an AP
+systemctl enable NetworkManager.service
 ```
 
-More information: [Arch Linux Wiki > Wireless](https://wiki.archlinux.org/title/Network_configuration/Wireless)
+> [!TIP] More information: [Arch Linux Wiki > Wireless](https://wiki.archlinux.org/title/Network_configuration/Wireless)
 
 ### Enable Other System Services
+
+Edit `/etc/xdg/reflector/reflector.conf` and replace its contents with the following:
+
+```
+--latest 10
+--age 18
+--protocol https
+--sort rate
+--save /etc/pacman.d/mirrorlist
+```
+
+Lastly, enable the services:
 
 ```bash
 systemctl enable reflector.service
