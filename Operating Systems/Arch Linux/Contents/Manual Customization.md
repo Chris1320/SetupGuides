@@ -414,6 +414,12 @@ systemctl enable --user gcr-ssh-agent.socket
 systemctl start --user gcr-ssh-agent.socket
 ```
 
+### Git
+
+```bash
+git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
+```
+
 ## Setting Up Waybar
 
 Waybar is a status bar for Wayland compositors. We will use it to show basic information about our machine at the top of our screen. Install it and copy its configuration file to its designated location.
