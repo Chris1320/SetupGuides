@@ -60,18 +60,17 @@ paru -Syu ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk \
 
 ## Useful Packages
 
-It is recommended to install and enable the following packages.
+### Essential System Utilities
 
-### Essentials
-
-`acpid` is a daemon that listens for events related to power management. `avahi` is a service that is responsible for the discovery of services and hosts on a local network using the mDNS (Multicast DNS) protocol.
+Install these packages to ensure that the system will work properly.
 
 ```bash
-paru -S acpid avahi dkms net-tools
+paru -S acpid avahi batsignal dkms net-tools
 systemctl enable \
     acpid.service \
     avahi-daemon.service \
     systemd-timesyncd.service
+systemctl --user enable batsignal.service
 ```
 
 ### Input Devices
@@ -253,6 +252,7 @@ paru -S hyprland hyprpaper \
 	polkit-gnome gnome-keyring \
 	seahorse libsecret \
 	nm-connection-editor \
+	network-manager-applet \
 	wl-clipboard cliphist
 ```
 
