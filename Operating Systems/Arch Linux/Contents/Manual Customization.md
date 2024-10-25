@@ -92,10 +92,10 @@ PipeWire is now superseding PulseAudio when it comes to handling audio and video
 
 ```bash
 paru -S pipewire pipewire-audio pipewire-pulse lib32-pipewire \
-	easyeffects playerctl wireplumber \
-	alsa-utils pipewire-jack \
+	alsa-utils pipewire-jack wireplumber \
 	gst-libav gst-plugins-base \
 	gst-plugins-{good,bad,ugly} gstreamer-vaapi \
+	ffmpeg easyeffects playerctl \
 	x265 x264 lame
 ```
 
@@ -133,16 +133,24 @@ systemctl enable cups.service saned.socket
 systemctl enable fstrim.timer
 ```
 
-### Essential Utilities
+### Must-Have Programs
 
 These are packages that I always keep in my machine installed.
 
 ```bash
-paru -S mc localsend-bin pfetch github-cli \
-    tar unzip unrar p7zip zip xz rsync rclone trash-cli \
+paru -S localsend-bin pfetch rclone \
+    tar unzip unrar p7zip zip xz rsync trash-cli \
     nfs-utils cifs-utils ntfs-3g exfat-utils gvfs udisks2 \
-    ffmpeg pavucontrol \
     btop socat jq
+```
+
+#### Midnight Commander
+
+Sometimes, I don't want to use Nautilus to navigate the filesystem... Definitely not because I messed up my system and now GUI programs don't work. Midnight Commander is a terminal-based file manager that can be used via keyboard.
+
+```bash
+paru -S mc
+cp -r ~/Temp/SGDotfiles/mc ~/.config/mc
 ```
 
 #### Flatpak
@@ -252,7 +260,8 @@ paru -S hyprland hyprpaper \
 	seahorse libsecret \
 	nm-connection-editor \
 	network-manager-applet \
-	wl-clipboard cliphist
+	wl-clipboard cliphist \
+	pavucontrol
 ```
 
 > [!TIP] If you ever need help, Hyprland has their own wiki, so [read it](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/)!
@@ -416,6 +425,7 @@ systemctl start --user gcr-ssh-agent.socket
 ### Git
 
 ```bash
+paru -S github-cli
 git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 ```
 
