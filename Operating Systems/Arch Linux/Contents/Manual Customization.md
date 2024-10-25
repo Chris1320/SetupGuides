@@ -43,7 +43,7 @@ git lfs pull          # Download LFS files
 
 ## Custom Fonts and Icons
 
-We are going to use the following fonts and icons, so it's best to install it now.
+We are going to use the following fonts and icons, so it's best to install them now.
 
 - **Primary Fonts**: `ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk ttf-opensans noto-fonts otf-apple-fonts`
 - **Primary Icons**: `papirus-icon-theme papirus-folders-catppuccin-git`
@@ -65,12 +65,11 @@ paru -Syu ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk \
 Install these packages to ensure that the system will work properly.
 
 ```bash
-paru -S acpid avahi batsignal dkms net-tools
+paru -S acpid avahi dkms net-tools
 systemctl enable \
     acpid.service \
     avahi-daemon.service \
     systemd-timesyncd.service
-systemctl --user enable batsignal.service
 ```
 
 ### Input Devices
@@ -439,6 +438,16 @@ To start, install `dunst` and copy its configuration file.
 paru -S dunst libnotify
 mkdir -p ~/.config/dunst
 cp ./dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
+```
+
+### Battery Level Notifications
+
+To enable battery level notifications, install `batsignal`, copy its dotfiles to its designated directory, and enable the service.
+
+```bash
+paru -S batsignal
+cp -r ~/Temp/ArchLinuxDotfiles/batsignal ~/.config/batsignal
+systemctl --user enable batsignal.service
 ```
 
 ## Setting Up Rofi
