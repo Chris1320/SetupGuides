@@ -138,7 +138,7 @@ systemctl enable fstrim.timer
 These are packages that I always keep in my machine installed. Some of these packages, such as `btop`, `socat`, and `jq` are also required by the customization steps below.
 
 ```bash
-paru -S tar unzip unrar p7zip zip xz rclone rsync trash-cli \
+paru -S tar unzip unrar p7zip zip xz rclone trash-cli \
     nfs-utils cifs-utils ntfs-3g exfat-utils gvfs udisks2 \
     pfetch btop socat jq yt-dlp tealdeer
 ```
@@ -210,14 +210,59 @@ flatpak install flathub com.visualstudio.code
 
 I use [Mpv](https://mpv.io/) and [imv](https://sr.ht/~exec64/imv/) to view videos and images respectively.
 
-With Mpv, we are going to use [tomasklaen](https://github.com/tomasklaen)'s [uosc](https://github.com/tomasklaen/uosc) config. These plugins are also used:
+```bash
+paru -S imv mpv
+cp -r ~/Temp/SGDotfiles/imv ~/.config/imv  # Copy imv config
+```
+
+There two versions of the Mpv configuration file: one for high-end devices and the other for low-end machines. If your device can handle high CPU/GPU usage for better playback quality, copy the `profile-high` directory to `~/.config/mpv`; otherwise, copy the `profile-low` directory.
+
+```bash
+cp -r ~/Temp/SGDotfiles/mpv/profile-high ~/.config/mpv  # For high-end devices
+cp -r ~/Temp/SGDotfiles/mpv/profile-low ~/.config/mpv   # For low-end devices
+```
+
+With Mpv, I am using [tomasklaen](https://github.com/tomasklaen)'s [uosc](https://github.com/tomasklaen/uosc) config together with these plugins:
 
 - [po5/evafast](https://github.com/po5/evafast): Mpv script for hybrid fast-forward and seeking.
 - [rofe33/mpv-copyStuff](https://github.com/rofe33/mpv-copyStuff): Copy to clipboard the filename, full filename path, relative filename path, current video time, current displayed subtitle text, video duration/metadata.
+- [po5/thumbfast](https://github.com/po5/thumbfast): High-performance on-the-fly thumbnailer script for mpv.
+
+The config also comes with the following shaders:
+
+- [AMD FidelityFX Super Resolution (FSR) for mpv](https://gist.github.com/agyild/82219c545228d70c5604f865ce0b0ce5): Upscales content up to 4x the original size.
+- [AMD FidelityFX CAS](https://gist.github.com/agyild/bbb4e58298b2f86aa24da3032a0d2ee6): AMD FidelityFX Contrast Adaptive Sharpening (CAS) for mpv.
+- [SSimDownscaler](https://gist.github.com/igv/36508af3ffc84410fe39761d6969be10): High-quality downscaling of video content. (only available on `profile-high`)
+- [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637): Bilateral filter. (only available on `profile-high`)
+
+## Setting Up Paru and Pacman (again)
+
+Since we have Paru now, we can configure Pacman more now. Hooks are scripts that are executed automatically at certain points during the package management process. Create the `/etc/pacman.d/hooks` directory by running the following command:
 
 ```bash
-paru -S imv mpv
-cp -r ~/Temp/SGDotfiles/mpv ~/.config/mpv
+sudo mkdir -p /etc/pacman.d/hooks
+```
+
+In the newly-created directory, create a new file named `orphans.hook` and paste the following:
+
+```toml
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Searching for orphaned packages...
+When = PostTransaction
+Exec = /usr/bin/bash -c "/usr/bin/pacman -Qtd || /usr/bin/echo '==> no orphans found.'"
+```
+
+[informant](https://aur.archlinux.org/packages/informant) makes sure that you are aware of breaking changes in the updates that you'll get. [overdue](https://aur.archlinux.org/packages/overdue) lists daemons that reference outdated libraries. [pacman-cleanup-hook](https://aur.archlinux.org/packages/pacman-cleanup-hook) keeps your pacman cache clean. [downgrade](https://aur.archlinux.org/packages/downgrade), while isn't a pacman hook, will still help you in case you have to downgrade a package.
+
+```bash
+paru -S informant overdue pacman-cleanup-hook downgrade
 ```
 
 ## Setting Up SDDM
@@ -334,15 +379,13 @@ Kitty is my terminal emulator of choice. Install it via `paru` to begin.
 paru -S kitty
 ```
 
-Since [June 3, 2024](https://github.com/Chris1320/SetupGuides-ArchLinux/commit/edd1e5b5ea67c42c4da9cbb9d754c025210c652d), I moved dotfiles that are used across multiple operating systems to a separate repository. Because of this, the dotfiles for Kitty is not on [SetupGuides-ArchLinux](https://github.com/Chris1320/SetupGuides-ArchLinux), but rather on [SetupGuides-dotfiles](https://github.com/Chris1320/SetupGuides-dotfiles). You will have to clone the repository where it is located, copy the Kitty configuration file, and enable the Catppuccin colorscheme.
+Copy the Kitty configuration file, and enable the Catppuccin colorscheme.
 
 ```bash
 mkdir -p ~/.config/kitty
 cp -r ~/Temp/SGDotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 kitty +kitten themes --reload-in=all Catppuccin-Mocha
 ```
-
-> [!NOTE] You now have two SetupGuides repositories on your `~/Temp` directory.
 
 ### Setting Up ZSH
 
@@ -496,7 +539,26 @@ cp -r ./dotfiles/rofi ~/.config/rofi
 paru -S hyprlock
 ```
 
-Since we've [[Setting Up Hyprland|set up Hyprland]], we wouldn't need any additional setup.
+Since we've [[#Setting Up Hyprland|set up Hyprland]], we wouldn't need any additional setup.
+
+## Setting Up The File Manager
+
+I chose [Nautilus/GNOME Files](https://wiki.archlinux.org/title/GNOME/Files) as my GUI file manager. It just feels and looks better in my opinion.
+
+```bash
+paru -S nautilus \
+    nautilus-admin-gtk4 nautilus-checksums \
+    nautilus-open-any-terminal \
+    file-roller sushi \
+    tumbler ffmpegthumbnailer \
+    raw-thumbnailer folderpreview \
+    gnome-online-accounts \
+    gvfs-gphoto2 gvfs-mtp gvfs-afc \
+    gvfs-smb gvfs-dnssd gvfs-nfs \
+    gvfs-goa gvfs-google gvfs-onedrive
+```
+
+Now, you should edit the settings of Nautilus by following [[Fedora Workstation#2. Configuring Nautilus]]. I usually hide some of the XDG directories. Follow [[Fedora Workstation#3. Update XDG Directories]] to do this.
 
 ## Setting Up The Browsers
 

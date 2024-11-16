@@ -112,7 +112,7 @@ Use [reflector](https://wiki.archlinux.org/title/Reflector) to rank the mirror s
 reflector \
 	--latest 10 \
 	--age 18 \
-	--protocol https \
+	--protocol https,rsync \
 	--sort rate \
 	--save /etc/pacman.d/mirrorlist
 ```
@@ -138,7 +138,7 @@ pacstrap -K /mnt \
     networkmanager-pptp networkmanager-vpnc \
     wireless_tools wpa_supplicant ifplugd \
     sysfsutils usbutils btrfs-progs e2fsprogs dosfstools lvm2 \
-    inetutils dhcping traceroute \
+    inetutils dhcping traceroute rsync \
     earlyoom nano less which tree sudo reflector \
     dialog man-db man-pages \
     git git-lfs xdg-utils xdg-user-dirs
@@ -389,7 +389,7 @@ Edit `/etc/xdg/reflector/reflector.conf` and replace its contents with the follo
 ```
 --latest 10
 --age 18
---protocol https
+--protocol https,rsync
 --sort rate
 --save /etc/pacman.d/mirrorlist
 ```

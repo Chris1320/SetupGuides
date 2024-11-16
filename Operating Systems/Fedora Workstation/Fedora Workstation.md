@@ -242,9 +242,12 @@ Open Nautilus and open its preferences panel (`CTRL+,`)
 I want my home directory to be clean as possible. Dotfiles are everywhere, but fortunately they can be hidden in Nautilus. However, default user directories that I do not frequently visit cannot be hidden. Edit the `~/.config/user-dirs.dirs` file and move the directories to where you want to. Alternatively, you can run the following commands to move the `Desktop/`, `Templates/`, and `Public/` directories inside `~/.desktop/`.
 
 ```bash
-xdg-user-dirs-update --set XDG_DESKTOP_DIR "$HOME/.desktop/Desktop"
-xdg-user-dirs-update --set XDG_TEMPLATES_DIR "$HOME/.desktop/Templates"
-xdg-user-dirs-update --set XDG_PUBLICSHARE_DIR "$HOME/.desktop/Public"
+mkdir -p ~/.desktop
+mv ~/{Desktop,Templates,Public} ~/.desktop
+
+xdg-user-dirs-update --set DESKTOP "$HOME/.desktop/Desktop"
+xdg-user-dirs-update --set TEMPLATES "$HOME/.desktop/Templates"
+xdg-user-dirs-update --set PUBLICSHARE "$HOME/.desktop/Public"
 ```
 
 > [!NOTE]- My `xdg-user-dirs` Configuration
