@@ -101,7 +101,7 @@ paru -S pipewire pipewire-audio pipewire-pulse lib32-pipewire \
 
 > [!NOTE] PipeWire and The Whole Setup
 > 
-> The dotfiles are configured to manipulate audio and video via PipeWire as well. If you are not going to use PipeWire, you might have to change a lot of scripts to use whatever you are going to use.
+> The dotfiles are configured to manipulate audio and video via PipeWire as well. It is **not recommended** to not use PipeWire, because you will have to change a lot of scripts.
 
 Read more at [Arch Linux Wiki > PipeWire](https://wiki.archlinux.org/title/PipeWire).
 
@@ -135,18 +135,19 @@ systemctl enable fstrim.timer
 
 ### Must-Have Programs
 
-These are packages that I always keep in my machine installed.
+These are packages that I always keep in my machine installed. Some of these packages, such as `btop`, `socat`, and `jq` are also required by the customization steps below.
 
 ```bash
-paru -S localsend-bin pfetch rclone \
-    tar unzip unrar p7zip zip xz rsync trash-cli \
+paru -S tar unzip unrar p7zip zip xz rclone rsync trash-cli \
     nfs-utils cifs-utils ntfs-3g exfat-utils gvfs udisks2 \
-    btop socat jq
+    pfetch btop socat jq yt-dlp tealdeer
 ```
 
 #### Midnight Commander
 
 Sometimes, I don't want to use Nautilus to navigate the filesystem... Definitely not because I messed up my system and now GUI programs don't work. Midnight Commander is a terminal-based file manager that can be used via keyboard.
+
+Optionally, you can install it and copy the dotfiles.
 
 ```bash
 paru -S mc
@@ -155,12 +156,16 @@ cp -r ~/Temp/SGDotfiles/mc ~/.config/mc
 
 #### Flatpak
 
+I use many [Flatpak](https://www.flatpak.org/) applications, so installing it is a must for me.
+
 ```bash
 paru -S flatpak
-flatpak install flathub com.github.tchx84.Flatseal
+flatpak install flathub com.github.tchx84.Flatseal  # Install FlatSeal to manage Flatpaks
 ```
 
 #### Development Tools
+
+I use my machine for software development so I install compilers and interpreters on my system.
 
 ```bash
 # Install C/C++, .NET, and Python development tools
@@ -180,12 +185,12 @@ paru -S android-tools android-udev
 usermod -aG adbusers "$(whoami)"
 
 # Other useful stuff
-pipx install howdoi yt-dlp magika
+pipx install howdoi magika
 ```
 
 ##### Neovim
 
-[[Neovim]] is the best text editor and IDE on Linux btw (fight me). If I installed the packages from the [[#Development Tools]], then might as well use Neovim to write code. We'll have to install some packages that are required by the plugins first.
+[[Neovim]] is the best text editor and IDE on Linux btw (fight me). If I installed the packages from the [[#Development Tools]] section, might as well use Neovim to write code. We'll have to install some packages that are required by the plugins first.
 
 ```bash
 paru -S neovim tree-sitter tree-sitter-cli
@@ -193,10 +198,26 @@ paru -S neovim tree-sitter tree-sitter-cli
 bash <(curl -sSf https://raw.githubusercontent.com/Chris1320/SetupGuides-Neovim/main/install)
 ```
 
+##### Visual Studio Code
+
+Sometimes, there are things that I cannot do on Neovim, such as Live Share/Pair Programming with classmates on coding sessions. Because of this, I have to use Visual Studio Code. I use the Flatpak version because it's what I use on my Fedora Workstation system.
+
+```bash
+flatpak install flathub com.visualstudio.code
+```
+
 #### Image and Video Viewers
+
+I use [Mpv](https://mpv.io/) and [imv](https://sr.ht/~exec64/imv/) to view videos and images respectively.
+
+With Mpv, we are going to use [tomasklaen](https://github.com/tomasklaen)'s [uosc](https://github.com/tomasklaen/uosc) config. These plugins are also used:
+
+- [po5/evafast](https://github.com/po5/evafast): Mpv script for hybrid fast-forward and seeking.
+- [rofe33/mpv-copyStuff](https://github.com/rofe33/mpv-copyStuff): Copy to clipboard the filename, full filename path, relative filename path, current video time, current displayed subtitle text, video duration/metadata.
 
 ```bash
 paru -S imv mpv
+cp -r ~/Temp/SGDotfiles/mpv ~/.config/mpv
 ```
 
 ## Setting Up SDDM
@@ -513,6 +534,12 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 > ```
 
 > [!ERROR] If you are having problems with theming GRUB, you can read the FAQs section in [catppuccin/grub](https://github.com/catppuccin/grub?tab=readme-ov-file#-faq).
+
+## Final Touches
+
+```bash
+paru -S localsend-bin
+```
 
 ---
 
