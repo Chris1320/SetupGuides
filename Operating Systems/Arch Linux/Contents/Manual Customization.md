@@ -259,10 +259,10 @@ When = PostTransaction
 Exec = /usr/bin/bash -c "/usr/bin/pacman -Qtd || /usr/bin/echo '==> no orphans found.'"
 ```
 
-[informant](https://aur.archlinux.org/packages/informant) makes sure that you are aware of breaking changes in the updates that you'll get. [overdue](https://aur.archlinux.org/packages/overdue) lists daemons that reference outdated libraries. [pacman-cleanup-hook](https://aur.archlinux.org/packages/pacman-cleanup-hook) keeps your pacman cache clean. [downgrade](https://aur.archlinux.org/packages/downgrade), while isn't a pacman hook, will still help you in case you have to downgrade a package.
+[informant](https://aur.archlinux.org/packages/informant) makes sure that you are aware of breaking changes in the updates that you'll get. [overdue](https://aur.archlinux.org/packages/overdue) lists daemons that reference outdated libraries. [pacman-cleanup-hook](https://aur.archlinux.org/packages/pacman-cleanup-hook) keeps your pacman cache clean. [rebuild-detector](https://github.com/maximbaz/rebuild-detector) detects which Arch Linux packages need to be rebuilt. [downgrade](https://aur.archlinux.org/packages/downgrade), while isn't a pacman hook, will still help you in case you have to downgrade a package.
 
 ```bash
-paru -S informant overdue pacman-cleanup-hook downgrade
+paru -S informant overdue pacman-cleanup-hook rebuild-detector downgrade
 ```
 
 ## Setting Up SDDM
@@ -370,6 +370,43 @@ Run the following script and select/enter your preferred cursor and cursor size 
 ```bash
 ~/.config/scripts/set-cursor.sh
 ```
+
+### Input Methods
+
+As of writing this, I am learning Japanese and Korean for 5 and 4 years, respectively. (I'm still not good at both btw) Because of this, I need Fcitx5 to allow me to use the Japanese and Korean input methods in Arch Linux.
+
+```bash
+paru -S fcitx5-im fcitx5-mozc-ut fcitx5-hangul
+```
+
+After installing the packages, create/edit the following files with their corresponding contents:
+
+> [!NOTE]+ `~/.gtkrc-2.0`
+> 
+> ```bash
+> gtk-im-module="fcitx"
+> ```
+
+> [!NOTE]+ `~/.config/gtk-3.0/settings.ini` and `~/.config/gtk-4.0/settings.ini`
+> 
+> ```toml
+> [Settings]
+> gtk-im-module=fcitx
+> ```
+
+After that, run `fcitx5-configtool` and uncheck "Only Show Current Language". Search for the following input methods and move them to the left "Current Input Method" column:
+
+- Mozc
+- Hangul
+
+Go to "Global Options" tab and change the first entry of "Trigger Input Method" (should be initially set to `Control+Space`) to `Super+,`.
+
+More information is available at:
+
+- [Arch Wiki > Fcitx5](https://wiki.archlinux.org/title/Fcitx5)
+- [Arch Wiki > Mozc](https://wiki.archlinux.org/title/Mozc)
+- [Arch Wiki > Localization > Korean](https://wiki.archlinux.org/title/Localization/Korean).
+- [Fcitx > Using Fcitx 5 on Wayland](https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland)
 
 ## Setting Up Kitty
 
