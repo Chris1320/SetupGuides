@@ -659,10 +659,10 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Final Touches
 
-I use LocalSend to transfer any files between my devices within the local network and GNOME Text Editor because for some reason [[#Neovim]] doesn't work properly when set as the default text editor.
+I use LocalSend to transfer any files between my devices within the local network and GNOME Text Editor because for some reason [[#Neovim]] doesn't work properly when set as the default text editor. GNOME Disk Utility is used as a GUI front-end for disk management stuff.
 
 ```bash
-paru -S localsend-bin gedit
+paru -S localsend-bin gedit gnome-disk-utility
 
 # Ensure that GNOME Text Editor does not add newlines at the end of files
 gsettings set org.gnome.gedit.preferences.editor ensure-trailing-newline false
