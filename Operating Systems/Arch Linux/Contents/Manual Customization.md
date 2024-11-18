@@ -235,6 +235,29 @@ The config also comes with the following shaders:
 - [SSimDownscaler](https://gist.github.com/igv/36508af3ffc84410fe39761d6969be10): High-quality downscaling of video content. (only available on `profile-high`)
 - [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637): Bilateral filter. (only available on `profile-high`)
 
+%%
+#### Music Player
+
+Soon™️
+%%
+
+#### Document Viewer
+
+I use [Zathura](https://github.com/pwmt/zathura) as my primary document viewer. To start, install it together with the necessary dependencies and copy the configuration file.
+
+```bash
+paru -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps
+cp -r ~/Temp/SGDotfiles/zathura ~/.config/zathura
+```
+
+> [!QUESTION]- Which language should I select for Tesseract data?
+> 
+> While installing the packages, Paru asked me this:
+> 
+> > "*There are 128 providers available for tessdata*"
+> 
+> Choose the language you need for OCR. I read mostly English documents, so I chose `tesseract-data-eng`.
+
 ## Setting Up Paru and Pacman (again)
 
 Since we have Paru now, we can configure Pacman more now. Hooks are scripts that are executed automatically at certain points during the package management process. Create the `/etc/pacman.d/hooks` directory by running the following command:
@@ -636,8 +659,19 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Final Touches
 
+I use LocalSend to transfer any files between my devices within the local network and GNOME Text Editor because for some reason [[#Neovim]] doesn't work properly when set as the default text editor.
+
 ```bash
-paru -S localsend-bin
+paru -S localsend-bin gedit
+
+# Ensure that GNOME Text Editor does not add newlines at the end of files
+gsettings set org.gnome.gedit.preferences.editor ensure-trailing-newline false
+```
+
+To set the default apps for common filetypes, run `set-defaults.sh` script from the `~/.config/scripts` directory:
+
+```bash
+~/.config/scripts/set-defaults.sh
 ```
 
 ---
