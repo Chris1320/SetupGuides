@@ -169,8 +169,8 @@ I use my machine for software development so I install compilers and interpreter
 
 ```bash
 # Install C/C++, .NET, and Python development tools
-paru -S gcc dotnet-sdk python python-pip python-pipx
-pipx install poetry jupyterlab
+paru -S gcc dotnet-sdk python python-pip python-uv
+uv tool install jupyterlab
 
 # Install Node Version Manager and the latest NodeJS version
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh" | bash
@@ -185,7 +185,8 @@ paru -S android-tools android-udev
 usermod -aG adbusers "$(whoami)"
 
 # Other useful stuff
-pipx install howdoi magika
+uv tool install howdoi
+uv tool install magika
 ```
 
 ##### Neovim
@@ -343,24 +344,35 @@ Related Links:
 
 ```bash
 paru -S hyprland hyprpaper \
-	brightnessctl fcitx5 \
+	hyprlock hypridle \
+	brightnessctl \
 	grim slurp swappy \
 	polkit-gnome gnome-keyring \
 	seahorse libsecret \
 	nm-connection-editor \
 	network-manager-applet \
 	wl-clipboard cliphist \
-	pavucontrol
+	rofi-wayland rofimoji \
+	pavucontrol waybar \
+	dunst libnotify \
+	batsignal
 ```
 
 > [!TIP] If you ever need help, Hyprland has their own wiki, so [read it](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/)!
 
-To start customizing Hyprland, just copy the dotfiles to `~/.config/`. Running Hyprland at this time is **not yet recommended** since we haven't customized the rest of the programs yet.
+To start customizing Hyprland, just copy the necessary dotfiles to `~/.config/` and start required services. Running Hyprland at this time is **not yet recommended** since we haven't customized the rest of the programs yet.
 
 ```bash
-# Make sure you're still at the repository's root directory
-cp -r ./dotfiles/hypr ~/.config/hypr
-cp -r ./scripts ~/.config/scripts
+mkdir -p ~/.config/dunst
+
+cp ~/Temp/ArchLinuxDotfiles/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/waybar ~/.config/waybar
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/hypr ~/.config/hypr
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/rofi ~/.config/rofi
+cp -r ~/Temp/ArchLinuxDotfiles/batsignal ~/.config/batsignal
+cp -r ~/Temp/ArchLinuxDotfiles/scripts ~/.config/scripts
+
+systemctl --user enable batsignal.service
 ```
 
 Also copy your desired background image to `~/.config/background`.
@@ -552,54 +564,6 @@ systemctl start --user gcr-ssh-agent.socket
 paru -S github-cli
 git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 ```
-
-## Setting Up Waybar
-
-Waybar is a status bar for Wayland compositors. We will use it to show basic information about our machine at the top of our screen. Install it and copy its configuration file to its designated location.
-
-```bash
-paru -S waybar
-cp -r ./dotfiles/waybar ~/.config/waybar
-```
-
-## Setting Up dunst
-
-Dunst is a lightweight notification daemon for Linux and Unix-like operating systems. It is highly customizable, allowing us to adjust its appearance, behavior, and the types of notifications it handles.
-
-To start, install `dunst` and copy its configuration file.
-
-```bash
-paru -S dunst libnotify
-mkdir -p ~/.config/dunst
-cp ./dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
-```
-
-### Battery Level Notifications
-
-To enable battery level notifications, install `batsignal`, copy its dotfiles to its designated directory, and enable the service.
-
-```bash
-paru -S batsignal
-cp -r ~/Temp/ArchLinuxDotfiles/batsignal ~/.config/batsignal
-systemctl --user enable batsignal.service
-```
-
-## Setting Up Rofi
-
-Rofi will be our launcher and interface for window switching, emoji panel, clipboard history panel, and much much more. Install it and copy its dotfiles to its designated locations.
-
-```bash
-paru -S rofi-wayland rofimoji
-cp -r ./dotfiles/rofi ~/.config/rofi
-```
-
-## Setting Up Hyprlock
-
-```bash
-paru -S hyprlock
-```
-
-Since we've [[#Setting Up Hyprland|set up Hyprland]], we wouldn't need any additional setup.
 
 ## Setting Up The File Manager
 
