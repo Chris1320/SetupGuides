@@ -395,10 +395,14 @@ the rest of the system for it to function properly.
 
 ### GTK Theme
 
-Currently, this setup uses the [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme).
+Currently, this setup uses the [Everforest GTK theme](https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme). [refi64/stylepak](https://github.com/refi64/stylepak) helps us automatically install our GTK+ theme as a Flatpak.
 
 ```bash
-paru -S everforest-gtk-theme-git gtk-engine-murrine
+paru -S everforest-gtk-theme-git gtk-engine-murrine stylepak-git
+
+# Install system and user themes to Flatpak
+stylepak install-system
+stylepak install-user
 ```
 
 ### Hyprcursors
