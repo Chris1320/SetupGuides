@@ -603,10 +603,14 @@ paru -S firefox brave-bin torbrowser-launcher
 
 ## Gaming on Arch
 
-I don't play many games on my laptop since I have my desktop computer.
+I don't play many games on my laptop since I have my desktop computer. I get my games either from Steam or GOG, use MangoHud for performance monitoring, and Bottles for running Windows applications.
 
 ```bash
-paru -S steam
+paru -S steam mangohud lib32-mangohud
+flatpak install flathub com.usebottles.bottles
+flatpak override --user --filesystem=xdg-config/MangoHud:ro
+
+cp -r ~/Temp/SGDotfiles/MangoHud ~/.config/MangoHud
 ```
 
 > [!WARNING]- Steam Dependencies
