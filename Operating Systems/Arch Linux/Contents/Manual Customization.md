@@ -141,6 +141,8 @@ These are packages that I always keep in my machine installed. Some of these pac
 paru -S tar unzip unrar p7zip zip xz rclone trash-cli \
     nfs-utils cifs-utils ntfs-3g exfat-utils gvfs udisks2 \
     pfetch btop socat jq yt-dlp tealdeer
+
+cp -r ~/Temp/SGDotfiles/btop ~/.config/btop
 ```
 
 #### Midnight Commander
@@ -560,9 +562,14 @@ systemctl start --user gcr-ssh-agent.socket
 
 ### Git
 
+I always sign-off my git commits so I have `commit.gpgsign` set to *true*. I also have a couple aliases on hand for my most-used commands. Also, I use [GitHub CLI](https://cli.github.com/) to manage my GitHub repositories.
+
 ```bash
 paru -S github-cli
 git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
+
+cp -r ~/Temp/SGDotfiles/git/gitconfig ~/.gitconfig
+nvim ~/.gitconfig  # Edit gitconfig to replace username, email, and signing key.
 ```
 
 ## Setting Up The File Manager
@@ -626,7 +633,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 I use LocalSend to transfer any files between my devices within the local network and GNOME Text Editor because for some reason [[#Neovim]] doesn't work properly when set as the default text editor. GNOME Disk Utility is used as a GUI front-end for disk management stuff.
 
 ```bash
-paru -S localsend-bin gedit gnome-disk-utility
+paru -S cava gedit gnome-disk-utility localsend-bin
+
+cp -r ~/Temp/SGDotfiles/cava ~/.config/cava
 
 # Ensure that GNOME Text Editor does not add newlines at the end of files
 gsettings set org.gnome.gedit.preferences.editor ensure-trailing-newline false
