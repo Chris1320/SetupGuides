@@ -608,6 +608,9 @@ I don't play many games on my laptop since I have my desktop computer. I get my 
 ```bash
 paru -S steam mangohud lib32-mangohud
 flatpak install flathub com.usebottles.bottles
+# Enable Steam Proton Integration
+flatpak override --user com.usebottles.bottles --filesystem=~/.steam/steam
+# Grant all flatpak applications read-only access to MangoHUD config
 flatpak override --user --filesystem=xdg-config/MangoHud:ro
 
 cp -r ~/Temp/SGDotfiles/MangoHud ~/.config/MangoHud
