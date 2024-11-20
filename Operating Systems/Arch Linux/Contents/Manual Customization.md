@@ -45,14 +45,14 @@ git lfs pull          # Download LFS files
 
 We are going to use the following fonts and icons, so it's best to install them now.
 
-- **Primary Fonts**: `ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk ttf-opensans noto-fonts otf-apple-fonts`
+- **Primary Fonts**: `ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk ttf-opensans noto-fonts otf-apple-fonts ttf-ms-win11-auto`
 - **Primary Icons**: `papirus-icon-theme papirus-folders-catppuccin-git`
 - **Icon Fonts**: `otf-font-awesome ttf-material-icons-git`
 - **Cursor Icons**: `catppuccin-cursors-mocha`
 
 ```bash
 paru -Syu ttf-jetbrains-mono-nerd ttf-noto-nerd noto-fonts-cjk \
-    ttf-opensans noto-fonts otf-apple-fonts \
+    ttf-opensans noto-fonts otf-apple-fonts ttf-ms-win11-auto \
     papirus-icon-theme papirus-folders-catppuccin-git \
     otf-font-awesome ttf-material-icons-git \
     catppuccin-cursors-mocha
@@ -138,9 +138,9 @@ systemctl enable fstrim.timer
 These are packages that I always keep in my machine installed. Some of these packages, such as `btop`, `socat`, and `jq` are also required by the customization steps below.
 
 ```bash
-paru -S tar unzip unrar p7zip zip xz rclone trash-cli \
-    nfs-utils cifs-utils ntfs-3g exfat-utils gvfs udisks2 \
-    pfetch btop socat jq yt-dlp tealdeer
+paru -S tar unzip unrar p7zip zip xz cpio rclone trash-cli \
+    dmg2img nfs-utils cifs-utils ntfs-3g exfat-utils gvfs \
+    udisks2 pfetch btop socat jq inxi yt-dlp tealdeer
 
 cp -r ~/Temp/SGDotfiles/btop ~/.config/btop
 ```
@@ -347,6 +347,10 @@ Related Links:
 ```bash
 paru -S hyprland hyprpaper \
 	hyprlock hypridle \
+	hyprsunset hyprpicker \
+	xdg-desktop-portal-gtk \
+	xdg-desktop-portal-hyprland \
+	qt5-wayland qt6-wayland \
 	brightnessctl \
 	grim slurp swappy \
 	polkit-gnome gnome-keyring \
@@ -596,6 +600,20 @@ Now, you should edit the settings of Nautilus by following [[Fedora Workstation#
 ```bash
 paru -S firefox brave-bin torbrowser-launcher
 ```
+
+## Gaming on Arch
+
+I don't play many games on my laptop since I have my desktop computer.
+
+```bash
+paru -S steam
+```
+
+> [!WARNING]- Steam Dependencies
+> 
+> "If you are installing for the first time, you may be prompted for the 32-bit [Vulkan](https://wiki.archlinux.org/title/Vulkan "Vulkan") driver package. By default [pacman](https://wiki.archlinux.org/title/Pacman "Pacman") alphabetically chooses [lib32-amdvlk](https://archlinux.org/packages/?name=lib32-amdvlk), which can introduce issues like being unable to use Vulkan at all when you install it by accident for different GPU vendor or launch games on AMD GPUs if not installed alongside [amdvlk](https://archlinux.org/packages/?name=amdvlk). See [Vulkan#Installation](https://wiki.archlinux.org/title/Vulkan#Installation "Vulkan") to choose the proper driver for your GPU."
+> 
+> \- [Arch Wiki > Steam](https://wiki.archlinux.org/title/Steam#Installation)
 
 ## Ricing Up GRUB
 
