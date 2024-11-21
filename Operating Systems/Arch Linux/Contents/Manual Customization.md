@@ -145,17 +145,6 @@ paru -S tar unzip unrar p7zip zip xz cpio rclone trash-cli \
 cp -r ~/Temp/SGDotfiles/btop ~/.config/btop
 ```
 
-#### Midnight Commander
-
-Sometimes, I don't want to use Nautilus to navigate the filesystem... Definitely not because I messed up my system and now GUI programs don't work. Midnight Commander is a terminal-based file manager that can be used via keyboard.
-
-Optionally, you can install it and copy the dotfiles.
-
-```bash
-paru -S mc
-cp -r ~/Temp/SGDotfiles/mc ~/.config/mc
-```
-
 #### Flatpak
 
 I use many [Flatpak](https://www.flatpak.org/) applications, so installing it is a must for me.
@@ -580,17 +569,18 @@ cp -r ~/Temp/SGDotfiles/git/gitconfig ~/.gitconfig
 nvim ~/.gitconfig  # Edit gitconfig to replace username, email, and signing key.
 ```
 
-## Setting Up The File Manager
+## Setting Up The File Explorer
 
-I chose [Nautilus/GNOME Files](https://wiki.archlinux.org/title/GNOME/Files) as my GUI file manager. It just feels and looks better in my opinion.
+I chose [Yazi](https://yazi-rs.github.io/) as my GUI file explorer. I used to use [Nautilus/GNOME Files](https://wiki.archlinux.org/title/GNOME/Files), but I found Yazi to suit my needs.
 
 ```bash
-paru -S nautilus \
-    nautilus-admin-gtk4 nautilus-checksums \
-    nautilus-open-any-terminal \
-    file-roller sushi \
-    tumbler ffmpegthumbnailer \
-    raw-thumbnailer folderpreview \
+paru -S yazi ouch archivemount mediainfo
+cp -r ~/Temp/SGDotfiles/yazi ~/.config/yazi
+```
+
+%%
+```bash
+paru -S \
     gnome-online-accounts \
     gvfs-gphoto2 gvfs-mtp gvfs-afc \
     gvfs-smb gvfs-dnssd gvfs-nfs \
@@ -598,6 +588,7 @@ paru -S nautilus \
 ```
 
 Now, you should edit the settings of Nautilus by following [[Fedora Workstation#2. Configuring Nautilus]]. I usually hide some of the XDG directories. Follow [[Fedora Workstation#3. Update XDG Directories]] to do this.
+%%
 
 ## Setting Up The Browsers
 
