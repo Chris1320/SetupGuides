@@ -34,7 +34,7 @@ tags:
 
 ## Description
 
-This repository contains most of my dotfiles and notes that are used in my Arch Linux installation. You can use the [[Automatic Customization|auto-install script]] to automatically install Arch Linux and the dotfiles in your system. However, I don't guarantee that the installer covers all your needs. In such cases (or you probably do not want to start from scratch), this guide assumes that...
+This repository contains most of my dotfiles and notes that are used in my Arch Linux installation. You can use the [[Automatic Customization|auto-install script]] to automatically install Arch Linux and the dotfiles in your system. However, I don't guarantee that the installer covers all your needs. It is recommended to follow the [[System Installation]] guide here because the dotfiles are tightly integrated with how my system is set up. However, in such cases where you know what you are doing (or you probably do not want to start from scratch), this guide assumes that...
 
 - You've successfully installed Arch Linux by following their [installation guide](https://wiki.archlinux.org/title/Installation_guide) which can be found in their [wiki](https://wiki.archlinux.org/). Otherwise, follow the [[System Installation|system installation guide]] before proceeding.
 - You have made a [[System Installation#Add A Non-Root User Account|non-root user]] in your system and is currently active.
