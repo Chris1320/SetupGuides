@@ -628,6 +628,14 @@ and replace `/.snapshots` to `/snapshots`. Save and close the file and then run 
 systemctl enable grub-btrfsd.service
 ```
 
+Edit `/etc/mkinitcpio.conf` and add `grub-btrfs-overlayfs` to `HOOKS`:
+
+```toml
+HOOKS=(... grub-btrfs-overlayfs)
+```
+
+After saving and closing the file, run `mkinitcpio -P`.
+
 ### Setting Up Snapper
 
 Start Btrfs Assistant and go to the *Snapper Settings* tab. Click *New* and name it `root` with backup path `/`. Enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Click *New* again and name it `home` with backup path `/home`, enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Lastly, enable *timeline*, *cleanup*, and *boot* in *systemd Unit Settings* section.
