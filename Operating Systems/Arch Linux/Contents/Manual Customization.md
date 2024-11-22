@@ -209,6 +209,7 @@ paru -S hyprland hyprpaper \
 	qt5-wayland qt6-wayland \
 	brightnessctl \
 	grim slurp swappy \
+	wf-recorder \
 	polkit-gnome gnome-keyring \
 	seahorse libsecret \
 	nm-connection-editor \
