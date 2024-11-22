@@ -610,13 +610,13 @@ paru -S snapper snap-pac btrfs-assistant inotify-tools
 systemctl enable snapper-boot.timer
 ```
 
-To use `grub-btrfsd.service`, run the following command to enable the service:
+To automatically update the GRUB menu with the latest snapper snapshots, run the following command to enable the needed service:
 
 ```bash
 systemctl enable grub-btrfsd.service
 ```
 
-Edit `/etc/mkinitcpio.conf` and add `grub-btrfs-overlayfs` to `HOOKS`:
+To [boot snapshots using overlayfs](https://github.com/Antynea/grub-btrfs/blob/master/initramfs/readme.md), edit `/etc/mkinitcpio.conf` and add `grub-btrfs-overlayfs` to `HOOKS`:
 
 ```toml
 HOOKS=(... grub-btrfs-overlayfs)
