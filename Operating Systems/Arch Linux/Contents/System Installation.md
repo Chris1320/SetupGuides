@@ -1,6 +1,6 @@
 # System Installation
 
-If you haven't installed Arch Linux yet, continue reading. Otherwise, you might want to skip to the [[Manual Customization|manual]] or [[Automatic Customization|automatic]] customization steps.
+If you haven't installed Arch Linux yet, continue reading. It is recommended to start from scratch since the dotfiles are tightly integrated with how my system is set up. If you know what you are doing, you might want to skip to the [[Manual Customization|manual]] or [[Automatic Customization|automatic]] customization steps.
 
 I recommend that you read the [Arch Linux Wiki](https://wiki.archlinux.org/)'s [installation guide](https://wiki.archlinux.org/title/Installation_guide) instead since it is more updated and accurate than a guide that is maintained by one hobbyist like me. I also recommend reading [arch.d3sox.me](https://arch.d3sox.me/) if you have trouble understanding the wiki.
 
@@ -81,10 +81,10 @@ Partition the device following the structure shown in [[Environment#Disk Partiti
 ```bash
 mkfs.fat -F32 -n EFI /dev/sda1  # Create a FAT32 filesystem in `/dev/sda1` labeled "EFI"
 mkfs.ext4 -L BOOT /dev/sda2  # Create an EXT4 filesystem in `/dev/sda2` labeled "BOOT"
-mkfs.btrfs -L ARCH /dev/sda3  # Create a BTRFS filesystem in `/dev/sda3` labeled "ARCH"
+mkfs.btrfs -L ARCH /dev/sdaY  # Create a BTRFS filesystem in `/dev/sdaY` labeled "ARCH"
 
 # Mount /mnt to create Btrfs subvolumes.
-mount --mkdir /dev/sda3 /mnt
+mount --mkdir /dev/sdaY /mnt
 
 # Create Btrfs subvolumes
 btrfs subvolume create /mnt/@
@@ -95,12 +95,26 @@ btrfs subvolume create /mnt/@snapshots
 umount /mnt
 
 # Mount the partitions in their respective mountpoints.
-mount --mkdir -o noatime,compress=zstd:1,subvol=@ /dev/sda3 /mnt
-mount --mkdir -o noatime,compress=zstd:1,subvol=@home /dev/sda3 /mnt/home
-mount --mkdir -o noatime,compress=zstd:1,subvol=@snapshots /dev/sda3 /mnt/snapshots
+mount --mkdir -o noatime,compress-force=zstd:3,subvol=@ /dev/sdaY /mnt
+mount --mkdir -o noatime,compress-force=zstd:3,subvol=@home /dev/sdaY /mnt/home
+mount --mkdir -o noatime,compress-force=zstd:3,subvol=@snapshots /dev/sdaY /mnt/snapshots
 mount --mkdir /dev/sda2 /mnt/boot
 mount --mkdir /dev/sda1 /mnt/boot/efi
 ```
+
+> [!NOTE]+ Regarding Btrfs Compression
+> 
+> The [compression level](https://btrfs.readthedocs.io/en/latest/Compression.html#compression-levels) of zstd may vary, depending on your storage type. For slower devices such as HDDs, it is better to optimize the file size so that the system will spend less time reading and writing. Meanwhile, the added compression/decompression time is (theoretically) slowing down I/O for faster devices.[^1]
+> 
+> Basically, set `compress-force=zstd:N`...
+> 
+> - Within `2-5` if you have a rotating storage device
+> - To `2` if you have a SATA SSD
+> - To `1` if you have an NVMe SSD
+> 
+>  Depending on your needs, you can set the compression levels <u>higher</u> if *storage space* is more important or <u>lower</u> if *latency or bandwidth* is more important.
+
+[^1]: Source: [Reddit -  Which compression level should I choose?](https://www.reddit.com/r/btrfs/comments/15i0psb/comment/juvubkw/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
 
 ## Installing Arch Linux
 
@@ -208,11 +222,19 @@ pacman -S zram-generator
 
 After installation, create/edit `/etc/systemd/zram-generator.conf` and replace its contents with the following:
 
-```
+```toml
 [zram0]
 zram-size = min(ram, 8192)
 compression-algorithm = zstd
 ```
+
+> [!NOTE]- ZRAM Backing Device
+> 
+> If you opted for using ZRAM's writeback feature, get the partition UUID of your backing device partition by looking at the results of `ls -lAh /dev/disk/by-partuuid`, and add the following line in `/etc/systemd/zram-generator.conf`, under `[zram0]`:
+> 
+> ```toml
+> writeback-device = /dev/disk/by-partuuid/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+> ```
 
 We can also optimize our `zram` configuration by creating `/etc/sysctl.d/99-vm-zram-parameters.conf` and adding the following in the file:
 

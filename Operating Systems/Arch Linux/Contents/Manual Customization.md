@@ -36,8 +36,10 @@ git clone https://github.com/Chris1320/SetupGuides-dotfiles.git ~/Temp/SGDotfile
 git clone https://github.com/Chris1320/SetupGuides-ArchLinux.git ~/Temp/ArchLinuxDotfiles
 
 cd ~/Temp/ArchLinuxDotfiles
-git submodule init    # Initialize git submodules
-git submodule update  # Pull submodules from remote
+
+# Initialize and pull submodules from remote
+git submodule update --init --recursive
+git lfs install       # Install LFS hooks
 git lfs pull          # Download LFS files
 ```
 
@@ -71,20 +73,6 @@ systemctl enable \
     avahi-daemon.service \
     systemd-timesyncd.service
 ```
-
-### Input Devices
-
-Some peripherals require these packages to work properly.
-
-```bash
-paru -S xf86-input-synaptics xf86-input-libinput xf86-input-evdev
-```
-
-> [!TIP]- Additional Package to Install on Virtual Machines
-> 
-> ```bash
-> paru -S xf86-input-vmmouse
-> ```
 
 ### Audio and Video
 
@@ -140,9 +128,9 @@ These are packages that I always keep in my machine installed. Some of these pac
 ```bash
 paru -S tar unzip unrar p7zip zip xz cpio rclone trash-cli \
     dmg2img nfs-utils cifs-utils ntfs-3g exfat-utils gvfs \
-    udisks2 pfetch btop socat jq inxi yt-dlp tealdeer
+    udisks2 pfetch btop socat jq inxi yt-dlp tealdeer wget
 
-cp -r ~/Temp/SGDotfiles/btop ~/.config/btop
+cp -r ~/Temp/SGDotfiles/btop ~/.config
 ```
 
 #### Flatpak
@@ -159,21 +147,23 @@ flatpak install flathub com.github.tchx84.Flatseal  # Install FlatSeal to manage
 I use my machine for software development so I install compilers and interpreters on my system.
 
 ```bash
-# Install C/C++, .NET, and Python development tools
-paru -S gcc dotnet-sdk python python-pip python-uv
-uv tool install jupyterlab
+# Install development tools
+paru -S \
+    gcc go nvm \
+    dotnet-sdk jdk-openjdk \
+    php composer \
+    python python-pip python-uv \
+    android-tools android-udev
 
-# Install Node Version Manager and the latest NodeJS version
-curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh" | bash
-# Move new lines from .zshrc to user_env.sh and restart the terminal
+# Add user to adbusers group so that you can actually use it
+sudo usermod -aG adbusers "$(whoami)"
+
+# Install latest version of NodeJS and NPM via NVM
+source /usr/share/nvm/init-nvm.sh
 nvm install node
 
-# Install Java Development Kit and PHP development tools
-paru -S jdk-openjdk php composer
-
-# Android tools
-paru -S android-tools android-udev
-usermod -aG adbusers "$(whoami)"
+# Install Jupyterlab as a uv tool
+uv tool install jupyterlab
 
 # Other useful stuff
 uv tool install howdoi
@@ -204,7 +194,7 @@ I use [Mpv](https://mpv.io/) and [imv](https://sr.ht/~exec64/imv/) to view video
 
 ```bash
 paru -S imv mpv
-cp -r ~/Temp/SGDotfiles/imv ~/.config/imv  # Copy imv config
+cp -r ~/Temp/SGDotfiles/imv ~/.config
 ```
 
 There two versions of the Mpv configuration file: one for high-end devices and the other for low-end machines. If your device can handle high CPU/GPU usage for better playback quality, copy the `profile-high` directory to `~/.config/mpv`; otherwise, copy the `profile-low` directory.
@@ -227,11 +217,9 @@ The config also comes with the following shaders:
 - [SSimDownscaler](https://gist.github.com/igv/36508af3ffc84410fe39761d6969be10): High-quality downscaling of video content. (only available on `profile-high`)
 - [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637): Bilateral filter. (only available on `profile-high`)
 
-%%
 #### Music Player
 
 Soon™️
-%%
 
 #### Document Viewer
 
@@ -239,7 +227,7 @@ I use [Zathura](https://github.com/pwmt/zathura) as my primary document viewer. 
 
 ```bash
 paru -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps
-cp -r ~/Temp/SGDotfiles/zathura ~/.config/zathura
+cp -r ~/Temp/SGDotfiles/zathura ~/.config
 ```
 
 > [!QUESTION]- Which language should I select for Tesseract data?
@@ -277,7 +265,10 @@ Exec = /usr/bin/bash -c "/usr/bin/pacman -Qtd || /usr/bin/echo '==> no orphans f
 [informant](https://aur.archlinux.org/packages/informant) makes sure that you are aware of breaking changes in the updates that you'll get. [overdue](https://aur.archlinux.org/packages/overdue) lists daemons that reference outdated libraries. [pacman-cleanup-hook](https://aur.archlinux.org/packages/pacman-cleanup-hook) keeps your pacman cache clean. [rebuild-detector](https://github.com/maximbaz/rebuild-detector) detects which Arch Linux packages need to be rebuilt. [downgrade](https://aur.archlinux.org/packages/downgrade), while isn't a pacman hook, will still help you in case you have to downgrade a package.
 
 ```bash
-paru -S informant overdue pacman-cleanup-hook rebuild-detector downgrade
+paru -S informant
+sudo usermod -aG informant "$(whoami)"
+informant read
+paru -S overdue pacman-cleanup-hook rebuild-detector downgrade
 ```
 
 ## Setting Up SDDM
@@ -291,27 +282,16 @@ paru -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
 systemctl enable sddm.service
 ```
 
-I use [Keyitdev](https://github.com/Keyitdev)'s [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)
-as my SDDM theme. Clone their SDDM configuration files to their designated
-locations. I also changed the wallpaper included in their repository, so
-we'll have to copy that from `~/Temp/ArchLinuxDotfiles` as well.
-
-> [!NOTE]
->
-> Make sure that git submodules are pulled before attempting to copy the files from `./dotfiles/sddm/sddm-astronaut-theme` directory.
->
-> ```bash
-> git submodule update --init --recursive --remote
-> ```
+I use [Keyitdev](https://github.com/Keyitdev)'s [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme) as my SDDM theme.
 
 ```bash
-sudo cp -r ./dotfiles/sddm/sddm-astronaut-theme /usr/share/sddm/themes/sddm-astronaut-theme
+sudo cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/sddm/sddm-astronaut-theme /usr/share/sddm/themes
 sudo mkdir -p /etc/sddm.conf.d
-sudo cp -r ./dotfiles/sddm/sddm.conf /etc/sddm.conf.d/sddm.conf
+sudo cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/sddm/sddm.conf /etc/sddm.conf.d/sddm.conf
 printf '[General]\nInputMethod=qtvirtualkeyboard' | sudo tee /etc/sddm.conf.d/virtualkbd.conf
 
 sudo mkdir -p /usr/share/wallpapers
-sudo cp "./assets/wallpapers/<your desired wallpaper>" /usr/share/wallpapers/sddm-bg
+sudo cp "~/Temp/ArchLinuxDotfiles/assets/wallpapers/<your desired wallpaper>" /usr/share/wallpapers/sddm-bg
 ```
 
 > [!TIP] Currently, I use `5am_Train_1920x1080.jpg` as my SDDM background.
@@ -323,6 +303,7 @@ and change the following lines:
 | -------------- | ------------------------------- |
 | `Background`   | `/usr/share/wallpapers/sddm-bg` |
 | `FormPosition` | `left`                          |
+| `HeaderText`   | You can put anything here :>    |
 
 Related Links:
 
@@ -360,12 +341,12 @@ To start customizing Hyprland, just copy the necessary dotfiles to `~/.config/` 
 ```bash
 mkdir -p ~/.config/dunst
 
-cp ~/Temp/ArchLinuxDotfiles/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
-cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/waybar ~/.config/waybar
-cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/hypr ~/.config/hypr
-cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/rofi ~/.config/rofi
-cp -r ~/Temp/ArchLinuxDotfiles/batsignal ~/.config/batsignal
-cp -r ~/Temp/ArchLinuxDotfiles/scripts ~/.config/scripts
+cp ~/Temp/ArchLinuxDotfiles/dotfiles/dunst/dunstrc ~/.config/dunst
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/waybar ~/.config
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/hypr ~/.config
+cp -r ~/Temp/ArchLinuxDotfiles/dotfiles/rofi ~/.config
+cp -r ~/Temp/ArchLinuxDotfiles/batsignal ~/.config
+cp -r ~/Temp/ArchLinuxDotfiles/scripts ~/.config
 
 systemctl --user enable batsignal.service
 ```
@@ -373,7 +354,7 @@ systemctl --user enable batsignal.service
 Also copy your desired background image to `~/.config/background`.
 
 ```bash
-cp "./assets/wallpapers/<your desired wallpaper>" ~/.config/background
+cp "~/Temp/ArchLinuxDotfiles/assets/wallpapers/<your desired wallpaper>" ~/.config/background
 # I personally use `evening-sky.png` as my wallpaper.
 ```
 
@@ -472,6 +453,9 @@ First, import your GPG private key.
 
 ```bash
 gpg --import your_gpg_key.gpg
+
+chmod 700 ~/.gnupg
+chmod 600 ~/.gnupg/*
 ```
 
 Next, edit the key and trust it ultimately. You'll have to get the key ID first.
@@ -563,10 +547,11 @@ I always sign-off my git commits so I have `commit.gpgsign` set to *true*. I als
 
 ```bash
 paru -S github-cli
-git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 
 cp -r ~/Temp/SGDotfiles/git/gitconfig ~/.gitconfig
 nvim ~/.gitconfig  # Edit gitconfig to replace username, email, and signing key.
+
+git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 ```
 
 ## Setting Up The File Explorer
@@ -578,17 +563,7 @@ paru -S yazi ouch archivemount mediainfo
 cp -r ~/Temp/SGDotfiles/yazi ~/.config/yazi
 ```
 
-%%
-```bash
-paru -S \
-    gnome-online-accounts \
-    gvfs-gphoto2 gvfs-mtp gvfs-afc \
-    gvfs-smb gvfs-dnssd gvfs-nfs \
-    gvfs-goa gvfs-google gvfs-onedrive
-```
-
-Now, you should edit the settings of Nautilus by following [[Fedora Workstation#2. Configuring Nautilus]]. I usually hide some of the XDG directories. Follow [[Fedora Workstation#3. Update XDG Directories]] to do this.
-%%
+I usually hide some of the XDG directories. Follow [[Fedora Workstation#3. Update XDG Directories]] to do this.
 
 ## Setting Up The Browsers
 
@@ -601,21 +576,21 @@ paru -S firefox brave-bin torbrowser-launcher
 I don't play many games on my laptop since I have my desktop computer. I get my games either from Steam or GOG, use MangoHud for performance monitoring, and Bottles for running Windows applications.
 
 ```bash
-paru -S steam mangohud lib32-mangohud
+flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub com.usebottles.bottles
+flatpak install flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+flatpak install flathub net.davidotek.pupgui2
+paru -S gamemode
+ 
 # Enable Steam Proton Integration
-flatpak override --user com.usebottles.bottles --filesystem=~/.steam/steam
+flatpak override --user com.usebottles.bottles --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
 # Grant all flatpak applications read-only access to MangoHUD config
 flatpak override --user --filesystem=xdg-config/MangoHud:ro
+# Enable MangoHUD on all Steam games
+flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 
 cp -r ~/Temp/SGDotfiles/MangoHud ~/.config/MangoHud
 ```
-
-> [!WARNING]- Steam Dependencies
-> 
-> "If you are installing for the first time, you may be prompted for the 32-bit [Vulkan](https://wiki.archlinux.org/title/Vulkan "Vulkan") driver package. By default [pacman](https://wiki.archlinux.org/title/Pacman "Pacman") alphabetically chooses [lib32-amdvlk](https://archlinux.org/packages/?name=lib32-amdvlk), which can introduce issues like being unable to use Vulkan at all when you install it by accident for different GPU vendor or launch games on AMD GPUs if not installed alongside [amdvlk](https://archlinux.org/packages/?name=amdvlk). See [Vulkan#Installation](https://wiki.archlinux.org/title/Vulkan#Installation "Vulkan") to choose the proper driver for your GPU."
-> 
-> \- [Arch Wiki > Steam](https://wiki.archlinux.org/title/Steam#Installation)
 
 ## Ricing Up GRUB
 
