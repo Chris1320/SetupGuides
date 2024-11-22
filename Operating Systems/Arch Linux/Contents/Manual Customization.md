@@ -616,6 +616,12 @@ To automatically update the GRUB menu with the latest snapper snapshots, run the
 systemctl enable grub-btrfsd.service
 ```
 
+Edit `/etc/default/grub-btrfs/config`. Uncomment/comment lines if needed.
+
+| Key                       | Value                                      |
+| ------------------------- | ------------------------------------------ |
+| `GRUB_BTRFS_TITLE_FORMAT` | `("date" "description" "snapshot" "type")` |
+
 To [boot snapshots using overlayfs](https://github.com/Antynea/grub-btrfs/blob/master/initramfs/readme.md), edit `/etc/mkinitcpio.conf` and add `grub-btrfs-overlayfs` to `HOOKS`:
 
 ```toml
