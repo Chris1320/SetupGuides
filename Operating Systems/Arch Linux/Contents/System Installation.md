@@ -154,7 +154,7 @@ pacstrap -K /mnt \
     sysfsutils usbutils btrfs-progs e2fsprogs dosfstools lvm2 \
     inetutils dhcping traceroute rsync \
     earlyoom nano less which tree sudo reflector \
-    dialog man-db man-pages \
+    dialog man-db man-pages openssh \
     git git-lfs xdg-utils xdg-user-dirs
 ```
 
@@ -230,7 +230,7 @@ compression-algorithm = zstd
 
 > [!NOTE]- ZRAM Backing Device
 > 
-> If you opted for using ZRAM's writeback feature, get the partition UUID of your backing device partition by looking at the results of `ls -lAh /dev/disk/by-partuuid`, and add the following line in `/etc/systemd/zram-generator.conf`, under `[zram0]`:
+> If you opted for using ZRAM's writeback feature, get the partition UUID of your backing device partition (`/dev/sdaX`) by looking at the results of `ls -lAh /dev/disk/by-partuuid`, and add the following line in `/etc/systemd/zram-generator.conf`, under `[zram0]`:
 > 
 > ```toml
 > writeback-device = /dev/disk/by-partuuid/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
