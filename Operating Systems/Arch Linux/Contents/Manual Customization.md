@@ -238,6 +238,12 @@ cp -r ~/Temp/SGDotfiles/zathura ~/.config
 > 
 > Choose the language you need for OCR. I read mostly English documents, so I chose `tesseract-data-eng`.
 
+For Microsoft Office documents, I use [OnlyOffice](https://www.onlyoffice.com/).
+
+```bash
+paru -S onlyoffice-bin
+```
+
 ## Setting Up Paru and Pacman (again)
 
 Since we have Paru now, we can configure Pacman more now. Hooks are scripts that are executed automatically at certain points during the package management process. Create the `/etc/pacman.d/hooks` directory by running the following command:
@@ -580,7 +586,9 @@ flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub com.usebottles.bottles
 flatpak install flathub org.freedesktop.Platform.VulkanLayer.MangoHud
 flatpak install flathub net.davidotek.pupgui2
-paru -S gamemode
+paru -S gamemode lib32-gamemode
+
+sudo usermod -aG gamemode "$(whoami)"
  
 # Enable Steam Proton Integration
 flatpak override --user com.usebottles.bottles --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
@@ -591,6 +599,16 @@ flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 
 cp -r ~/Temp/SGDotfiles/MangoHud ~/.config/MangoHud
 ```
+
+Install Proton-GE. Set `Steam Settings > Compatibility > Run other titles with` to `GE-Proton`.
+
+> [!TIP]+
+> 
+> When you are going to play a game, enable *mangohud* and *gamemode* by adding the following to the launch options:
+> 
+> ```bash
+> mangohud gamemoderun %command%
+> ```
 
 ## Ricing Up GRUB
 
@@ -628,7 +646,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 I use LocalSend to transfer any files between my devices within the local network and GNOME Text Editor because for some reason [[#Neovim]] doesn't work properly when set as the default text editor. GNOME Disk Utility is used as a GUI front-end for disk management stuff.
 
 ```bash
-paru -S cava gedit gnome-disk-utility localsend-bin
+paru -S cava gedit gnome-disk-utility localsend-bin imhex-bin
 
 cp -r ~/Temp/SGDotfiles/cava ~/.config/cava
 
