@@ -605,7 +605,7 @@ paru -S obs-studio v4l2loopback-dkms v4l2loopback-utils
 Since we have set up our system to use Btrfs with a `@snapshots` subvolume, we will use [Snapper](https://snapper.io/) to create snapshots and [Btrfs Assistant](https://gitlab.com/btrfs-assistant/btrfs-assistant) as the frontend. [snap-pac](https://github.com/wesbarnett/snap-pac) is installed to create Btrfs snapshots before and after Pacman operations.
 
 ```bash
-paru -S snapper snap-pac btrfs-assistant grub-btrfs inotify-tools
+paru -S snapper snap-pac btrfs-assistant inotify-tools
 systemctl enable snapper-boot.timer
 ```
 
