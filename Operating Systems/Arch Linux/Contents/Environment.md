@@ -19,11 +19,12 @@ During the installation I've configured my machine to have the following disk pa
 
 If your machine has a RAM size of 8GB or lower, I recommend that you create a separate partition for [ZRAM](https://wiki.archlinux.org/title/Zram), `/dev/sdaX`, as its backing device. `/dev/sdaY` will be a [Btrfs filesystem](https://wiki.archlinux.org/title/Btrfs) with the following subvolumes:
 
-| Subvolume         | Description                                 |
-| ----------------- | ------------------------------------------- |
-| `/mnt/@`          | The root partition                          |
-| `/mnt/@home`      | The home partition                          |
-| `/mnt/@snapshots` | The partition where snapshots will be saved |
+| Subvolume         | Description                        |
+| ----------------- | ---------------------------------- |
+| `/mnt/@`          | The root partition                 |
+| `/mnt/@home`      | The home partition                 |
+| `/mnt/@var_log`   | The partition for system logs      |
+| `/mnt/@snapshots` | The partition for system snapshots |
 
 > [!ERROR] Important Note
 > 

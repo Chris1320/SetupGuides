@@ -603,26 +603,14 @@ paru -S obs-studio v4l2loopback-dkms v4l2loopback-utils
 
 ## Btrfs Snapshots
 
-Since we have set up our system to use Btrfs with a `@snapshots` subvolume, we will use [Snapper](https://snapper.io/) to create snapshots and [Btrfs Assistant](https://gitlab.com/btrfs-assistant/btrfs-assistant) as the frontend. [snap-pac](https://github.com/wesbarnett/snap-pac) is installed to create Btrfs snapshots before and after Pacman operations.
+We will use [Snapper](https://snapper.io/) to create snapshots and [Btrfs Assistant](https://gitlab.com/btrfs-assistant/btrfs-assistant) as the frontend. [snap-pac](https://github.com/wesbarnett/snap-pac) is installed to create Btrfs snapshots before and after Pacman operations.
 
 ```bash
 paru -S snapper snap-pac btrfs-assistant inotify-tools
 systemctl enable snapper-boot.timer
 ```
 
-To use `grub-btrfsd.service`, we'll have to edit the service to point to `/snapshots`.
-
-```bash
-sudo systemctl edit --full grub-btrfsd.service
-```
-
-Find the line where it shows:
-
-```toml
-ExecStart=/usr/bin/grub-btrfsd --syslog /.snapshots
-```
-
-and replace `/.snapshots` to `/snapshots`. Save and close the file and then run the following command to enable the service:
+To use `grub-btrfsd.service`, run the following command to enable the service:
 
 ```bash
 systemctl enable grub-btrfsd.service
@@ -638,7 +626,7 @@ After saving and closing the file, run `mkinitcpio -P`.
 
 ### Setting Up Snapper
 
-Start Btrfs Assistant and go to the *Snapper Settings* tab. Click *New* and name it `root` with backup path `/`. Enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Click *New* again and name it `home` with backup path `/home`, enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Lastly, enable *timeline*, *cleanup*, and *boot* in *systemd Unit Settings* section.
+Start Btrfs Assistant and go to the *Snapper Settings* tab. Click *New* and name it `root` with backup path `/`. Enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Enable *timeline*, *cleanup*, and *boot* in *systemd Unit Settings* section.
 
 ## Ricing Up GRUB
 

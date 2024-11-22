@@ -89,6 +89,7 @@ mount --mkdir /dev/sdaY /mnt
 # Create Btrfs subvolumes
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@var_log
 btrfs subvolume create /mnt/@snapshots
 
 # Unmount /mnt
@@ -97,7 +98,8 @@ umount /mnt
 # Mount the partitions in their respective mountpoints.
 mount --mkdir -o noatime,compress-force=zstd:3,subvol=@ /dev/sdaY /mnt
 mount --mkdir -o noatime,compress-force=zstd:3,subvol=@home /dev/sdaY /mnt/home
-mount --mkdir -o noatime,compress-force=zstd:3,subvol=@snapshots /dev/sdaY /mnt/snapshots
+mount --mkdir -o noatime,compress-force=zstd:3,subvol=@var_log /dev/sdaY /mnt/var/log
+mount --mkdir -o noatime,compress-force=zstd:3,subvol=@snapshots /dev/sdaY /mnt/.snapshots
 mount --mkdir /dev/sda2 /mnt/boot
 mount --mkdir /dev/sda1 /mnt/boot/efi
 ```
