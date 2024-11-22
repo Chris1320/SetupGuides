@@ -594,6 +594,12 @@ Install Proton-GE. Set `Steam Settings > Compatibility > Run other titles with` 
 > mangohud gamemoderun %command%
 > ```
 
+## Screen Recording
+
+```bash
+paru -S obs-studio v4l2loopback-dkms v4l2loopback-utils
+```
+
 ## Btrfs Snapshots
 
 Since we have set up our system to use Btrfs with a `@snapshots` subvolume, we will use [Snapper](https://snapper.io/) to create snapshots and [Btrfs Assistant](https://gitlab.com/btrfs-assistant/btrfs-assistant) as the frontend. [snap-pac](https://github.com/wesbarnett/snap-pac) is installed to create Btrfs snapshots before and after Pacman operations.
@@ -676,6 +682,20 @@ Sometimes, there are things that I cannot do on Neovim, such as Live Share/Pair 
 
 ```bash
 flatpak install flathub com.visualstudio.code
+```
+
+Mod Discord and Spotify
+
+```bash
+flatpak install flathub com.discordapp.Discord
+# Install Vencord (https://vencord.dev/)
+# Run two times to install OpenAsar and Vencord
+sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+```
+
+```bash
+flatpak install flathub com.spotify.Client
+paru -S spicetify-cli
 ```
 
 To set the default apps for common filetypes, run `set-defaults.sh` script from the `~/.config/scripts` directory:
