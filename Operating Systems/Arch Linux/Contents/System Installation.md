@@ -79,9 +79,10 @@ fdisk /dev/sda
 Partition the device following the structure shown in [[Environment#Disk Partitions|Environment > Disk Partitions]]. If you have different needs, you can see more examples in the [Arch Linux Wiki](https://wiki.archlinux.org/title/Partitioning#Example_layouts) and [d3sox](https://arch.d3sox.me/installation/partitioning-formatting#size-recommendations)'s guide. After saving the changes made by `fdisk`, create the filesystems.
 
 ```bash
-mkfs.fat -F32 -n EFI /dev/sda1  # Create a FAT32 filesystem in `/dev/sda1` labeled "EFI"
-mkfs.ext4 -L BOOT /dev/sda2  # Create an EXT4 filesystem in `/dev/sda2` labeled "BOOT"
-mkfs.btrfs -L ARCH /dev/sdaY  # Create a BTRFS filesystem in `/dev/sdaY` labeled "ARCH"
+mkfs.fat -F32 -n EFI /dev/sda1 # Create a FAT32 filesystem in `/dev/sda1` labeled "EFI"
+mkfs.ext4 -L BOOT /dev/sda2    # Create an EXT4 filesystem in `/dev/sda2` labeled "BOOT"
+mkswap -L ZRAM /dev/sdaX       # Create a SWAP filesystem in `/dev/sdaX` with label "ZRAM"
+mkfs.btrfs -L ARCH /dev/sdaY   # Create a BTRFS filesystem in `/dev/sdaY` labeled "ARCH"
 
 # Mount /mnt to create Btrfs subvolumes.
 mount --mkdir /dev/sdaY /mnt
