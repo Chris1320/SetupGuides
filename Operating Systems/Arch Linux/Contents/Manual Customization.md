@@ -607,6 +607,15 @@ We will use [Snapper](https://snapper.io/) to create snapshots and [Btrfs Assist
 
 ```bash
 paru -S snapper snap-pac btrfs-assistant inotify-tools
+
+# Temporarily unmount `/.snapshots` to let snapper create the config
+sudo umount /.snapshots
+sudo rm -r /.snapshots
+sudo snapper -c root create-config /
+sudo btrfs subvolume delete /.snapshots
+sudo mount --mkdir -o noatime,compress-force=zstd:3,subvol=@snapshots /dev/sda4 /.snapshots  # use the same options you used from Manual Customization guide
+cat /etc/fstab
+
 systemctl enable snapper-boot.timer
 ```
 
@@ -629,10 +638,6 @@ HOOKS=(... grub-btrfs-overlayfs)
 ```
 
 After saving and closing the file, run `mkinitcpio -P`.
-
-### Setting Up Snapper
-
-Start Btrfs Assistant and go to the *Snapper Settings* tab. Click *New* and name it `root` with backup path `/`. Enable *timeline snaphots*, adjust the snapshot retention times, and click *Save*. Enable *timeline*, *cleanup*, and *boot* in *systemd Unit Settings* section.
 
 ## Ricing Up GRUB
 
