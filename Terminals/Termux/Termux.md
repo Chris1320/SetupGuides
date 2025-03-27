@@ -38,9 +38,10 @@ tags:
         lazygit iproute2
 
    # OPTIONAL: for development
-   pkg install clang dotnet-sdk-9.0 \
-        golang nodejs openjdk-21 \
-        python uv
+   pkg install clang composer \
+        dotnet-sdk-9.0 golang \
+        nodejs openjdk-21 \
+        php python uv
    ```
 
 ## Recommended Customizations
