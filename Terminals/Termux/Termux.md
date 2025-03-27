@@ -35,11 +35,12 @@ tags:
    ```bash
    pkg install file man mc tree \
         git git-lfs gh gnupg \
-        iproute2
+        lazygit iproute2
 
    # OPTIONAL: for development
    pkg install clang dotnet-sdk-9.0 \
-        golang nodejs python uv
+        golang nodejs openjdk-21 \
+        python uv
    ```
 
 ## Recommended Customizations
