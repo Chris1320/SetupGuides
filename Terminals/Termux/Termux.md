@@ -38,7 +38,7 @@ tags:
         iproute2
 
    # OPTIONAL: for development
-   pkg install clang nodejs python uv
+   pkg install clang golang nodejs python uv
    ```
 
 ## Recommended Customizations
