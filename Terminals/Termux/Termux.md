@@ -38,7 +38,8 @@ tags:
         iproute2
 
    # OPTIONAL: for development
-   pkg install clang golang nodejs python uv
+   pkg install clang dotnet-sdk-9.0 \
+        golang nodejs python uv
    ```
 
 ## Recommended Customizations
