@@ -48,6 +48,7 @@ Since everything in this repository is for documentation only, I decided to use 
 #### Windows Subsystem for Linux
 
 - [[Kali Linux WSL]]
+- [[Fedora Linux 42 WSL]]
 
 ### Shells
 
