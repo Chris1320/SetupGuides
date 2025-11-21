@@ -104,8 +104,9 @@ uv tool install jupyterlab
 > - [[ZSH]]
 > - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor in WSL)
 
-Install `pfetch`
+Install `pfetch` and [Podman](https://podman.io/).
 
 ```bash
 curl -Lo ~/.local/bin/pfetch "https://raw.githubusercontent.com/Un1q32/pfetch/refs/heads/master/pfetch" && chmod +x ~/.local/bin/pfetch
+sudo dnf install podman podman-compose podman-docker
 ```
