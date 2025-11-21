@@ -44,7 +44,7 @@ echo 'deltarpm=True' | sudo tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
 ```
 
-Since we did not enable the *Third-Party Repositories* when we were asked earlier, we manually add [RPMFusion](https://rpmfusion.org/).
+Now, we manually add [RPMFusion](https://rpmfusion.org/).
 
 ```bash
 # Enable RPMFusion repositories
@@ -89,7 +89,6 @@ Install other utilities that I frequently use/nice to have.
 
 ```bash
 sudo dnf install uv tealdeer
-uv tool install howdoi
 uv tool install yt-dlp
 uv tool install magika
 uv tool install jupyterlab

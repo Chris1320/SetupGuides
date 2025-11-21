@@ -149,7 +149,7 @@ Install other utilities that I frequently use/nice to have.
 
 ```bash
 sudo dnf install python3-pip pipx tealdeer
-pipx install howdoi yt-dlp magika jupyterlab poetry
+pipx install yt-dlp magika jupyterlab poetry
 flatpak install flathub org.keepassxc.KeePassXC
 flatpak install flathub md.obsidian.Obsidian
 ```

@@ -105,7 +105,7 @@ sudo apt install \
     tealdeer tmux trash-cli \
     tree-sitter-cli \
     unrar unzip zip
-pipx install howdoi yt-dlp magika jupyterlab poetry
+pipx install yt-dlp magika jupyterlab poetry
 ```
 
 It is also a good time to create directories that you'll use often:
