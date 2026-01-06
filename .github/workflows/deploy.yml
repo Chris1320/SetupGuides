@@ -31,7 +31,8 @@ jobs:
           node-version: 22.x
       - name: Update submodules # Always get the latest contents
         run: |
-          git submodule update  --init --recursive --remote -f
+          git clone https://github.com/Chris1320/SetupGuides.git content  # FIXME: This is a temporary fix
+          # git submodule update  --init --recursive --remote -f
       - name: Install Dependencies
         run: npm ci
       - name: Build Quartz
