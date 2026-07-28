@@ -76,7 +76,7 @@ The installation script has been tested on the following platforms:
 > ```bash
 > mkdir -p ~/.local/share/fonts/JetBrainsMono
 > cd ~/.local/share/fonts/JetBrainsMono
-> curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
+> curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
 > unzip JetBrainsMono.zip
 > rm JetBrainsMono.zip
 > ```

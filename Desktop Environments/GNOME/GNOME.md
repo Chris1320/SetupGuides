@@ -22,43 +22,32 @@ tags:
         - Seconds: *Enabled*
         - Week Numbers: *Disabled*
 2. Install [User Themes](https://extensions.gnome.org/extension/19/user-themes/) extension.
-3. Customize using [catppuccin/gtk](https://github.com/catppuccin/gtk).
-4. Customize using [catppuccin/papirus-folders](https://github.com/catppuccin/papirus-folders).
-5. Customize using [catppuccin/cursors](https://github.com/catppuccin/cursors).
-6. Install fonts and set via GNOME Tweaks.
+3. Customize using [catppuccin/cursors](https://github.com/catppuccin/cursors).
+4. Install fonts and set via GNOME Tweaks.
     - Fonts
         - Interface Text: **SF Pro Rounded Regular**[^1]
         - Document Text: **SF Pro Text Regular**[^1]
         - Monospace Text: **JetBrainsMono Nerd Font Regular**[^2]
     - Appearance
         - Cursor: **Catppuccin-Mocha-Teal-Cursors**
-        - Icons: **Papirus-Dark**
-        - Shell: **Catppuccin-Mocha-Standard-Teal-Dark**
-        - Legacy Applications: **Catppuccin-Mocha-Standard-Teal-Dark**
-	- Windows
-		- Center New Windows
 	- Startup Applications
 		- EasyEffects
-		- KeePassXC
 		- Vesktop
-1. [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
+5. [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
     - Enable `Applications > Applications blur (beta)`.
     - Add the following classes to Applications blur whitelist:
-	    - `gnome-terminal-server`
-	    - `io.bassi.Amberol`
+	    - `org.gnome.Ptyxis`
 	    - `obsidian`
 	    - `io.missioncenter.MissionCenter`
 	    - `org.gnome.SystemMonitor`
-2. [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
+6. [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
     - Disable `Visibility > Keyboard Layout`
     - Disable `Visibility > Window Picker Caption`
     - Disable `Visibility > Background Menu`
     - Change `Behavior > Startup Status` to `Desktop`.
-3. [User Avatar In Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
+7. [User Avatar In Quick Settings](https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/)
     - Set `Position` to `Left`.
-4. [QSTweak](https://extensions.gnome.org/extension/5446/quick-settings-tweaker/)
-	- Disable `Noti&Media > Notification Widget`.
-	- Disable `Other > Remove Notifications On Date Menu`
+8. [QSTweak](https://extensions.gnome.org/extension/5446/quick-settings-tweaker/)
 
 ### Installing the Rest of the GNOME Extensions
 
@@ -121,82 +110,11 @@ Disable the *Background Logo* built-in extension.
 	- Show the run command prompt: `SUPER+R`
 - Windows
 	- Close window: `SUPER+W`
-	- Maximize window: *Disabled*
-	- Restore window: *Disabled*
 	- Toggle fullscreen mode: `SUPER+F`
-	- View split on left: *Disabled*
-	- View split on right: *Disabled*
 - Custom Shortcuts
 	- System Monitor
-		- Command: `gnome-system-monitor`
-		- Shortcut: `SHIFT+SUPER+ESC`
-
-### GNOME Window Tiling
-
-I want a similar experience with Hyprland in GNOME, so I use [Forge](https://extensions.gnome.org/extension/4481/forge/) to tile my windows. Install the extension and open its settings.
-
-- Settings
-	- Default Drag-and-Drop Center Layout: <u>Swap</u>
-- Appearance
-	- Color
-		- Tiled Focus Hint and Preview
-			- Border Color: `#94e2d5`
-		- Tabbed Focus Hint and Preview
-			- Border Color: `#94e2d5`
-		- Stacked Focus Hint and Preview
-			- Border Color: `#94e2d5`
-		- Floated Focus Hint
-			- Border Color: `#94e2d5`
-		- Split Direction Hint
-			- Border Color: `#f9e2af`
-- Keyboard
-	- Update Shortcuts
-		- Window Shortcuts
-			- `window-focus-down`: `<Super>Down`
-			- `window-focus-left`: `<Super>Left`
-			- `window-focus-right`: `<Super>Right`
-			- `window-focus-up`: `<Super>Up`
-			- `window-gap-size-decrease`: *unset*
-			- `window-gap-size-increase`: *unset*
-			- `window-move-down`: *unset*
-			- `window-move-left`: *unset*
-			- `window-move-right`: *unset*
-			- `window-move-up`: *unset*
-			- `window-resize-bottom-decrease`: *unset*
-			- `window-resize-bottom-increase`: *unset*
-			- `window-resize-left-decrease`: *unset*
-			- `window-resize-left-increase`: *unset*
-			- `window-resize-right-decrease`: *unset*
-			- `window-resize-right-increase`: *unset*
-			- `window-resize-top-decrease`: *unset*
-			- `window-resize-top-increase`: *unset*
-			- `window-snap-center`: `<Super>c`
-			- `window-snap-one-third-left`: *unset*
-			- `window-snap-one-third-right`: *unset*
-			- `window-snap-two-third-left`: *unset*
-			- `window-snap-two-third-right`: *unset*
-			- `window-swap-down`: `<Shift><Super>Down`
-			- `window-swap-last-active`: *unset*
-			- `window-swap-left`: `<Shift><Super>Left`
-			- `window-swap-right`: `<Shift><Super>Right`
-			- `window-swap-up`: `<Shift><Super>Up`
-			- `window-toggle-float`: `<Super>b`
-		- Workspace Shortcuts
-			- `workspace-active-tile-toggle`: `<Shift><Super>w`
-		- Container Shortcuts
-			- `con-split-horizontal`: *unset*
-			- `con-split-layout-toggle`: *unset*
-			- `con-split-vertical`: *unset*
-			- `con-stacked-layout-toggle`: *unset*
-			- `con-tabbed-layout-toggle`: *unset*
-			- `con-tabbed-showtab-decoration-toggle`: `<Super><Alt>y`
-		- Focus Shortcuts
-			- `focus-border-toggle`: *unset*
-		- Other Shortcuts
-			- `prefs-open`: *unset*
-			- `prefs-tiling-toggle`: *unset*
-	- Drag-Drop Tiling Modifier Key Options
-		- Tile Modifier: Super
+		- Command: `flatpak run io.missioncenter.MissionCenter`
+		- Shortcut: `SUPER+ESC`
 
 [^1]: SF Pro is made by Apple. You have to download their font package from [their website](https://developer.apple.com/fonts/), extract the fonts using `dmg2img`, and then install it into your system.
 [^2]: You can get nerd fonts at [nerdfonts.com](https://www.nerdfonts.com/).

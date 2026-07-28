@@ -162,7 +162,6 @@ nvm install node
 uv tool install jupyterlab
 
 # Other useful stuff
-uv tool install howdoi
 uv tool install magika
 ```
 
