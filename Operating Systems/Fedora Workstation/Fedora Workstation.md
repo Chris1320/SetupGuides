@@ -221,9 +221,9 @@ Open _Flatseal_, select _Vesktop_, and in the `Portals` section, enable the foll
 > ```
 >
 > And on the terminal, run the following commands to enable Discord Rich Presence in
-> Vesktop. This will create a `discord-ipc-0` socket in the `~/.cache` directory,
-> so that other applications (e.g., Visual Studio Code, Neovim) can use it to
-> show your Discord Rich Presence.
+> Vesktop. This sets up a symlink at `%t/discord-ipc-0` (your `$XDG_RUNTIME_DIR`, usually
+> `/run/user/$UID`) pointing to Vesktop’s socket, so that other applications
+> (e.g., Visual Studio Code, Neovim) can use it to show your Discord Rich Presence.
 >
 > ```bash
 > mkdir -p ~/.config/user-tmpfiles.d
