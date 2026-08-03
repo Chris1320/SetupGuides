@@ -137,8 +137,8 @@ to manage Flatpak permissions.
 sudo dnf install \
 	git git-lfs gh \
 	mc unrar 7zip-standalone-all \
-    file-roller dmg2img trash-cli tmux \
-    openssl inxi wl-clipboard
+    file-roller dmg2img trash-cli \
+    openssl btop inxi wl-clipboard
 
 # install flatseal
 flatpak install -y flatseal
