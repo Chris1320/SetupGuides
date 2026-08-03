@@ -115,10 +115,14 @@ sudo fwupdmgr update
 ### System Configuration
 
 We need to increase the number of `inotify` instances because some applications
-(e.g., Visual Studio Code/Neovim LSP Servers) require more than the default value.
+(e.g., Visual Studio Code/Neovim LSP Servers) require more than the default
+value. Also, install [earlyoom](https://github.com/rfjakob/earlyoom) to
+prevent the system from freezing when the system runs out of memory.
 
 ```bash
+sudo dnf install earlyoom
 echo "fs.inotify.max_user_instances = 256" | sudo tee /etc/sysctl.d/50-user.conf
+sudo systemctl enable --now earlyoom.service
 ```
 
 ### Essential Utilities
