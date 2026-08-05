@@ -66,8 +66,8 @@ we manually add [RPMFusion](https://rpmfusion.org/) and [Flathub](https://flathu
 ```bash
 # Enable RPMFusion repositories
 sudo dnf install \
-	https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf config-manager enable fedora-cisco-openh264
 sudo dnf group upgrade core
 
@@ -118,7 +118,7 @@ We need to increase the number of `inotify` instances because some applications
 value.
 
 ```bash
-echo "fs.inotify.max_user_instances = 256\nkernel.sysrq = 1" | sudo tee /etc/sysctl.d/50-user.conf
+printf "fs.inotify.max_user_instances = 256\nkernel.sysrq = 1" | sudo tee /etc/sysctl.d/50-user.conf
 sudo sysctl --system
 ```
 
@@ -131,10 +131,10 @@ to manage Flatpak permissions.
 ```bash
 # install essential CLI utilities and libraries
 sudo dnf install \
-	git git-lfs gh \
-	mc unrar 7zip-standalone-all \
-    file-roller dmg2img trash-cli \
-    openssl btop inxi wl-clipboard
+  git git-lfs gh \
+  mc unrar 7zip-standalone-all \
+  file-roller dmg2img trash-cli \
+  openssl btop inxi wl-clipboard
 
 # install flatseal
 flatpak install -y flatseal
@@ -248,10 +248,10 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 
 # install multimedia codecs
 sudo dnf install -y @multimedia @sound-and-video \
-	gstreamer1-plugins-{bad-\*,good-\*,base} \
-	gstreamer1-plugin-openh264 mozilla-openh264 \
-	gstreamer1-libav lame\* \
-	--exclude=gstreamer1-plugins-bad-free-devel,lame-devel
+  gstreamer1-plugins-{bad-\*,good-\*,base} \
+  gstreamer1-plugin-openh264 mozilla-openh264 \
+  gstreamer1-libav lame\* \
+  --exclude=gstreamer1-plugins-bad-free-devel,lame-devel
 sudo dnf group install multimedia
 
 uv tool install yt-dlp
@@ -311,7 +311,8 @@ lsmod | grep kvm
 
 > [!TIP] Nested Virtualization
 >
-> More information can be found on [Fedora Wiki](https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/).
+> You only have to enable nested virtualization if you want to run virtual machines inside a virtual machine. If you
+> are not going to do that, you can skip this step. More information can be found on [Fedora Wiki](https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/).
 >
 > > [!INFO]- Enabling nested virtualization in an Intel CPU
 > >
