@@ -144,9 +144,9 @@ Install other utilities that I frequently use/nice to have.
 
 ```bash
 sudo dnf install tealdeer
-flatpak install flathub com.bitwarden.desktop
-flatpak install flathub md.obsidian.Obsidian
-flatpak install flathub org.cryptomator.Cryptomator
+flatpak install -y flathub com.bitwarden.desktop
+flatpak install -y flathub md.obsidian.Obsidian
+flatpak install -y flathub org.cryptomator.Cryptomator
 
 # Update tealdeer cache
 tldr --update
