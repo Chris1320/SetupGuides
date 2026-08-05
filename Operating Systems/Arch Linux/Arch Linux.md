@@ -34,10 +34,10 @@ tags:
 
 ## Description
 
-This repository contains most of my dotfiles and notes that are used in my Arch Linux installation. You can use the [[Automatic Customization|auto-install script]] to automatically install Arch Linux and the dotfiles in your system. However, I don't guarantee that the installer covers all your needs. It is recommended to follow the [[System Installation]] guide here because the dotfiles are tightly integrated with how my system is set up. However, in such cases where you know what you are doing (or you probably do not want to start from scratch), this guide assumes that...
+This repository contains most of my dotfiles and notes that are used in my Arch Linux installation. You can use the [[Operating Systems/Arch Linux/Contents/Automatic Customization|auto-install script]] to automatically install Arch Linux and the dotfiles in your system. However, I don't guarantee that the installer covers all your needs. It is recommended to follow the [[Operating Systems/Arch Linux/Contents/System Installation|System Installation]] guide here because the dotfiles are tightly integrated with how my system is set up. However, in such cases where you know what you are doing (or you probably do not want to start from scratch), this guide assumes that...
 
-- You've successfully installed Arch Linux by following their [installation guide](https://wiki.archlinux.org/title/Installation_guide) which can be found in their [wiki](https://wiki.archlinux.org/). Otherwise, follow the [[System Installation|system installation guide]] before proceeding.
-- You have made a [[System Installation#Add A Non-Root User Account|non-root user]] in your system and is currently active.
+- You've successfully installed Arch Linux by following their [installation guide](https://wiki.archlinux.org/title/Installation_guide) which can be found in their [wiki](https://wiki.archlinux.org/). Otherwise, follow the [[Operating Systems/Arch Linux/Contents/System Installation|system installation guide]] before proceeding.
+- You have made a [[Operating Systems/Arch Linux/Contents/System Installation#Add A Non-Root User Account|non-root user]] in your system and is currently active.
 - You are currently connected to the internet.
 
 Some (if not all) of the dotfiles can also be used in other operating systems/distributions, but it's up to you on how you will do it since I haven't tested it on other systems yet.
@@ -48,8 +48,8 @@ Some (if not all) of the dotfiles can also be used in other operating systems/di
 
 ## Table of Contents
 
-- [[Arch Linux|Introduction]] (you are here!)
-- [[Environment]]
-- [[System Installation]]
-- [[Automatic Customization]]
-- [[Manual Customization]]
+- [[Operating Systems/Arch Linux/Arch Linux|Introduction]] (you are here!)
+- [[Operating Systems/Arch Linux/Contents/Environment|Environment]]
+- [[Operating Systems/Arch Linux/Contents/System Installation|System Installation]]
+- [[Operating Systems/Arch Linux/Contents/Automatic Customization|Automatic Customization]]
+- [[Operating Systems/Arch Linux/Contents/Manual Customization|Manual Customization]]

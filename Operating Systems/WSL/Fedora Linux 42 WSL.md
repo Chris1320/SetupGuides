@@ -101,8 +101,8 @@ uv tool install jupyterlab
 > I recommend that you use the following customization
 > guides first:
 >
-> - [[ZSH]]
-> - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor in WSL)
+> - [[Shells/ZSH/ZSH|ZSH]]
+> - [[Text Editors/Neovim/Neovim|Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor in WSL)
 
 Install `pfetch` and [Podman](https://podman.io/).
 

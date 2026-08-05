@@ -312,11 +312,11 @@ After installing the bare minimum requirements to run the setup, go ahead and ty
 
 ### Setting Up ZSH
 
-See [[ZSH]] for more information.
+See [[Shells/ZSH/ZSH|ZSH]] for more information.
 
 ### Neovim
 
-[[Neovim]] is the best text editor and IDE on Linux btw (fight me). If I installed the packages from the [[#Development Tools]] section, might as well use Neovim to write code. We'll have to install some packages that are required by the plugins first.
+[[Text Editors/Neovim/Neovim|Neovim]] is the best text editor and IDE on Linux btw (fight me). If I installed the packages from the [[#Development Tools]] section, might as well use Neovim to write code. We'll have to install some packages that are required by the plugins first.
 
 ```bash
 paru -S neovim tree-sitter tree-sitter-cli
@@ -553,7 +553,7 @@ paru -S yazi ouch archivemount mediainfo
 cp -r ~/Temp/SGDotfiles/yazi ~/.config/yazi
 ```
 
-I usually hide some of the XDG directories. Follow [[Fedora Workstation#3. Update XDG Directories]] to do this.
+I usually hide some of the XDG directories. Follow [[Operating Systems/Fedora Workstation/Fedora Workstation#4. Update XDG Directories|Fedora Workstation]] to do this.
 
 ## Setting Up The Browsers
 
@@ -713,4 +713,4 @@ To set the default apps for common filetypes, run `set-defaults.sh` script from 
 
 ---
 
-- Previous: [[Automatic Customization]]
+- Previous: [[Operating Systems/Arch Linux/Contents/Automatic Customization|Automatic Customization]]

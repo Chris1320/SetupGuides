@@ -5,7 +5,7 @@
   "useTab": true,
   "trashOption": "none",
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "shortest",
+  "newLinkFormat": "absolute",
   "attachmentFolderPath": "./",
   "showInlineTitle": false,
   "useMarkdownLinks": false,

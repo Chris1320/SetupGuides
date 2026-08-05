@@ -32,5 +32,5 @@ If your machine has a RAM size of 8GB or lower, I recommend that you create a se
 
 ---
 
-- Previous: [[Arch Linux|Introduction]]
-- Next: [[System Installation]]
+- Previous: [[Operating Systems/Arch Linux/Arch Linux|Introduction]]
+- Next: [[Operating Systems/Arch Linux/Contents/System Installation|System Installation]]

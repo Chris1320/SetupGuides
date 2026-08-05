@@ -46,8 +46,8 @@ tags:
 
 ## Recommended Customizations
 
-- [[ZSH]]
-- [[Neovim]]
+- [[Shells/ZSH/ZSH|ZSH]]
+- [[Text Editors/Neovim/Neovim|Neovim]]
 - [Catppuccin Theme](https://github.com/catppuccin/termux)
 
 ## Enabling SSH Remote Connections

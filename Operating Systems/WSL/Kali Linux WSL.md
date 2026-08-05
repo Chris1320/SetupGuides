@@ -94,7 +94,7 @@ sudo -e /etc/hosts
 > ff02::2 ip6-allrouters
 > ```
 
-I recommend that you use my [[ZSH|custom ZSH configuration]] for more convenience. After that, we'll have to install some dependencies of the packages that we'll download and install.
+I recommend that you use my [[Shells/ZSH/ZSH|custom ZSH configuration]] for more convenience. After that, we'll have to install some dependencies of the packages that we'll download and install.
 
 ```bash
 sudo apt install \
@@ -124,4 +124,4 @@ curl -Lo ~/.local/bin/pfetch "https://raw.githubusercontent.com/Un1q32/pfetch/re
 curl -Lo ~/.local/appimages/nvim "$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep -o 'https://.*nvim\.appimage' | head -n 1)" && chmod +x ~/.local/appimages/nvim
 ```
 
-I also recommend that you install my [[Neovim|custom Neovim configuration]] if you're using Neovim for software development.
+I also recommend that you install my [[Text Editors/Neovim/Neovim|custom Neovim configuration]] if you're using Neovim for software development.

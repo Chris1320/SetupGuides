@@ -15,12 +15,12 @@ This guide will help you install [Neovim](https://neovim.io/) and plugins that I
 
 This setup has been tested on the following platforms:
 
-- [[Arch Linux]]
-- [[Fedora Workstation]] 39/40/41/42
+- [[Operating Systems/Arch Linux/Arch Linux|Arch Linux]]
+- [[Operating Systems/Fedora Workstation/Fedora Workstation|Fedora Workstation]] 39/40/41/42
 - Kali Linux WSL
 - Fedora Linux 42 WSL
 - Linux Mint 21
-- [[Termux]] Android Terminal Emulator
+- [[Terminals/Termux/Termux|Termux]] Android Terminal Emulator
 
 ## Requirements
 

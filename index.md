@@ -28,7 +28,7 @@ This documentation is created using [Obsidian](https://obsidian.md/), but you sh
 
 ## Bug/Error Reporting
 
-Only documentation errors should be reported in this repository. If you find a bug or an error in dotfiles/scripts of specific guides (e.g., [[Arch Linux]] customization guide), please submit an issue in its dedicated repository.
+Only documentation errors should be reported in this repository. If you find a bug or an error in dotfiles/scripts of specific guides (e.g., [[Operating Systems/Arch Linux/Arch Linux|Arch Linux]] customization guide), please submit an issue in its dedicated repository.
 
 ## Conventional Commits
 
@@ -38,26 +38,26 @@ Since everything in this repository is for documentation only, I decided to use 
 
 ### Desktop Environments
 
-- [[GNOME]]
+- [[Desktop Environments/GNOME/GNOME|GNOME]]
 
 ### Operating Systems
 
-- [[Arch Linux]]
-- [[Fedora Workstation]]
+- [[Operating Systems/Arch Linux/Arch Linux|Arch Linux]]
+- [[Operating Systems/Fedora Workstation/Fedora Workstation|Fedora Workstation]]
 
 #### Windows Subsystem for Linux
 
-- [[Kali Linux WSL]]
-- [[Fedora Linux 42 WSL]]
+- [[Operating Systems/WSL/Kali Linux WSL|Kali Linux WSL]]
+- [[Operating Systems/WSL/Fedora Linux 42 WSL|Fedora Linux 42 WSL]]
 
 ### Shells
 
-- [[ZSH]]
+- [[Shells/ZSH/ZSH|ZSH]]
 
 ### Terminals
 
-- [[Termux]] Terminal Emulator for Android
+- [[Terminals/Termux/Termux|Termux]] Terminal Emulator for Android
 
 ### Text Editors
 
-- [[Neovim]]
+- [[Text Editors/Neovim/Neovim|Neovim]]

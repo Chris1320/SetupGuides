@@ -10,11 +10,12 @@ tags:
 
 This is a guide on how I customize my Fedora installation. [Fedora Workstation](https://fedoraproject.org/) is a great operating system if you want something between a beginner-friendly Linux distribution (e.g., [Linux Mint](https://linuxmint.com/)) and a highly customizable and experimental distro (e.g., [Arch Linux](https://archlinux.org/)).
 
-> [!WARNING] This guide is still in beta.
-
 ## Base Installation & Initial Boot Setup
 
-> [!NOTE] This guide is tested on **Fedora Workstation 44**.
+> [!NOTE]
+> 
+> - This guide is tested on **Fedora Workstation 44**.
+> - After the following the whole guide, the system will consume about 25 GBs of storage space.
 
 ### Installing Fedora Workstation
 
@@ -159,7 +160,7 @@ Fedora Workstation comes with the new Ptyxis terminal, which is a modern termina
 You can keep using it or use kitty, which is a cross-platform GPU-based terminal emulator.
 
 However, the main shell that I use is [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/).
-Follow the [[ZSH]] customization guide to set it up.
+Follow the [[Shells/ZSH/ZSH|ZSH]] customization guide to set it up.
 
 > [!TIP]
 >
@@ -382,7 +383,7 @@ After installing, launch Waydroid from the applications menu and proceed with th
 
 ### 1. Text Editing
 
-I use [[Neovim]] as my IDE and text editor. I recommend only customizing it thoroughly if you are going to use [Neovim](https://neovim.io/) as your main text editor.
+I use [[Text Editors/Neovim/Neovim|Neovim]] as my IDE and text editor. I recommend only customizing it thoroughly if you are going to use [Neovim](https://neovim.io/) as your main text editor.
 
 ### 2. Audio & Video Setup
 
@@ -455,7 +456,7 @@ xdg-user-dirs-update --set PUBLICSHARE "$HOME/.desktop/Public"
 
 ### 5. Customizing GNOME
 
-> See the [[GNOME]] customization guide.
+> See the [[Desktop Environments/GNOME/GNOME|GNOME]] customization guide.
 
 ### 6. Setting Up Ptyxis
 

@@ -8,7 +8,7 @@ tags:
 ---
 # GNOME
 
-[GNOME](https://www.gnome.org/) is one of the most popular desktop environments in the whole Linux community. It is used by major Linux distributions such as [Ubuntu](https://ubuntu.com/), [Pop!\_OS](https://pop.system76.com/), and [[Fedora Workstation]].
+[GNOME](https://www.gnome.org/) is one of the most popular desktop environments in the whole Linux community. It is used by major Linux distributions such as [Ubuntu](https://ubuntu.com/), [Pop!\_OS](https://pop.system76.com/), and [[Operating Systems/Fedora Workstation/Fedora Workstation|Fedora Workstation]].
 
 ## Customization
 

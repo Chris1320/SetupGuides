@@ -61,11 +61,11 @@ It will also install the following packages for productivity:
 
 The installation script has been tested on the following platforms:
 
-- [[Arch Linux]]
-- [[Fedora Workstation]] 38/39/40/44
+- [[Operating Systems/Arch Linux/Arch Linux|Arch Linux]]
+- [[Operating Systems/Fedora Workstation/Fedora Workstation|Fedora Workstation]] 38/39/40/44
 - [Kali Linux](https://kali.org/) (Windows Subsystem for Linux)
 - [Linux Mint](https://linuxmint.com/) 21
-- [[Termux]] Android Terminal Emulator
+- [[Terminals/Termux/Termux|Termux]] Android Terminal Emulator
 
 ### Automatic Installation & Customization
 

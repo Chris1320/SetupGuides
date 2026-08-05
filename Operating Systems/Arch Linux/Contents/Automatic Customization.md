@@ -4,5 +4,5 @@ This installation method is still under development. It will probably available 
 
 ---
 
-- Previous: [[System Installation]]
-- Next: [[Manual Customization]]
+- Previous: [[Operating Systems/Arch Linux/Contents/System Installation|System Installation]]
+- Next: [[Operating Systems/Arch Linux/Contents/Manual Customization|Manual Customization]]
