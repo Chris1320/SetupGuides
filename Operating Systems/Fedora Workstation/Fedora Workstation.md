@@ -121,7 +121,7 @@ prevent the system from freezing when the system runs out of memory.
 
 ```bash
 sudo dnf install earlyoom
-echo "fs.inotify.max_user_instances = 256" | sudo tee /etc/sysctl.d/50-user.conf
+echo "fs.inotify.max_user_instances = 256\nkernel.sysrq = 1" | sudo tee /etc/sysctl.d/50-user.conf
 sudo sysctl --system
 sudo systemctl enable --now earlyoom.service
 ```
