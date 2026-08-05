@@ -146,13 +146,21 @@ Install other utilities that I frequently use/nice to have.
 sudo dnf install tealdeer
 flatpak install flathub com.bitwarden.desktop
 flatpak install flathub md.obsidian.Obsidian
-flatpak install org.cryptomator.Cryptomator
+flatpak install flathub org.cryptomator.Cryptomator
 
 # Update tealdeer cache
 tldr --update
 ```
 
 ## Applications & Software
+
+### Terminal & Shell
+
+Fedora Workstation comes with the new Ptyxis terminal, which is a modern terminal emulator for GNOME.
+You can keep using it or use kitty, which is a cross-platform GPU-based terminal emulator.
+
+However, the main shell that I use is [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/).
+Follow the [[ZSH]] customization guide to set it up.
 
 ### Development
 
@@ -362,7 +370,6 @@ sudo dnf install waydroid
 > I recommend that you use the following customization
 > guides first:
 >
-> - [[ZSH]]
 > - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor)
 
 ### 1. Audio & Video Setup
