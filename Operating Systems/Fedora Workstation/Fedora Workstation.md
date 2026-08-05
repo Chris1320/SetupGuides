@@ -137,7 +137,7 @@ sudo dnf install \
   openssl btop inxi wl-clipboard
 
 # install flatseal
-flatpak install -y flatseal
+flatpak install -y flathub flatseal
 ```
 
 Install other utilities that I frequently use/nice to have.
@@ -147,6 +147,9 @@ sudo dnf install tealdeer
 flatpak install flathub com.bitwarden.desktop
 flatpak install flathub md.obsidian.Obsidian
 flatpak install org.cryptomator.Cryptomator
+
+# Update tealdeer cache
+tldr --update
 ```
 
 ## Applications & Software
