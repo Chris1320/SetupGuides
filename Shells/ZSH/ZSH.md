@@ -62,7 +62,7 @@ It will also install the following packages for productivity:
 The installation script has been tested on the following platforms:
 
 - [[Arch Linux]]
-- [[Fedora Workstation]] 38/39/40
+- [[Fedora Workstation]] 38/39/40/44
 - [Kali Linux](https://kali.org/) (Windows Subsystem for Linux)
 - [Linux Mint](https://linuxmint.com/) 21
 - [[Termux]] Android Terminal Emulator
@@ -81,7 +81,7 @@ The installation script has been tested on the following platforms:
 > rm JetBrainsMono.zip
 > ```
 > 
-> After running the above commands, set the font to `JetBrainsMono Nerd Font Mono` in GNOME Terminal.
+> After running the above commands, set the font to `JetBrainsMono Nerd Font Mono` in GNOME Terminal. You might need to restart your terminal for the font to show up.
 
 Download and run the install script using either of the following commands:
 

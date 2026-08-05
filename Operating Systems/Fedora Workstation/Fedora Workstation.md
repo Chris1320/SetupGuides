@@ -144,7 +144,6 @@ Install other utilities that I frequently use/nice to have.
 
 ```bash
 sudo dnf install tealdeer
-flatpak install -y flathub com.bitwarden.desktop
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub org.cryptomator.Cryptomator
 
@@ -162,6 +161,10 @@ You can keep using it or use kitty, which is a cross-platform GPU-based terminal
 However, the main shell that I use is [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/).
 Follow the [[ZSH]] customization guide to set it up.
 
+> [!TIP]
+>
+> It is recommended that you **restart your terminal** for the changes to take effect.
+
 ### Development
 
 As a software engineer, I need to install development tools and programming languages.
@@ -175,13 +178,22 @@ sudo dnf install uv python3-pip gcc golang rustup
 
 # install Fast Node Manager
 curl -fsSL https://fnm.vercel.app/install | bash
-cat ~/.bash_profile | tail -n 6 >> ~/.config/zsh/user_env.sh
+cat ~/.bashrc | tail -n 6 >> ~/.config/zsh/user_env.sh
+```
+
+After changing the ZSH configuration, reload the config either by restarting your terminal or running `exec zsh`.
+
+```bash
 fnm install --latest --use  # install and use latest version of Node
 
 # install Bun
 curl -fsSL https://bun.sh/install | bash
 cat ~/.bash_profile | tail -n 3 >> ~/.config/zsh/user_env.sh
+```
 
+We've changed the ZSH config again, so reload the config again.
+
+```bash
 # actually install Rust
 rustup-init
 
@@ -194,16 +206,13 @@ uv tool install jupyterlab
 
 ### Web Browsers
 
-I have been using Firefox on all of my machines for more than 6 years, and I did not have any major problems about it.
+Aside from Firefox, I also use a backup browser as a fallback, [Microsoft Edge](https://explore.microsoft.com/en-us/edge), which is available as an unofficial flatpak. As an alternative, you can also use [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium).
 
 ```bash
-sudo dnf install firefox
-```
-
-I also use a backup browser as a fallback, [Microsoft Edge](https://explore.microsoft.com/en-us/edge), which is available as an unofficial flatpak.
-
-```bash
+# Install Microsoft Edge
 flatpak install flathub com.microsoft.Edge
+# or use Ungoogled Chromium
+flatpak install flathub io.github.ungoogled_software.ungoogled_chromium
 ```
 
 ### Communication
@@ -276,11 +285,11 @@ also use [Bottles](https://usebottles.com/) to run Windows games and application
 that are not available on Linux.
 
 ```bash
-flatpak install flathub com.valvesoftware.Steam
-flatpak install flathub com.usebottles.bottles
-flatpak install flathub org.freedesktop.Platform.VulkanLayer.MangoHud
-flatpak install flathub net.davidotek.pupgui2
-sudo dnf install gamemode
+flatpak install -y flathub com.valvesoftware.Steam
+flatpak install -y flathub com.usebottles.bottles
+flatpak install -y flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+flatpak install -y flathub net.davidotek.pupgui2
+sudo dnf install -y gamemode
 
 # Enable Steam Proton Integration
 flatpak override --user com.usebottles.bottles --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
@@ -290,7 +299,7 @@ flatpak override --user --filesystem=xdg-config/MangoHud:ro
 flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
 ```
 
-Open Steam once to create the necessary files and directory, then install Proton-GE.
+Open Steam once to create the necessary files and directory, then install Proton-GE via **ProtonUp-Qt**.
 Set `Steam Settings > Compatibility > Run other titles with` to `GE-Proton`.
 
 > [!TIP]+
@@ -304,8 +313,8 @@ Set `Steam Settings > Compatibility > Run other titles with` to `GE-Proton`.
 ### Virtualization
 
 If you want to run virtual machines, you need to install the virtualization group and enable `libvirtd` on boot.
-You can instead use Oracle VirtualBox, but I prefer using [GNOME Boxes](https://wiki.gnome.org/Apps/Boxes)
-because it is more lightweight and integrated with GNOME.
+You can instead use Oracle VirtualBox (I haven't tested it yet though), but I prefer using [virt-manager](https://virt-manager.org/)
+because it is more integrated with Linux and has all the features that I need.
 
 ```bash
 # more info: https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
@@ -313,8 +322,7 @@ because it is more lightweight and integrated with GNOME.
 sudo dnf group install virtualization
 
 # enable libvirtd on boot
-sudo systemctl start libvirtd
-sudo systemctl enable libvirtd
+sudo systemctl enable --now libvirtd
 
 # verify KVM kernel modules
 lsmod | grep kvm
@@ -363,33 +371,37 @@ approach to boot a full Android system on a regular GNU/Linux system.
 sudo dnf install waydroid
 ```
 
+After installing, launch Waydroid from the applications menu and proceed with the initialization by pasting these URLs in the OTA fields:
+
+- System OTA: https://ota.waydro.id/system
+- Vendor OTA: https://ota.waydro.id/vendor
+
+> [!IMPORTANT] Read more information from [their website](https://docs.waydro.id/usage/install-on-desktops#fedora).
+
 ## Desktop Customization & Ricing
 
-> [!QUESTION] Prerequisites
->
-> I recommend that you use the following customization
-> guides first:
->
-> - [[Neovim]] (recommended only if you are going to use [Neovim](https://neovim.io/) as your main text editor)
+### 1. Text Editing
 
-### 1. Audio & Video Setup
+I use [[Neovim]] as my IDE and text editor. I recommend only customizing it thoroughly if you are going to use [Neovim](https://neovim.io/) as your main text editor.
+
+### 2. Audio & Video Setup
 
 Install EasyEffects, OBS Studio, and its essential plugins..
 
 ```bash
 # install EasyEffects and OBS Studio
-flatpak install flathub com.github.wwmm.easyeffects com.obsproject.Studio
-sudo dnf install v4l2loopback  # To use OBS Studio's virtual camera feature
+flatpak install -y flathub com.github.wwmm.easyeffects com.obsproject.Studio
+sudo dnf install -y v4l2loopback  # To use OBS Studio's virtual camera feature
 
 # Create the `plugins/` directory in OBS Studio.
 mkdir -p ~/.var/app/com.obsproject.Studio/config/obs-studio/plugins
 # Optional; to use smartphone as webcam (proprietary software)
-flatpak install flathub com.obsproject.Studio.Plugin.DroidCam
+flatpak install -y flathub com.obsproject.Studio.Plugin.DroidCam
 ```
 
 Download and install [Composite Blur](https://obsproject.com/forum/resources/composite-blur.1780/) plugin for OBS Studio.
 
-### 2. Configuring Nautilus
+### 3. Configuring Nautilus
 
 ```bash
 # install GNOME/Nautilus customization helpers and extensions
@@ -407,7 +419,7 @@ Open Nautilus and open its preferences panel (`CTRL+,`)
   - _Show_ `Create Link`
   - _Show_ `Delete Permanently`
 
-### 3. Update XDG Directories
+### 4. Update XDG Directories
 
 I want my home directory to be clean as possible. Dotfiles are everywhere, but fortunately they can be hidden in Nautilus. However, default user directories that I do not frequently visit cannot be hidden. Edit the `~/.config/user-dirs.dirs` file and move the directories to where you want to. Alternatively, you can run the following commands to move the `Desktop/`, `Templates/`, and `Public/` directories inside `~/.desktop/`.
 
@@ -441,17 +453,17 @@ xdg-user-dirs-update --set PUBLICSHARE "$HOME/.desktop/Public"
 >
 > ```
 
-### 4. Customizing GNOME
+### 5. Customizing GNOME
 
 > See the [[GNOME]] customization guide.
 
-### 5. Setting Up Ptyxis
+### 6. Setting Up Ptyxis
 
 [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) is the new terminal of Fedora operating system. Unlike the old [gnome-terminal](https://help.gnome.org/gnome-terminal/) where we had to install [catppuccin/gnome-terminal](https://github.com/catppuccin/gnome-terminal), theming it is much easier now.
 
-Just open **Preferences**, expand the palette grid by clicking the "Show All Palettes" button at the top right corner, and selecting **Catppuccin Mocha**. I also prefer an I-Beam so just at the bottom of the same panel, you can see `Cursor > Cursor Shape` and set it to _I-Beam_. Also disable **Use System Font** and set it to `JetBrainsMono Nerd Font Regular` with size 10.
+Just open **Preferences**, expand the palette grid by clicking the "Show All Palettes" button at the top right corner, and selecting **Catppuccin Mocha**. I also prefer an I-Beam so just at the bottom of the same panel, you can see `Cursor > Cursor Shape` and set it to _I-Beam_. Also disable **Use System Font** and set it to `JetBrainsMono Nerd Font Mono Regular` with size 10.
 
-### 6. Language & Input Methods
+### 7. Language & Input Methods
 
 Open Settings and go to `Keyboard > Input Sources`. Add the following languages:
 
@@ -459,3 +471,10 @@ Open Settings and go to `Keyboard > Input Sources`. Add the following languages:
 - Korean (Hangul)
 
 You can now write Japanese and Korean by switching to these languages using `WIN+SPACE`.
+
+## Customization Done
+
+And with that, you have a fully customized Fedora Workstation installation.
+
+You can now enjoy your new operating system with all the tools and applications you need.
+Every person has their own preferences, so feel free to explore and customize your system further to suit your needs.
