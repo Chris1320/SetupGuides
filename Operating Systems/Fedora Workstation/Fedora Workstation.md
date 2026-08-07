@@ -13,7 +13,7 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 ## Base Installation & Initial Boot Setup
 
 > [!NOTE]
-> 
+>
 > - This guide is tested on **Fedora Workstation 44**.
 > - After the following the whole guide, the system will consume about 25 GBs of storage space.
 
@@ -176,6 +176,10 @@ So, I install these tools first before installing the applications.
 ```bash
 # development tools
 sudo dnf install uv python3-pip gcc golang rustup
+
+# install lazygit to use as Git TUI
+sudo dnf copr enable dejan/lazygit
+sudo dnf install lazygit
 
 # install Fast Node Manager
 curl -fsSL https://fnm.vercel.app/install | bash
@@ -472,6 +476,51 @@ Open Settings and go to `Keyboard > Input Sources`. Add the following languages:
 - Korean (Hangul)
 
 You can now write Japanese and Korean by switching to these languages using `WIN+SPACE`.
+
+## Optional Modifications
+
+### Replace `systemd-oomd` with `earlyoom`
+
+I have experienced many out-of-memory scenarios during my use of Fedora Workstation. For some reason, `systemd-oomd` never kicked in to kill the culprit that's hogging the system memory. However, `earlyoom` has saved me (and my unsaved works and hundreds of Firefox tabs) numerous times so you might want to switch as well.
+
+> [!NOTE] Technical Explanation
+>
+> The two daemons operate differently:
+>
+> > [!INFO]+ systemd-oomd
+> >
+> > "The primary mechanism used by `systemd-oomd` for detecting when the system is out of memory is memory pressure. **Memory pressure** measures the percentage of time a cgroup has “wasted” due to lack of memory. This includes time spent reclaiming free memory, faulting in recently resident pages, and loading in anonymous pages from swap.
+> >
+> > When a monitored cgroup’s memory pressure exceeds the specified thresholds, `systemd-oomd` will perform action(s) on the targeted cgroup’s descendants, starting from the cgroups with the most reclaim scans. **Reclaim activity** is used here, rather than the largest consumer, as it reflects values set in the cgroup memory controller for memory protection (such as memory.low). "
+>
+> \- [Changes/EnableSystemdOomd - Fedora Project Wiki](https://fedoraproject.org/wiki/Changes/EnableSystemdOomd)
+>
+> > [!INFO]+ earlyoom
+> >
+> > "`earlyoom` checks the amount of available memory and free swap up to 10 times a second (less often if there is a lot of free memory)."
+>
+> \- [GitHub - rfjakob/earlyoom: earlyoom - Early OOM Daemon for Linux · GitHub](https://github.com/rfjakob/earlyoom)
+
+To use `earlyoom` instead of `systemd-oomd`, you will have to first install `earlyoom`, and then enable it.
+
+```bash
+sudo dnf install earlyoom                         # 1. Install earlyoom
+sudo systemctl enable --now earlyoom.service      # 2. Enable and start earlyoom
+```
+
+Now, to avoid conflicts, we need to disable `systemd-oomd`.
+
+```bash
+sudo systemctl disable --now systemd-oomd.service # 3. Stop and disable systemd-oomd
+sudo systemctl mask systemd-oomd.service          # 4. Mask systemd-oomd so that it won't start again.
+```
+
+Finally, make sure that `earlyoom` is running and `systemd-oomd` has stopped.
+
+```bash
+systemctl status earlyoom.service                 # 5. Make sure earlyoom daemon is running
+systemctl status systemd-oomd.service             # 6. Make sure systemd-oomd has stopped
+```
 
 ## Customization Done
 
