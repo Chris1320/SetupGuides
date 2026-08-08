@@ -14,7 +14,7 @@ This is a guide on how I customize my Fedora installation. [Fedora Workstation](
 
 > [!NOTE]
 >
-> - This guide is tested on **Fedora Workstation 44**.
+> - This guide is tested on **Fedora Workstation 44** using the GNOME Desktop Environment.
 > - After the following the whole guide, the system will consume about 25 GBs of storage space.
 
 ### Installing Fedora Workstation
@@ -116,7 +116,9 @@ sudo fwupdmgr update
 
 We need to increase the number of `inotify` instances because some applications
 (e.g., Visual Studio Code/Neovim LSP Servers) require more than the default
-value.
+value. We also enable `kernel.sysrq` to allow us to use the Magic SysRq key
+for emergency situations. The second command applies the changes we made to
+the system configuration.
 
 ```bash
 printf "fs.inotify.max_user_instances = 256\nkernel.sysrq = 1" | sudo tee /etc/sysctl.d/50-user.conf
