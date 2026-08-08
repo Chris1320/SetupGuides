@@ -149,6 +149,7 @@ Install other utilities that I frequently use/nice to have.
 sudo dnf install tealdeer
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub org.cryptomator.Cryptomator
+flatpak install -y flathub org.qbittorrent.qBittorrent
 
 # Update tealdeer cache
 tldr --update
