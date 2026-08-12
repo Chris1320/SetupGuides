@@ -515,14 +515,16 @@ Now, to avoid conflicts, we need to disable `systemd-oomd`.
 
 ```bash
 sudo systemctl disable --now systemd-oomd.service # 3. Stop and disable systemd-oomd
-sudo systemctl mask systemd-oomd.service          # 4. Mask systemd-oomd so that it won't start again.
+sudo systemctl disable --now systemd-oomd.socket  # 4. Disable systemd-oomd's socket as well.
+sudo systemctl mask systemd-oomd.socket           # 5. Mask systemd-oomd so that it won't start again.
 ```
 
 Finally, make sure that `earlyoom` is running and `systemd-oomd` has stopped.
 
 ```bash
-systemctl status earlyoom.service                 # 5. Make sure earlyoom daemon is running
-systemctl status systemd-oomd.service             # 6. Make sure systemd-oomd has stopped
+systemctl status earlyoom.service \               # 6. Make sure earlyoom daemon is running,
+    systemd-oomd.service \                        #    systemd-oomd has stopped,
+    systemd-oomd.socket                           #    and its socket masked.
 ```
 
 ## Customization Done
