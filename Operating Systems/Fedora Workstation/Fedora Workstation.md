@@ -147,6 +147,7 @@ Install other utilities that I frequently use/nice to have.
 
 ```bash
 sudo dnf install tealdeer
+flatpak install -y flathub org.gnome.SoundRecorder
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub org.cryptomator.Cryptomator
 flatpak install -y flathub org.qbittorrent.qBittorrent
@@ -508,6 +509,15 @@ To use `earlyoom` instead of `systemd-oomd`, you will have to first install `ear
 
 ```bash
 sudo dnf install earlyoom                         # 1. Install earlyoom
+```
+
+`earlyoom` is now installed, and we need to adjust its configuration. Open `/etc/default/earlyoom` and change the variables to the following:
+
+| Variable        | Value                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
+| `EARLYOOM_ARGS` | Append `-n` to the existing arguments to send notifications to the user when `earlyoom` is triggered. |
+
+```bash
 sudo systemctl enable --now earlyoom.service      # 2. Enable and start earlyoom
 ```
 
