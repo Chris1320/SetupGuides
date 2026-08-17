@@ -537,6 +537,29 @@ systemctl status earlyoom.service \               # 6. Make sure earlyoom daemon
     systemd-oomd.socket                           #    and its socket masked.
 ```
 
+### Remote Connections
+
+If you want to connect to your Fedora Workstation remotely, you can enable Remote Control and/or SSH.
+
+#### Remote Control (RDP)
+
+1. Open Settings and go to `System > Remote Desktop`.
+2. Enable `Desktop Sharing` and `Remote Control`. Change the login credentials as you wish.
+
+#### Secure Shell (SSH)
+
+1. Open Settings and go to `System > Secure Shell`. Toggle the switch to "ON".
+2. Run the following command to secure your SSH server:
+
+> [!CAUTION]
+>
+> Change `Port` to something you want.
+
+```bash
+printf "Port 2222\nPermitRootLogin no\nPubkeyAuthentication yes\nPasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/10-custom.conf
+sudo systemctl restart sshd.service
+```
+
 ## Customization Done
 
 And with that, you have a fully customized Fedora Workstation installation.
