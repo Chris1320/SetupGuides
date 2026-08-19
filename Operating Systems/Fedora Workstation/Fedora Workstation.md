@@ -137,7 +137,8 @@ sudo dnf install \
   git git-lfs gh \
   mc unrar 7zip-standalone-all \
   file-roller dmg2img trash-cli \
-  openssl btop inxi wl-clipboard
+  openssl btop inxi wl-clipboard \
+  sqlite sqlitebrowser
 
 # install flatseal
 flatpak install -y flathub flatseal
