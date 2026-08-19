@@ -534,16 +534,13 @@ You can now write Japanese and Korean by switching to these languages using `WIN
 ## Back-Up Strategy
 
 I use [backrest](https://github.com/garethgeorge/backrest) to perform automatic backups of my system.
-I also use [BTRFS Assistant](https://gitlab.com/btrfs-assistant/btrfs-assistant) to manage BTRFS snapshots and rollbacks.
 
-> [!QUESTION] Why use different tools for backups and snapshots?
+> [!QUESTION] Why use backrest?
 >
 > **Backrest** uses [restic](https://restic.net/) under the hood to perform backups. This means
 > that in a situation where I need to restore specific files or directories,
-> I can do so using the `restic` command line tool. **BTRFS snapshots** are used
-> for system rollbacks. In other words, I use BTRFS Assistant for system
-> snapshots and Backrest for file backups. Also, I can move restic repositories
-> anywhere I want, but BTRFS snapshots are tied to the filesystem where they were created.
+> I can do so using the `restic` command line tool. Also, I can move
+> restic repositories anywhere I want.
 
 ### Setting Up Backrest
 
@@ -557,8 +554,6 @@ systemctl status backrest.service  # Check if the service is installed and runni
 If `systemctl` reports it as running, you should be able to access it in [http://localhost:9898](http://localhost:9898).
 You may now add a new backup repository and configure it to your liking.
 You can also check the [Backrest documentation](https://garethgeorge.github.io/backrest/introduction/getting-started) for more information.
-
-### Setting Up BTRFS Assistant
 
 ## Optional Modifications
 
