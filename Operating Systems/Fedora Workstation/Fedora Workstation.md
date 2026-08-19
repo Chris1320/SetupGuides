@@ -158,6 +158,15 @@ tldr --update
 
 ## Applications & Software
 
+Before proceeding, create desktop directories and clone the _SetupGuides-dotfiles_ repository to `~/Temp`.
+Most software that will be installed are pre-configured in the dotfiles repository, so we will just copy
+the configuration files to their respective locations.
+
+```bash
+mkdir -p ~/Temp ~/Cloud ~/Projects
+git clone https://github.com/Chris1320/SetupGuides-dotfiles.git ~/Temp/SetupGuides-dotfiles
+```
+
 ### Terminal & Shell
 
 Fedora Workstation comes with the new Ptyxis terminal, which is a modern terminal emulator for GNOME.
@@ -387,6 +396,47 @@ After installing, launch Waydroid from the applications menu and proceed with th
 
 > [!IMPORTANT] Read more information from [their website](https://docs.waydro.id/usage/install-on-desktops#fedora).
 
+### Integrating Online/Cloud File Storage Services
+
+I use several online cloud storage services, mainly [Google Drive](https://workspace.google.com/intl/en-US/products/drive/), [OneDrive](https://www.microsoft.com/en/microsoft-365/onedrive/online-cloud-storage), and [MEGA](https://mega.io/).
+GNOME has support for Microsoft 365 accounts, but MEGA is not supported natively.
+As of GNOME 50, [Google Drive support has been dropped](https://discourse.gnome.org/t/google-drive-in-gnome-50/34417)
+due to its dependencies being unmaintained.
+
+To solve all these, we will use [rclone](https://rclone.org/) to mount these cloud storage services as virtual drives. This will
+require some setup, but it is worth it in the end. To start, install `rclone` and run `rclone config` to
+add remotes that you want to use. Refer to [rclone's documentation](https://rclone.org/docs/) for more
+information on how to configure remotes. For Google Drive remotes, you most likely want to use your
+own **Google API credentials** instead of the default ones provided by `rclone` as the default credentials have
+a very low API quota and will most likely hit the limit if you are going to use it frequently. You can
+create your own credentials by following [this guide](https://rclone.org/drive/#making-your-own-client-id).
+
+```bash
+sudo dnf install rclone
+rclone config
+```
+
+After setup, we will create a systemd service to automatically mount the remotes on boot.
+
+```bash
+mkdir -p ~/.config/systemd/user
+cp ~/Temp/SetupGuides-dotfiles/systemd/rclone@.service ~/.config/systemd/user/rclone@.service
+```
+
+The `rclone@.service` file is a template service that can be used to mount any remote that you have configured
+in `rclone`. To use it, enable the service with the name of the remote that you want to mount. For example,
+if you have a remote named `gdrive-personal`, run the following command:
+
+```bash
+systemctl --user enable --now rclone@gdrive-personal
+```
+
+Now, every time you boot your system, the `gdrive-personal` remote will be automatically mounted. You can check the status of the service with the following command:
+
+```bash
+systemctl --user status "rclone@*"
+```
+
 ## Desktop Customization & Ricing
 
 ### 1. Text Editing
@@ -591,7 +641,8 @@ sudo systemctl restart sshd.service
 
 ## Customization Done
 
-And with that, you have a fully customized Fedora Workstation installation.
+And with that, you have a fully customized Fedora Workstation installation. You can now remove the `~/Temp/SetupGuides-dotfiles`
+directory if you want to free up some space.
 
 You can now enjoy your new operating system with all the tools and applications you need.
 Every person has their own preferences, so feel free to explore and customize your system further to suit your needs.
