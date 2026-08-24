@@ -296,6 +296,56 @@ sudo dnf group install multimedia
 uv tool install yt-dlp
 ```
 
+#### Spotify
+
+Spotify is one of the few subscriptions that I actually pay for. I use Spicetify to enhance the Spotify experience. It allows us to
+customize the Spotify client with themes, extensions, and custom CSS. To start, run the following commands to install Spotify and Spicetify.
+
+```bash
+flatpak install com.spotify.Client
+```
+
+To prepare Spotify for customization via Spicetify, we need to run the Spotify client at least once to create the necessary files and directories.
+After that, we can install Spicetify. Remember to **close Spotify** for now.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+```
+
+When asked, install the _spicetify Marketplace_. After this, you wll notice it will exit with an error.
+
+```
+error  Cannot detect Spotify "prefs" file location. Please manually set "prefs_path" in config-xpui.ini
+```
+
+This is because Spicetify needs to know where the Spotify prefs file is located. Run the following commands to set the prefs path and continue.
+
+> [!WARNING] You might need to restart the terminal (or machine) if spicetify-cli is not found.
+
+```bash
+# Update spicetify config to point to the correct Spotify installation and prefs path
+spicetify config spotify_path "/var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify"
+spicetify config prefs_path "/home/chris/.var/app/com.spotify.Client/config/spotify/prefs"
+
+# Provide proper permissions to the Spotify installation directory and its contents so that Spicetify can modify them.
+sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify
+sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps
+
+# Re-apply Spicetify to the Spotify client
+spicetify backup apply
+```
+
+> [!TIP]-
+>
+> If you see Windows-style window borders, this is because of how Spotify is configured for Wayland. To remove this, open `Flatseal > Spotify`,
+> and do the following:
+>
+> - Enable X11 windowing system
+> - Disable Wayland windowing system
+
+You may now open Spotify and check if Spicetify is working. You can also check the [Spicetify Documentation](https://spicetify.app/docs/getting-started#linux)
+for more information on how to customize Spotify.
+
 ### Gaming & Windows Software
 
 Of course, gaming is one of the main reasons why I use Fedora Workstation. I
